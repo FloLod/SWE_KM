@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.13" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
+  <interface id="1" language="java" name="km_Services.KarmaService" project="testproject" 
+    file="/testproject/src/km_Services/KarmaService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2861" y="481"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="2" language="java" name="km_Services.ClassService" project="testproject" 
+    file="/testproject/src/km_Services/ClassService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1579" y="477"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="3" language="java" name="km_Services.LoginService" project="testproject" 
+    file="/testproject/src/km_Services/LoginService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1355" y="459"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="4" language="java" name="km_Services.EntityManagerFactoryService" project="testproject" 
+    file="/testproject/src/km_Services/EntityManagerFactoryService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="212" y="101"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="km_Services.NotificationServiceImpl" project="testproject" 
+    file="/testproject/src/km_Services/NotificationServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="481" y="83"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="6" language="java" name="km_Services.FileService" project="testproject" 
+    file="/testproject/src/km_Services/FileService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="911" y="486"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="7" language="java" name="km_Services.NotificationService" project="testproject" 
+    file="/testproject/src/km_Services/NotificationService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="457" y="459"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="8" language="java" name="km_Services.KnowledgeCenterServiceImpl" project="testproject" 
+    file="/testproject/src/km_Services/KnowledgeCenterServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="715" y="128"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="9" language="java" name="km_Services.ExchangeMarketService" project="testproject" 
+    file="/testproject/src/km_Services/ExchangeMarketService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1116" y="486"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="10" language="java" name="km_Services.FileServiceImpl" project="testproject" 
+    file="/testproject/src/km_Services/FileServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="935" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="11" language="java" name="km_Services.PDFService" project="testproject" 
+    file="/testproject/src/km_Services/PDFService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1844" y="468"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="12" language="java" name="km_Services.CalenderService" project="testproject" 
+    file="/testproject/src/km_Services/CalenderService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2412" y="478"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="13" language="java" name="km_Services.ExchangeMarketServiceImpl" project="testproject" 
+    file="/testproject/src/km_Services/ExchangeMarketServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1152" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="14" language="java" name="km_Services.KnowledgeCenterService" project="testproject" 
+    file="/testproject/src/km_Services/KnowledgeCenterService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="716" y="504"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="15" language="java" name="km_Services.LoginServiceImpl" project="testproject" 
+    file="/testproject/src/km_Services/LoginServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1379" y="83"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="km_Services.ClassServiceImpl" project="testproject" 
+    file="/testproject/src/km_Services/ClassServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1603" y="101"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="km_Services.PDFServiceImpl" project="testproject" 
+    file="/testproject/src/km_Services/PDFServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1868" y="92"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="18" language="java" name="km_Services.StudentService" project="testproject" 
+    file="/testproject/src/km_Services/StudentService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2106" y="477"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="19" language="java" name="km_Services.StudentServiceImpl" project="testproject" 
+    file="/testproject/src/km_Services/StudentServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2130" y="101"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="km_Services.CalenderServiceImpl" project="testproject" 
+    file="/testproject/src/km_Services/CalenderServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2376" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="km_Services.ExchangeCenterServiceImpl" project="testproject" 
+    file="/testproject/src/km_Services/ExchangeCenterServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2626" y="119"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="km_Services.KarmaServiceImpl" project="testproject" 
+    file="/testproject/src/km_Services/KarmaServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2829" y="101"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="23" language="java" name="km_Services.ExchangeCenterService" project="testproject" 
+    file="/testproject/src/km_Services/ExchangeCenterService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2650" y="487"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="24" language="java" name="km_Handler.ServiceLocator" project="testproject" 
+    file="/testproject/src/km_Handler/ServiceLocator.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1728" y="1756"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <realization id="25">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="23"/>  
+  </realization>  
+  <dependency id="26">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <realization id="27">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <dependency id="28">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <realization id="29">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <dependency id="30">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <dependency id="31">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <realization id="32">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="12"/>  
+  </realization>  
+  <dependency id="33">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <realization id="34">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="14"/>  
+  </realization>  
+  <realization id="35">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <dependency id="36">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <realization id="37">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="3"/>  
+  </realization>  
+  <dependency id="38">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <realization id="39">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="7"/>  
+  </realization>  
+  <realization id="40">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="2"/>  
+  </realization>  
+  <dependency id="41">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="23"/>  
+  </dependency>  
+  <realization id="42">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="18"/>  
+  </realization>  
+  <dependency id="43">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="44">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <realization id="45">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <dependency id="46">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
