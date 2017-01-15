@@ -9,6 +9,7 @@ import km_Services.*;
 @SessionScoped
 public class ServiceLocatorImpl implements ServiceLocator{
 	private ExchangeCenterService exchangeCenterService;
+	//Test
 	
 	private ExchangeMarketService exchangeMarketService;
 	
