@@ -1,9 +1,19 @@
 package km_Entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class File{
+	@Id
+	@GeneratedValue
 	private int fileID;
 	private String fileName;
+	@ManyToOne
 	private Content content;
+	@ManyToOne
 	private Text text;
 	
 	public File(){

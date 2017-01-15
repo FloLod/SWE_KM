@@ -1,11 +1,21 @@
 package km_Entities;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
+@Entity
 public class Appointment{
+	@Id
+	@GeneratedValue
 	private int AppointmentID;
+	@ManyToOne
 	private AppointmentType appointmentType;
+	@ManyToOne
 	private Text text;
+	@ManyToOne
 	private Content content;
 	private Date start;
 	private Date end;

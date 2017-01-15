@@ -1,10 +1,20 @@
 package km_Entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class EducationDiaryList{
+	@Id
 	private int EducationDiaryList;
 	private int week;
+	@ManyToOne
 	private StudentClass studentClass;
+	@ManyToOne
 	private Student studentResponsible;
+	@ManyToOne
 	private EducationDiary educationDiary;
 	
 	public EducationDiaryList(){

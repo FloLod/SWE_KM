@@ -1,9 +1,20 @@
 package km_Entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Notification{
+	@Id
+	@GeneratedValue
 	private int notificationID;
+	@ManyToOne
 	private Student student;
+	@ManyToOne
 	private NotificationType notificationType;
+	@ManyToOne
 	private Text text;
 	
 	public Notification(){}

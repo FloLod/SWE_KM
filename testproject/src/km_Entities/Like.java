@@ -1,7 +1,18 @@
 package km_Entities;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.ManyToOne;
+
+@Entity
+@IdClass(LikeIdClass.class)
 public class Like{
+	@Id
+	@ManyToOne
 	private Student student;
+	@Id
+	@ManyToOne
 	private Content content;
 	
 	public Like(){}
