@@ -1,9 +1,16 @@
 package km_Entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class AppointmentType{
+	@Id
+	@GeneratedValue
 	private int appointmentTypeID;
 	private String name;
-	private String description;
+	private String description; // The description value "reminder" defines a reminder type appointment.
 	
 	public AppointmentType(){
 		

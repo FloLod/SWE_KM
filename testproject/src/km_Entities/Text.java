@@ -1,6 +1,13 @@
 package km_Entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Text{
+	@Id
+	@GeneratedValue
 	private int textID;
 	private String heading;
 	private String text;

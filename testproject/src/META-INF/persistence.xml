@@ -1,24 +1,29 @@
-<persistence xmlns="http://java.sun.com/xml/ns/persistence"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence 
-        http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
-	version="1.0">
-
-	<persistence-unit name="OnlineFerries">
-		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-			
-		<properties>
-			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
-			<property name="hibernate.connection.url" value="jdbc:mysql://localhost/onlineferries"/>
-			<property name="hibernate.connection.username" value="root"/>
-			<property name="hibernate.connection.password" value="root"/>
-			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
-
-	        <!-- Echo all executed SQL to stdout -->
-			<property name="hibernate.show_sql" value="true"/>
-			<property name="hibernate.archive.autodetection" value="class"/>
-		</properties>
-
-	</persistence-unit>	
- 
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="testproject">
+		<class>km_Entities.Activity</class>
+		<class>km_Entities.Admin</class>
+		<class>km_Entities.Appointment</class>
+		<class>km_Entities.AppointmentType</class>
+		<class>km_Entities.BlockList</class>
+		<class>km_Entities.Category</class>
+		<class>km_Entities.Content</class>
+		<class>km_Entities.ContentType</class>
+		<class>km_Entities.EducationDiary</class>
+		<class>km_Entities.EducationDiaryDay</class>
+		<class>km_Entities.EducationDiaryList</class>
+		<class>km_Entities.File</class>
+		<class>km_Entities.Like</class>
+		<class>km_Entities.Notification</class>
+		<class>km_Entities.Question</class>
+		<class>km_Entities.Reply</class>
+		<class>km_Entities.Student</class>
+		<class>km_Entities.StudentAppointment</class>
+		<class>km_Entities.StudentClass</class>
+		<class>km_Entities.Text</class>
+		<class>km_Entities.TimeTable</class>
+		<class>km_Entities.UnlockedContent</class>
+		<class>km_Entities.User</class>
+		<class>km_Entities.NotificationType</class>
+	</persistence-unit>
 </persistence>

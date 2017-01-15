@@ -1,10 +1,21 @@
 package km_Entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Student{
+	@Id
+	@GeneratedValue
 	private int studentID;
 	private int karma;
+	@ManyToOne
 	private User user;
+	@ManyToOne
 	private StudentClass studentClass;
+	@ManyToOne
 	private File companyPicture;
 	private boolean classSpeaker;
 	

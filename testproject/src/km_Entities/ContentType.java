@@ -1,9 +1,18 @@
 package km_Entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class ContentType{
+	@Id
+	@GeneratedValue
 	private int contentTypeID;
 	private String Name;
 	private int KarmaReward;
+	@ManyToOne
 	private StudentClass studentClass;
 	
 	public ContentType(){}

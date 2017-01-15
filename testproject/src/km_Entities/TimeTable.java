@@ -1,12 +1,21 @@
 package km_Entities;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
+@Entity
 public class TimeTable{
+	@Id
+	@GeneratedValue
 	private int timeTableID;
 	private Date startingDate;
 	private Date endDate;
+	@ManyToOne
 	private File file;
+	@ManyToOne
 	private StudentClass studentClass;
 	
 	public TimeTable(){}

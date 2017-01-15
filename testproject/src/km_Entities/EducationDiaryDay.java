@@ -1,17 +1,28 @@
 package km_Entities;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.ManyToOne;
+
+@Entity
+@IdClass(EducationDiaryDayIdClass.class)
 public class EducationDiaryDay{
-	private int educationDiaryID;
+	@ManyToOne
+	@Id
+	private km_Entities.EducationDiary educationDiaryID;
+	@Id
 	private int day;
+	@ManyToOne
 	private Activity activity;
 	
 	public EducationDiaryDay(){}
 
-	public int getEducationDiaryID() {
+	public EducationDiary getEducationDiaryID() {
 		return educationDiaryID;
 	}
 
-	public void setEducationDiaryID(int educationDiaryID) {
+	public void setEducationDiaryID(EducationDiary educationDiaryID) {
 		this.educationDiaryID = educationDiaryID;
 	}
 

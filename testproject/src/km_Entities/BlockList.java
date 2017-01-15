@@ -1,9 +1,17 @@
 package km_Entities;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
+@Entity
 public class BlockList{
+	@Id
+	@GeneratedValue
 	private int blockListID;
+	@ManyToOne
 	private Student student;
 	private String reason;
 	private Date endDate;

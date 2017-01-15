@@ -1,6 +1,6 @@
 package km_Views;
 
-class TextView {
+public class TextView {
 	//text
 	private int TextID;
 	private String heading;
