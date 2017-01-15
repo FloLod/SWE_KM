@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#Index_Moritz.xhtml"
+  PATH="/Index_Moritz.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#Index_Moritz.xhtml:0" NAME="item"
+   PATH="/Index_Moritz.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#Admin_Overview.xhtml"
+    NAME="output" PATH="/Admin_Overview.xhtml"
+    TARGET="rules:#Admin_Overview.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="retry::#Index_Moritz.xhtml" NAME="output1"
+    PATH="/Index_Moritz.xhtml" TARGET="rules:#Index_Moritz.xhtml"
+    TITLE="retry" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#Admin_Overview.xhtml"
+  PATH="/Admin_Overview.xhtml" SHAPE="256,33,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

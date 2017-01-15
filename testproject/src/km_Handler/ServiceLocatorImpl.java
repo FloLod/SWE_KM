@@ -1,7 +1,12 @@
 package km_Handler;
 
-import km_Services.*;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
+import km_Services.*;
+@ManagedBean
+@SessionScoped
 public class ServiceLocatorImpl implements ServiceLocator{
 	private ExchangeCenterService exchangeCenterService;
 	

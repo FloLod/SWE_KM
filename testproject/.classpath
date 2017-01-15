@@ -8,7 +8,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/Florian/swegit/swe_km_webapp/WebContent/WEB-INF/lib/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Florian/swegit/swe_km_webapp/WebContent/WEB-INF/lib/javax.faces-2.2.1.jar"/>
+	<classpathentry kind="lib" path="K:/PROGRAMME/Tomcat/apache-tomcat-9.0.0.M15/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
