@@ -2,18 +2,13 @@ package km_Services;
 
 import java.io.OutputStream;
 
-import javax.servlet.http.HttpServletRequest;
+
+import km_Views.EducationDiaryView;
 
 public class PDFServiceImpl implements PDFService {
 
 	@Override
-	public void download() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void createPDF(HttpServletRequest request, OutputStream os) {
+	public void createPDF(EducationDiaryView diary, OutputStream os) {
 		// TODO Auto-generated method stub
 		
 	}
