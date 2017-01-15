@@ -2,11 +2,11 @@ package km_Handler;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+
 
 import km_Services.*;
 @ManagedBean
-@SessionScoped
+@ApplicationScoped
 public class ServiceLocatorImpl implements ServiceLocator{
 	private ExchangeCenterService exchangeCenterService;
 	//Test
@@ -34,7 +34,6 @@ public class ServiceLocatorImpl implements ServiceLocator{
 	
 	
 	public ServiceLocatorImpl() {
-		super();
 		this.exchangeCenterService = new ExchangeCenterServiceImpl();
 		this.exchangeMarketService = new ExchangeMarketServiceImpl();
 		this.fileService = new FileServiceImpl();

@@ -3,19 +3,18 @@ package km_Handler;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import km_Views.*;
-@ManagedBean
+@ManagedBean(name="klassenHandler")
 @SessionScoped
 public class KlassenHandler implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1729L;
 	private ClassView studentClass;
 	private NotificationView notification;
 	List<ClassView> classes;
@@ -46,9 +45,13 @@ public class KlassenHandler implements Serializable{
 		System.out.println("Hallo");
 		try {
 			this.setClasses(serviceLocator.getClassService().getClasses());
+			System.out.println("Succ");
 		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Fail");
 			return "retry";
 		}
+		System.out.println("Success");
 		return "success";
 	}
 
