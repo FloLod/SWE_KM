@@ -1,7 +1,14 @@
 package km_Entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class NotificationType {
 	
+	@Id
+	@GeneratedValue
 	private int notificationTypeID;
 	private String name;
 	

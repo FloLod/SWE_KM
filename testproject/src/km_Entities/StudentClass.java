@@ -1,8 +1,14 @@
 package km_Entities;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
 public class StudentClass{
+	@Id
+	@GeneratedValue
 	private int classID;
 	private String educationPath;
 	private Date year;

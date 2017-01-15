@@ -1,9 +1,20 @@
 package km_Entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Reply{
+	@Id
+	@GeneratedValue
 	private int replyID;
+	@ManyToOne
 	private Content content;
+	@ManyToOne
 	private Text text;
+	@ManyToOne
 	private Question question;
 	
 	public Reply(){}

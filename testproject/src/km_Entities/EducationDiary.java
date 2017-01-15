@@ -1,10 +1,19 @@
 package km_Entities;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
+@Entity
 public class EducationDiary {
+	@Id
+	@GeneratedValue
 	private int educationDiaryID;
+	@ManyToOne
 	private StudentClass studentClass;
+	@ManyToOne
 	private Content content;
 	private int weeek;
 	private Date startDate;
