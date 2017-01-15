@@ -1,10 +1,13 @@
 package km_Entities;
 
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class EducationDiary {
@@ -17,9 +20,30 @@ public class EducationDiary {
 	private Content content;
 	private int weeek;
 	private Date startDate;
-	private Date endDate;
+	private Date endDate; 
+	
+	@OneToMany(mappedBy = "educationDiaryID")
+	private List<EducationDiaryDay> days;
+	@ManyToOne
+	private EducationDiaryList list;
 
 	public EducationDiary() {
+	}
+	
+	public EducationDiaryList getList() {
+		return list;
+	}
+
+	public void setList(EducationDiaryList list) {
+		this.list = list;
+	}
+
+	public List<EducationDiaryDay> getDays() {
+		return days;
+	}
+
+	public void setDays(List<EducationDiaryDay> days) {
+		this.days = days;
 	}
 
 	public int getEducationDiaryID() {

@@ -10,7 +10,7 @@ public class AppointmentType{
 	@GeneratedValue
 	private int appointmentTypeID;
 	private String name;
-	private String description;
+	private String description; // The description value "reminder" defines a reminder type appointment.
 	
 	public AppointmentType(){
 		
