@@ -1,5 +1,7 @@
 package km_Services;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,9 +18,10 @@ public class ExchangeCenterServiceImpl implements ExchangeCenterService{
 	PDFService pdf = new PDFServiceImpl();
 
 	@Override
-	public void downloadEducationDiary(StudentView sv, EducationDiaryView edv) {
+	public void downloadEducationDiary(StudentView sv, EducationDiaryView edv, String filePath) throws FileNotFoundException {
 		// TODO Auto-generated method stub
 		
+		pdf.createPDF(edv, new FileOutputStream(filePath));
 	}
 
 	@Override
