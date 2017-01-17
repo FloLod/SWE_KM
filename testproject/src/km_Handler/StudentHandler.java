@@ -49,6 +49,4 @@ public class StudentHandler {
 	public void setBlockList(List<BlockListView> blockList) {
 		this.blockList = blockList;
 	}
-	
-	
 }

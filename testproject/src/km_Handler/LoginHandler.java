@@ -52,10 +52,10 @@ public class LoginHandler implements Serializable{
 	public void setStudentService(StudentService studentService) {
 		this.studentService = studentService;
 	}
-	public LoginService getLoginservice() {
+	public LoginService getLoginService() {
 		return loginService;
 	}
-	public void setLoginservice(LoginService loginservice) {
+	public void setLoginService(LoginService loginservice) {
 		this.loginService = loginservice;
 	}
 	public ServiceLocator getServiceLocator() { return serviceLocator; }
@@ -70,7 +70,7 @@ public class LoginHandler implements Serializable{
 			context.getExternalContext().getSessionMap().put("user", user);
 			if(!user.isAdmin())
 			{
-				Student s = studentService.findStudentByUserId(1); //placeholder needs to be fixed!!!!!!!!!!!!!!!
+				Student s = studentService.findStudentByUserId(user.getUserId()); //placeholder needs to be fixed!!!!!!!!!!!!!!!
 				student = new StudentView(s);
 				context.getExternalContext().getSessionMap().put("student", student);
 			}
