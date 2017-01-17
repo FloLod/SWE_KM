@@ -11,6 +11,8 @@ import km_Services.LoginService;
 import km_Views.UserView;
 
 import java.io.Serializable;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.faces.bean.ManagedBean;
 
@@ -61,22 +63,24 @@ public class LoginHandler implements Serializable{
 	
 	public void validateEmail(FacesContext context, UIComponent component, Object value)
 			throws ValidatorException {
-		if(!((String) value).matches(".+@.\\..+")){
-
-			System.out.println("in validateemail");
+		System.out.println("in validateemail");
+		
+		if(!isValidEmailId(((String) value))){
 			throw new ValidatorException(
 					new FacesMessage("Fehlerhafte Emailsyntax!"));
 		}
+		System.out.println("out validateemail");
 	}
 
 	public void validatePassword(FacesContext context, UIComponent component, Object value)
 			throws ValidatorException {
 
 		System.out.println("in validatepassword");
-		if(!(((String) value).length()<6)){
+		if((((String) value).length()<6)){
 			throw new ValidatorException(
 					new FacesMessage("Passwort zu kurz!"));
 		}
+		System.out.println("out validatepassword");
 	}
 	public String getEmail() {
 		return email;
@@ -96,5 +100,13 @@ public class LoginHandler implements Serializable{
 	public void setLoggedIn(boolean loggedIn) {
 		this.loggedIn = loggedIn;
 	}
+	
+	private boolean isValidEmailId(String email) {
+        String emailPattern = "^[\\w!#$%&’*+/=?`{|}~^-]+(?:\\.[\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+        Pattern p = Pattern.compile(emailPattern);
+        Matcher m = p.matcher(email);
+        return m.matches();
+    }
+
 	
 }
