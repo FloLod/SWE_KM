@@ -19,7 +19,15 @@ public class ContentView {
 		public ContentView(){}
 		
 		public ContentView(km_Entities.Content cont, km_Entities.ContentType conttype){
+			this.creator = new StudentView(cont.getCreatorStudent());
+			this.created = cont.getCreated();
+			this.changed = cont.getCanged();
+			this.contentID = cont.getContentID();
 			
+			this.contentTypeID = conttype.getContentTypeID();
+			this.contentTypeName = conttype.getName();
+			this.KarmaReward = conttype.getKarmaReward();
+			this.owner = new ClassView(conttype.getStudentClass());
 		}
 		
 		public ContentView(StudentView creator, Date created, Date changed, int contentID, int contentTypeID,
@@ -34,15 +42,6 @@ public class ContentView {
 			KarmaReward = karmaReward;
 			this.owner = owner;
 		}
-		
-		public km_Entities.ContentType parseContenttype(){
-			return null;
-		}
-		
-		public km_Entities.Content parseContent(){
-			return null;
-		}
-		
 		
 		public StudentView getCreator() {
 			return creator;

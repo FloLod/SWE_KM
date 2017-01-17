@@ -7,27 +7,26 @@ public class QuestionView{
 	
 	//category
 	private int CategoryID;
-	private String CategoryText;
+	private TextView CategoryText;
 	
-	public QuestionView(km_Entities.Question question){}
+	public QuestionView(km_Entities.Question question){
+		this.questionID = question.getQuestionID();
+		this.content = new ContentView(question.getContent(), question.getContent().getContentType());
+		this.text = new TextView(question.getText());
+		
+		this.CategoryID = question.getCategory().getCategoryID();
+		this.CategoryText = new TextView(question.getCategory().getText());
+	}
 	public QuestionView(){}
 	
 	public QuestionView(int questionID, ContentView content, TextView text, int categoryID,
-			String categoryText) {
+			TextView categoryText) {
 		super();
 		this.questionID = questionID;
 		this.content = content;
 		this.text = text;
 		CategoryID = categoryID;
 		CategoryText = categoryText;
-	}
-	
-	public km_Entities.Category parseCategory(){
-		return null;
-	}
-	
-	public km_Entities.Question parseQuestion(){
-		return null;
 	}
 
 	public int getQuestionID() {
@@ -60,11 +59,11 @@ public class QuestionView{
 		CategoryID = categoryID;
 	}
 
-	public String getCategoryText() {
+	public TextView getCategoryText() {
 		return CategoryText;
 	}
 
-	public void setCategoryText(String categoryText) {
+	public void setCategoryText(TextView categoryText) {
 		CategoryText = categoryText;
 	}
 	

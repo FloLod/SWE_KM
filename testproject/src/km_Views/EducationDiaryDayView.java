@@ -28,14 +28,6 @@ public class EducationDiaryDayView {
 		this.activityViews = activityViews;
 	}
 
-	public km_Entities.EducationDiaryDay parseEducationDiaryDay() {
-		return null;
-	}
-
-	public km_Entities.Activity parseActivity() {
-		return null;
-	}
-
 	public int getEducationDiaryID() {
 		return educationDiaryID;
 	}

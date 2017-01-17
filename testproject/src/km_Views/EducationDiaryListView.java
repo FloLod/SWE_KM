@@ -1,6 +1,7 @@
 package km_Views;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class EducationDiaryListView {
 	private List<EducationDiaryView> educationDiaryList;
@@ -8,7 +9,13 @@ public class EducationDiaryListView {
 	private StudentView student;
 	
 	public EducationDiaryListView(){}
-	public EducationDiaryListView(km_Entities.EducationDiaryList diaryList){}
+	public EducationDiaryListView(km_Entities.EducationDiaryList diaryList){
+		
+		this.educationDiaryList = diaryList.getEducationDiary().stream().map(d -> new EducationDiaryView(d)).collect(Collectors.toList());
+		this.studentClass = new ClassView(diaryList.getStudentClass());
+		this.student = new StudentView(diaryList.getStudentResponsible());
+		
+	}
 	public EducationDiaryListView(List<EducationDiaryView> educationDiaryList, ClassView studentClass, StudentView student) {
 		super();
 		this.educationDiaryList = educationDiaryList;
@@ -16,7 +23,6 @@ public class EducationDiaryListView {
 		this.student = student;
 	}
 
-	public km_Entities.EducationDiaryList parseEducationDiaryList(){return null;}
 	public List<EducationDiaryView> getEducationDiaryList() {
 		return educationDiaryList;
 	}

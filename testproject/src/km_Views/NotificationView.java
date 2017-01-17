@@ -9,7 +9,15 @@ public class NotificationView {
 	private int notificationTypeID;
 	
 	public NotificationView(){}
-	public NotificationView(km_Entities.Notification note, km_Entities.NotificationType notetype){}
+	public NotificationView(km_Entities.Notification note, km_Entities.NotificationType notetype){
+		this.notificationID = note.getNotificationID();
+		this.student = new StudentView(note.getStudent());
+		this.text = new TextView(note.getText());
+		
+		this.notificationTypeID = notetype.getNotificationTypeID();
+		this.notificationTypeName = notetype.getName();
+	}
+	
 	public NotificationView(int notificationID, StudentView student, TextView text, String notificationTypeName,
 			int notificationTypeID) {
 		super();
@@ -18,14 +26,6 @@ public class NotificationView {
 		this.text = text;
 		this.notificationTypeName = notificationTypeName;
 		this.notificationTypeID = notificationTypeID;
-	}
-	
-	public km_Entities.Notification parseNotification(){
-		return null;
-	}
-	
-	public km_Entities.NotificationType parseNotificationType(){
-		return null;
 	}
 	
 	public int getNotificationID() {

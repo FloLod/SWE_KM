@@ -8,16 +8,17 @@ public class ClassView{
 	private Date year;
 	
 	public ClassView(){}
-	public ClassView(km_Entities.StudentClass studentclass){}
+	public ClassView(km_Entities.StudentClass studentclass){
+		this.classID = studentclass.getClassID();
+		this.educationPath = studentclass.getEducationPath();
+		this.year = studentclass.getYear();
+		
+	}
 	public ClassView(int classID, String educationPath, Date year) {
 		super();
 		this.classID = classID;
 		this.educationPath = educationPath;
 		this.year = year;
-	}
-	
-	public km_Entities.StudentClass parseClass(){
-		return null;
 	}
 	
 	public int getClassID() {
