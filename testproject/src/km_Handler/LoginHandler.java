@@ -70,7 +70,7 @@ public class LoginHandler implements Serializable{
 			context.getExternalContext().getSessionMap().put("user", user);
 			if(!user.isAdmin())
 			{
-				Student s = studentService.findStudentByUserId(1); //placeholder needs to be fixed!!!!!!!!!!!!!!!
+				Student s = studentService.findStudentByUserId(user.getUserId()); //placeholder needs to be fixed!!!!!!!!!!!!!!!
 				student = new StudentView(s);
 				context.getExternalContext().getSessionMap().put("student", student);
 			}
