@@ -7,6 +7,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
@@ -17,6 +18,7 @@ import km_Views.StudentView;
 import km_Views.UserView;
 
 import java.io.Serializable;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -62,27 +64,44 @@ public class LoginHandler implements Serializable{
 	public void setServiceLocator(ServiceLocator serviceLocatorBean) { this.serviceLocator = serviceLocatorBean; }
 		
 	public String login() {
+		try{
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		StudentView student = (StudentView) sessionMap.get("student");
+		if(student!=null){
+			this.student = student;
+			System.out.println("student in cache "+student.toString());
+			return "student";
+		}else{
+			System.out.println("no student in cache");
+		}
+		}catch(Exception e){
+			System.out.println("Fehler bei prüfen ob student im chache ");
+			e.printStackTrace();
+		}
 		System.out.println("in login");
 		System.out.println("Login attempt by"+email+ " " + password); //TO DELETE
 		user = loginService.getLogin(email, password);
 		FacesContext context = FacesContext.getCurrentInstance();
 		if(user != null){
 			context.getExternalContext().getSessionMap().put("user", user);
+			loggedIn = true;
+			
 			if(!user.isAdmin())
 			{
 				Student s = studentService.findStudentByUserId(user.getUserId()); //placeholder needs to be fixed!!!!!!!!!!!!!!!
 				student = new StudentView(s);
 				context.getExternalContext().getSessionMap().put("student", student);
+				return"student";
+			}else{
+				return "admin";
 			}
-				
-			loggedIn = true;
-			return "loggedin";
 		}
 		context.addMessage(null, new FacesMessage("Unknown login, try again"));
         email = null;
         password = null;
         loggedIn = false;
-		return "fail";
+		return null;
 	}	
 	
 	public void validateEmail(FacesContext context, UIComponent component, Object value)
