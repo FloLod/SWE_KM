@@ -16,10 +16,13 @@
 <h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
 <h1>Willkommen zum KingsMansion Onlineportal</h1>
 <h:form id="loginForm">
-<h:inputText value="#{loginHandler.email}" validator="#{loginHandler.validateEmail}"/>
-    
-    <h:inputSecret value="#{loginHandler.password}" validator="#{loginHandler.validatePassword}"/>
-    <h:commandButton value="login" action="#{loginHandler.login}" />
+	<h:inputText value="#{loginHandler.email}" validator="#{loginHandler.validateEmail}" required="true">
+
+	</h:inputText>
+    <h:inputSecret value="#{loginHandler.password}" validator="#{loginHandler.validatePassword}" required="true">
+
+    </h:inputSecret>
+    <h:commandButton value="login" action="#{loginHandler.login}"/>
     <h:messages for="loginForm"></h:messages>
 </h:form>
 </body>
