@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import km_Views.EducationDiaryView;
+
 @Entity
 public class EducationDiary {
 	@Id
@@ -30,6 +32,31 @@ public class EducationDiary {
 	public EducationDiary() {
 	}
 	
+	public EducationDiary(StudentClass studentClass, Content content, int weeek, Date startDate, Date endDate,
+			List<EducationDiaryDay> days, EducationDiaryList list) {
+		super();
+		this.studentClass = studentClass;
+		this.content = content;
+		this.weeek = weeek;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.days = days;
+		this.list = list;
+	}
+
+	public EducationDiary(int educationDiaryID, StudentClass studentClass, Content content, int weeek, Date startDate,
+			Date endDate, List<EducationDiaryDay> days, EducationDiaryList list) {
+		super();
+		this.educationDiaryID = educationDiaryID;
+		this.studentClass = studentClass;
+		this.content = content;
+		this.weeek = weeek;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.days = days;
+		this.list = list;
+	}
+
 	public EducationDiaryList getList() {
 		return list;
 	}

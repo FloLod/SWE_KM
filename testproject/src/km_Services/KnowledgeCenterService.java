@@ -19,5 +19,5 @@ public interface KnowledgeCenterService {
 	
 	public List<ReplyView> showQA(int id);
 	
-
+	
 }

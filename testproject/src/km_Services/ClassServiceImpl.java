@@ -75,4 +75,10 @@ public class ClassServiceImpl implements ClassService {
 		return retList;
 	}
 
+	@Override
+	public StudentClass getStudentClass(int classID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

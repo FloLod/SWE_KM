@@ -1,5 +1,8 @@
 package km_Services;
 
+import km_Views.ContentView;
+import km_Views.StudentView;
+
 public class KarmaServiceImpl implements KarmaService {
 
 	@Override
@@ -16,6 +19,12 @@ public class KarmaServiceImpl implements KarmaService {
 
 	@Override
 	public void increaseKarma(int StudentID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void like(StudentView student, ContentView content) {
 		// TODO Auto-generated method stub
 		
 	}

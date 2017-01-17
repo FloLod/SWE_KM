@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Content{
+public class Content {
 	@Id
 	@GeneratedValue
 	private int contentID;
@@ -17,20 +17,25 @@ public class Content{
 	private ContentType contentType;
 	private Date created;
 	private Date canged;
-	
-	public Content(){}
 
-	
+	public Content() {
+	}
+
+	public Content(Student creatorStudent, ContentType contentType, Date created, Date canged) {
+		super();
+		this.creatorStudent = creatorStudent;
+		this.contentType = contentType;
+		this.created = created;
+		this.canged = canged;
+	}
 
 	public ContentType getContentType() {
 		return contentType;
 	}
 
-
 	public void setContentType(ContentType contentType) {
 		this.contentType = contentType;
 	}
-
 
 	public int getContentID() {
 		return contentID;
@@ -63,6 +68,5 @@ public class Content{
 	public void setCanged(Date canged) {
 		this.canged = canged;
 	}
-	
-	
+
 }

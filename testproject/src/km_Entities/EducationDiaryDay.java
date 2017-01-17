@@ -20,6 +20,25 @@ public class EducationDiaryDay{
 	private List<Activity> activity;
 	
 	public EducationDiaryDay(){}
+	
+	
+
+	public EducationDiaryDay(int day, List<Activity> activity) {
+		super();
+		this.day = day;
+		this.activity = activity;
+	}
+
+
+
+	public EducationDiaryDay(EducationDiary educationDiaryID, int day, List<Activity> activity) {
+		super();
+		this.educationDiaryID = educationDiaryID;
+		this.day = day;
+		this.activity = activity;
+	}
+
+
 
 	public EducationDiary getEducationDiaryID() {
 		return educationDiaryID;

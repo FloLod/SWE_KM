@@ -5,15 +5,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Activity{
+public class Activity {
 	@Id
 	@GeneratedValue
 	private int actvityID;
 	private String description;
 	private int duration;
-	
-	public Activity(){
-		
+
+	public Activity() {
+
+	}
+
+	public Activity(String description, int duration) {
+		super();
+		this.description = description;
+		this.duration = duration;
 	}
 
 	public int getActvityID() {
@@ -39,6 +45,5 @@ public class Activity{
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
-	
-	
+
 }
