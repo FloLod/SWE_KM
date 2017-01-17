@@ -70,10 +70,10 @@ public class LoginHandler implements Serializable{
 		StudentView student = (StudentView) sessionMap.get("student");
 		if(student!=null){
 			this.student = student;
-			System.out.println("student in cache "+student.toString());
+			System.out.println("student in session "+student.toString());
 			return "student";
 		}else{
-			System.out.println("no student in cache");
+			System.out.println("no student in session");
 		}
 		}catch(Exception e){
 			System.out.println("Fehler bei prüfen ob student im chache ");

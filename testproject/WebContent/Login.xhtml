@@ -27,17 +27,17 @@
   <!--  Space for thingies!-->
   
   
-  <h1>Willkommen zum KingsMansion Onlineportal</h1>
+  <h1>#{msg.greeting}</h1>
 	
 	<h:panelGrid columns="1">
 	<h:form id="loginForm">
 	
 	  	<h:panelGroup>
-	  	Email:
+	  	#{msg.mail}
 	<h:inputText value="#{loginHandler.email}" validator="#{loginHandler.validateEmail}" label="Email" required="true"/>
 	</h:panelGroup>
   	<h:panelGroup>
-  	Passwort:
+  	#{msg.password}
   	<h:inputSecret value="#{loginHandler.password}" validator="#{loginHandler.validatePassword}" label="Passwort" required="true"/>
 	</h:panelGroup>
 	 
