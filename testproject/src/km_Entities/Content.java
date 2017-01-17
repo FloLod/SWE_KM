@@ -21,6 +21,7 @@ public class Content{
 	public Content(){}
 
 	
+
 	public ContentType getContentType() {
 		return contentType;
 	}

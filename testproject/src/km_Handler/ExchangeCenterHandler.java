@@ -1,6 +1,7 @@
 package km_Handler;
 
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 import km_Views.*;
@@ -8,7 +9,7 @@ import km_Views.*;
 public class ExchangeCenterHandler {
 	private StudentView student;
 	private EducationDiaryListView diary;
-	private NotificationView notification;
+	private NotificationListView notification;
 
 	@ManagedProperty("#{serviceLocatorImpl}")
 	private ServiceLocator serviceLocator;
@@ -41,9 +42,13 @@ public class ExchangeCenterHandler {
 	}
 
 	public void like(ContentView content) {
+		this.serviceLocator.getKarmaService().like(getStudent(), content);
+		
 	}
 
 	public StudentView getStudent() {
+		if(student == null)
+			this.student = (StudentView) FacesContext.getCurrentInstance().getAttributes().get("student");
 		return student;
 	}
 
@@ -63,12 +68,18 @@ public class ExchangeCenterHandler {
 		this.diary = diary;
 	}
 
-	public NotificationView getNotification() {
+	public NotificationListView getNotification() {
+		if(notification == null)
+			this.notification = new NotificationListView(serviceLocator.getNotificationService().getNotifications(student));
 		return notification;
 	}
 
-	public void setNotification(NotificationView notification) {
+	public void setNotification(NotificationListView notification) {
 		this.notification = notification;
+	}
+	
+	public NotificationView getNotification(int i){
+		return this.notification.getNotificationViews().get(i);
 	}
 
 }

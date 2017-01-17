@@ -35,8 +35,6 @@ public class ContentView {
 			this.owner = owner;
 		}
 		
-		public int getLikes(){return 0;}
-		
 		public km_Entities.ContentType parseContenttype(){
 			return null;
 		}
