@@ -8,6 +8,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
 import km_Services.LoginService;
+import km_Views.StudentView;
 import km_Views.UserView;
 
 import java.io.Serializable;
@@ -26,6 +27,7 @@ public class LoginHandler implements Serializable{
 	private String email;
 	private String password;
 	private UserView user;	//deleted get/set for security reasons
+	private StudentView student; //no get/set for security reasons
 	
 	private boolean loggedIn;
 
@@ -64,7 +66,10 @@ public class LoginHandler implements Serializable{
 	public void validateEmail(FacesContext context, UIComponent component, Object value)
 			throws ValidatorException {
 		System.out.println("in validateemail");
-		
+		if(value==null){
+			throw new ValidatorException(
+					new FacesMessage("Bitte geben sie eine Email Adresse ein!"));
+		}
 		if(!isValidEmailId(((String) value))){
 			throw new ValidatorException(
 					new FacesMessage("Fehlerhafte Emailsyntax!"));
@@ -76,6 +81,10 @@ public class LoginHandler implements Serializable{
 			throws ValidatorException {
 
 		System.out.println("in validatepassword");
+		if(value==null){
+			throw new ValidatorException(
+					new FacesMessage("Bitte geben sie ein Passwort ein!"));
+		}
 		if((((String) value).length()<6)){
 			throw new ValidatorException(
 					new FacesMessage("Passwort zu kurz!"));
