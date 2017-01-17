@@ -1,5 +1,8 @@
 package km_Handler;
 
+import javax.faces.bean.ManagedBean;
+
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
@@ -11,8 +14,6 @@ import km_Services.LoginService;
 import km_Views.UserView;
 
 import java.io.Serializable;
-
-import javax.faces.bean.ManagedBean;
 
 @ManagedBean(name="loginHandler")
 @SessionScoped

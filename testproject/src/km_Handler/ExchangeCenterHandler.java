@@ -52,7 +52,11 @@ public class ExchangeCenterHandler {
 	}
 
 	public EducationDiaryListView getDiary() {
+		if(diary == null)			
+			this.diary = serviceLocator.getExchangeCenterService().getEducationDiaries(student.getStudentClass());
+		
 		return diary;
+		
 	}
 
 	public void setDiary(EducationDiaryListView diary) {
