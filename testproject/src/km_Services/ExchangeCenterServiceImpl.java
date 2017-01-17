@@ -7,14 +7,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import km_Entities.Activity;
 import km_Entities.Content;
 import km_Entities.EducationDiary;
 import km_Entities.EducationDiaryDay;
 import km_Entities.EducationDiaryList;
-import km_Entities.StudentClass;
-import km_Handler.ServiceLocator;
 import km_Views.ClassView;
 import km_Views.EducationDiaryDayView;
 import km_Views.EducationDiaryListView;
@@ -58,19 +57,15 @@ public class ExchangeCenterServiceImpl implements ExchangeCenterService {
 		EntityManager em = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager();
 		EducationDiary ed = null;
 		if (!newElem) {
-			try {
-				ed = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager()
-						.createQuery(
-								"from km_Entities.EducationDiary where educationDiaryID = " + edv.getEducationDiaryID(),
-								EducationDiary.class)
-						.getSingleResult();
-				if (ed == null)
-					throw new NullPointerException("No such element in the database. Custom Error.");
-				return ed;
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
+			ed = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager()
+					.createQuery(
+							"from km_Entities.EducationDiary where educationDiaryID = " + edv.getEducationDiaryID(),
+							EducationDiary.class)
+					.getSingleResult();
+			if (ed == null)
+				throw new NullPointerException("No such element in the database. Custom Error.");
+			return ed;
+
 		}
 
 		// Erstellt ab hier ein neues EducationDiary und erstellt währenddessen
@@ -99,18 +94,93 @@ public class ExchangeCenterServiceImpl implements ExchangeCenterService {
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 			em.getTransaction().rollback();
 			em.getTransaction().commit();
+			throw e;
 		}
 		return ed;
 	}
 
 	public EducationDiaryList parseDiaryView(EducationDiaryListView edl, boolean newElem) {
+		EntityManager em = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager();
+		TypedQuery<EducationDiaryList> q = em.createQuery(
+				"from km_Entities.EducationDiaryList where EducationDiaryList = " + edl.getEdlId(),
+				EducationDiaryList.class);
+		EducationDiaryList ed = null;
+		if (!newElem) {
+			try {
+				ed = q.getSingleResult();
+				if (ed == null) {
+					throw new NullPointerException("No List found. Looking for another one...");
+					// Wenn keine ListenId vorhanden ist, muss eine andere
+					// gesucht werden...
+				}
+			} catch (NullPointerException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+				// Diese findet sich im ersten Eintrag der ViewListe.
+				ed = em.createQuery(
+						"from km_Entities.EducationDiaryList where EducationDiaryList = " + em.createQuery(
+								"from km_Entities.EducationDiary where educationDiaryID = "
+										+ edl.getEducationDiaryList().get(0).getEducationDiaryListId(),
+								EducationDiary.class).getSingleResult(),
+						EducationDiaryList.class).getSingleResult();
+
+			}
+			return ed;
+		}
+
+		try {
+			if (edl.getEducationDiaryList() != null)
+				ed = new EducationDiaryList(cs.getStudentClass(edl.getStudentClass().getClassID()),
+						edl.getEducationDiaryList().stream().map(d -> this.parseDiaryView(d, false))
+								.collect(Collectors.toList()));
+			else
+				ed = new EducationDiaryList(cs.getStudentClass(edl.getStudentClass().getClassID()));
+
+			em.getTransaction().begin();
+			em.persist(ed);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			em.getTransaction().rollback();
+			em.getTransaction().commit();
+			throw e;
+		}
+		return ed;
 
 	}
 
 	public EducationDiaryDay parseDiaryView(EducationDiaryDayView edd, boolean newElem) {
+		EntityManager em = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager();
+		TypedQuery<EducationDiaryDay> q = em.createQuery("from km_Entities.EducationDiaryDay where educationDiaryID = "
+				+ edd.getEducationDiaryID() + " and day = " + edd.getDayID(), EducationDiaryDay.class);
+		EducationDiaryDay ed = null;
+
+		if (!newElem) {
+			ed = q.getSingleResult();
+			if (ed == null)
+				throw new NullPointerException("No such EducationDiaryDay in the database...");
+			return ed;
+
+		}
+
+		try {
+			ed = new EducationDiaryDay(this.getEducationDiary(edd.getEducationDiaryID()), edd.getDayID(),
+					edd.getActivityViews().stream().map(a -> new Activity(a.getDescription(), a.getDuration()))
+							.collect(Collectors.toList()));
+
+			em.getTransaction().begin();
+			em.persist(ed);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			em.getTransaction().rollback();
+			throw e;
+		}
+
+		return ed;
 
 	}
 
@@ -136,6 +206,12 @@ public class ExchangeCenterServiceImpl implements ExchangeCenterService {
 				.createQuery("from km_Entities.EducationDiaryDay where educationDiaryID = " + edv.getEducationDiaryID(),
 						EducationDiaryDay.class)
 				.getResultList().stream().map(day -> new EducationDiaryDayView(day)).collect(Collectors.toList());
+	}
+
+	public EducationDiary getEducationDiary(int id) {
+		return EntityManagerFactoryService.getEntityManagerFactory().createEntityManager()
+				.createQuery("from km_Entities.EducationDiary where educationDiaryID = " + id, EducationDiary.class)
+				.getSingleResult();
 	}
 
 }
