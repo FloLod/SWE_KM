@@ -1,6 +1,8 @@
 package km_Views;
 
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class EducationDiaryView{
 	private int educationDiaryID;
@@ -9,13 +11,22 @@ public class EducationDiaryView{
 	private int week;
 	private Date startDate;
 	private Date endDate;
-	private EducationDiaryDayView[] days;
+	private List<EducationDiaryDayView> days;
 	
 	public EducationDiaryView(){}
-	public EducationDiaryView(km_Entities.EducationDiary diary){}
+	public EducationDiaryView(km_Entities.EducationDiary diary){
+		
+		this.educationDiaryID = diary.getEducationDiaryID();
+		this.studentClass = new ClassView(diary.getStudentClass());
+		this.content = new ContentView(diary.getContent(), diary.getContent().getContentType());
+		this.week = diary.getWeeek();
+		this.startDate = diary.getStartDate();
+		this.endDate = diary.getEndDate();
+		this.days = diary.getDays().stream().map(d -> new EducationDiaryDayView(d)).collect(Collectors.toList());
+	}
 	
 	public EducationDiaryView(int educationDiaryID, ClassView studentClass, ContentView content, int week,
-			Date startDate, Date endDate, EducationDiaryDayView[] days) {
+			Date startDate, Date endDate, List<EducationDiaryDayView> days) {
 		super();
 		this.educationDiaryID = educationDiaryID;
 		this.studentClass = studentClass;
@@ -26,7 +37,6 @@ public class EducationDiaryView{
 		this.days = days;
 	}
 	
-	public km_Entities.EducationDiary  parseEducationDiary(){return null;}
 	public int getEducationDiaryID() {
 		return educationDiaryID;
 	}
@@ -63,10 +73,10 @@ public class EducationDiaryView{
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-	public EducationDiaryDayView[] getDays() {
+	public List<EducationDiaryDayView> getDays() {
 		return days;
 	}
-	public void setDays(EducationDiaryDayView[] days) {
+	public void setDays(List<EducationDiaryDayView> days) {
 		this.days = days;
 	}
 	

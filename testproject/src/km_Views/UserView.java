@@ -6,6 +6,7 @@ import km_Entities.Admin;
 import km_Entities.User;
 
 public class UserView{
+	private int UserId;
 	private String firstname;
 	private String lastname;
 	private String email;
@@ -14,14 +15,17 @@ public class UserView{
 	private boolean isAdmin;
 	
 	public UserView(){
-		
+		isAdmin = false;
 	}
 	
 	public UserView(User user){
-		
+		isAdmin = false;
+		this.setFromUser(user);
 	}
 
 	public UserView(Admin user){
+		this.isAdmin = true;
+		this.setFromUser(user.getUser());
 		
 	}
 	
@@ -34,9 +38,25 @@ public class UserView{
 		this.passwort = passwort;
 	}
 
+	private void setFromUser(User user){
+		this.UserId = user.getUserID();
+		this.firstname = user.getFirstName();
+		this.lastname = user.getLastName();
+		this.email = user.geteMail();
+		this.lastlogin = user.getLastLogin();
+		this.passwort = user.getPassword();
+	}
 	
 	public boolean isAdmin() {
 		return isAdmin;
+	}
+
+	public int getUserId() {
+		return UserId;
+	}
+
+	public void setUserId(int userId) {
+		UserId = userId;
 	}
 
 	public String getFirstname() {

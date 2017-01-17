@@ -1,15 +1,25 @@
 package km_Handler;
 
+import java.io.FileNotFoundException;
+import java.util.List;
+
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 import km_Views.*;
 
+@ManagedBean
+@SessionScoped
 public class ExchangeCenterHandler {
 	private StudentView student;
-	private EducationDiaryListView diary;
+	private EducationDiaryListView diaries;
 	private NotificationListView notification;
+	private String filepath;
+	
+	private EducationDiaryView selectedDiary; 
 
 	@ManagedProperty("#{serviceLocatorImpl}")
 	private ServiceLocator serviceLocator;
@@ -26,12 +36,14 @@ public class ExchangeCenterHandler {
 		return null;
 	}
 
-	public String selectEducationDiary() {
-		return null;
+	public String selectEducationDiary(int index) {
+		this.selectedDiary = diaries.getEducationDiaryList().get(index);
+		return "ToShowDiary";
 	}
 
 	public String uploadEducationDiary() {
-		return null;
+		
+		return "ToDiaryCreation";
 	}
 
 	public String setExchangeCenter() {
@@ -39,6 +51,13 @@ public class ExchangeCenterHandler {
 	}
 
 	public void pdfActionListener(final ActionEvent event) {
+		try {
+			serviceLocator.getExchangeCenterService().downloadEducationDiary(getStudent(), getSelectedDiary(), filepath);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	public void like(ContentView content) {
@@ -56,16 +75,22 @@ public class ExchangeCenterHandler {
 		this.student = student;
 	}
 
-	public EducationDiaryListView getDiary() {
-		if(diary == null)			
-			this.diary = serviceLocator.getExchangeCenterService().getEducationDiaries(student.getStudentClass());
+	public EducationDiaryListView getDiaries() {
+		if(diaries == null)			
+			this.diaries = serviceLocator.getExchangeCenterService().getEducationDiaries(student.getStudentClass());
 		
-		return diary;
-		
+		return diaries;
 	}
 
-	public void setDiary(EducationDiaryListView diary) {
-		this.diary = diary;
+	public void setDiaries(EducationDiaryListView diary) {
+		this.diaries = diary;
+	}
+	public EducationDiaryView getSelectedDiary() {
+		return selectedDiary;
+	}
+
+	public void setSelectedDiary(EducationDiaryView selectedDiary) {
+		this.selectedDiary = selectedDiary;
 	}
 
 	public NotificationListView getNotification() {
@@ -80,6 +105,14 @@ public class ExchangeCenterHandler {
 	
 	public NotificationView getNotification(int i){
 		return this.notification.getNotificationViews().get(i);
+	}
+
+	public String getFilepath() {
+		return filepath;
+	}
+
+	public void setFilepath(String filepath) {
+		this.filepath = filepath;
 	}
 
 }

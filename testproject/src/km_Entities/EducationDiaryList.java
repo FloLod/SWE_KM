@@ -13,7 +13,6 @@ import javax.persistence.OneToOne;
 public class EducationDiaryList{
 	@Id
 	private int EducationDiaryList;
-	private int week;
 	@ManyToOne
 	private StudentClass studentClass;
 	@ManyToOne
@@ -31,14 +30,6 @@ public class EducationDiaryList{
 
 	public void setEducationDiaryList(int educationDiaryList) {
 		EducationDiaryList = educationDiaryList;
-	}
-
-	public int getWeek() {
-		return week;
-	}
-
-	public void setWeek(int week) {
-		this.week = week;
 	}
 
 	public StudentClass getStudentClass() {

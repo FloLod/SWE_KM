@@ -11,7 +11,15 @@ public class StudentView{
 	private FileView companyPicture;
 	
 	public StudentView(){}
-	public StudentView(km_Entities.Student student){}
+	public StudentView(km_Entities.Student student){
+		this.studentID = student.getStudentID();
+		this.karma = student.getKarma();
+		this.user = new UserView(student.getUser());
+		this.studentClass = new ClassView(student.getStudentClass());
+		this.classSpeaker = student.isClassSpeaker();
+		this.companyPicture = new FileView(student.getCompanyPicture());
+		
+	}
 	
 	public StudentView(int studentID, int karma, UserView user, ClassView studentClass, boolean classSpeaker,
 			FileView companyPicture) {
@@ -34,19 +42,6 @@ public class StudentView{
 	}
 	
 	public List<ContentView> showLikes(){
-		return null;
-	}
-	public void likeContent(ContentView content){}
-	
-	public km_Entities.Student parseStudent(){
-		return null;
-	}
-	
-	public km_Entities.File parsePicture(){
-		return null;
-	}
-
-	public km_Entities.BlockList parseBlocklist(){
 		return null;
 	}
 	

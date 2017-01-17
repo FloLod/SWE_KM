@@ -7,7 +7,12 @@ public class ReplyView{
 	private TextView text;
 	
 	public ReplyView(){}
-	public ReplyView(km_Entities.Reply reply){}
+	public ReplyView(km_Entities.Reply reply){
+		this.question = new QuestionView(reply.getQuestion());
+		this.replyID = reply.getReplyID();
+		this.content = new ContentView(reply.getContent(), reply.getContent().getContentType());
+		this.text = new TextView(reply.getText());		
+	}
 	
 	public ReplyView(QuestionView question, int replyID, ContentView content, TextView text) {
 		super();
@@ -16,15 +21,6 @@ public class ReplyView{
 		this.content = content;
 		this.text = text;
 	}
-	
-	public km_Entities.Text parseText(){
-		return null;
-	}
-	
-	public km_Entities.Reply parseReply(){
-		return null;
-	}
-	
 	
 	public QuestionView getQuestion() {
 		return question;

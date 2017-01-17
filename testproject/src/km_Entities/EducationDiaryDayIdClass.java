@@ -7,6 +7,8 @@ public class EducationDiaryDayIdClass implements Serializable{
 
 	private km_Entities.EducationDiary educationDiaryID;
 	private int day;
+	
+	
 	public EducationDiary getEducationDiaryID() {
 		return educationDiaryID;
 	}

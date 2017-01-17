@@ -8,17 +8,17 @@ public class TextView {
 
 	public TextView(){}
 	
-	public TextView(km_Entities.Text text){}
+	public TextView(km_Entities.Text text){
+		this.TextID = text.getTextID();
+		this.heading = text.getHeading();
+		this.text = text.getText();
+	}
 	
 	public TextView(int textID, String heading, String text) {
 		super();
 		TextID = textID;
 		this.heading = heading;
 		this.text = text;
-	}
-
-	public km_Entities.Text parseText(){
-		return null;
 	}
 
 	public int getTextID() {

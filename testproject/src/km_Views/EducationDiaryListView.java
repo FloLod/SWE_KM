@@ -1,36 +1,33 @@
 package km_Views;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class EducationDiaryListView {
-	private int educationDiaryList;
-	private int week;
+	private List<EducationDiaryView> educationDiaryList;
 	private ClassView studentClass;
 	private StudentView student;
-	private EducationDiaryView diary;
 	
 	public EducationDiaryListView(){}
-	public EducationDiaryListView(km_Entities.EducationDiaryList diaryList){}
-	public EducationDiaryListView(int educationDiaryList, int week, ClassView studentClass, StudentView student,
-			EducationDiaryView diary) {
+	public EducationDiaryListView(km_Entities.EducationDiaryList diaryList){
+		
+		this.educationDiaryList = diaryList.getEducationDiary().stream().map(d -> new EducationDiaryView(d)).collect(Collectors.toList());
+		this.studentClass = new ClassView(diaryList.getStudentClass());
+		this.student = new StudentView(diaryList.getStudentResponsible());
+		
+	}
+	public EducationDiaryListView(List<EducationDiaryView> educationDiaryList, ClassView studentClass, StudentView student) {
 		super();
 		this.educationDiaryList = educationDiaryList;
-		this.week = week;
 		this.studentClass = studentClass;
 		this.student = student;
-		this.diary = diary;
 	}
 
-	public km_Entities.EducationDiaryList parseEducationDiaryList(){return null;}
-	public int getEducationDiaryList() {
+	public List<EducationDiaryView> getEducationDiaryList() {
 		return educationDiaryList;
 	}
-	public void setEducationDiaryList(int educationDiaryList) {
+	public void setEducationDiaryList(List<EducationDiaryView> educationDiaryList) {
 		this.educationDiaryList = educationDiaryList;
-	}
-	public int getWeek() {
-		return week;
-	}
-	public void setWeek(int week) {
-		this.week = week;
 	}
 	public ClassView getStudentClass() {
 		return studentClass;
@@ -43,12 +40,6 @@ public class EducationDiaryListView {
 	}
 	public void setStudent(StudentView student) {
 		this.student = student;
-	}
-	public EducationDiaryView getDiary() {
-		return diary;
-	}
-	public void setDiary(EducationDiaryView diary) {
-		this.diary = diary;
 	}
 	
 	

@@ -30,15 +30,6 @@ public class AppointmentView{
 		this.appointmentTypeID = appointmentTypeID;
 	}
 	
-	public km_Entities.AppointmentType parseAppointmentType(){
-		return null;
-	}
-	
-	public km_Entities.Appointment parseAppointment(){
-		return null;
-	}
-	
-	
 	public int getAppointmentID() {
 		return appointmentID;
 	}

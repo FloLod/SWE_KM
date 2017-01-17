@@ -1,9 +1,12 @@
 package km_Entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 @IdClass(EducationDiaryDayIdClass.class)
@@ -13,8 +16,8 @@ public class EducationDiaryDay{
 	private km_Entities.EducationDiary educationDiaryID;
 	@Id
 	private int day;
-	@ManyToOne
-	private Activity activity;
+	@OneToMany
+	private List<Activity> activity;
 	
 	public EducationDiaryDay(){}
 
@@ -34,11 +37,11 @@ public class EducationDiaryDay{
 		this.day = day;
 	}
 
-	public Activity getActivity() {
+	public List<Activity> getActivity() {
 		return activity;
 	}
 
-	public void setActivity(Activity activity) {
+	public void setActivity(List<Activity> activity) {
 		this.activity = activity;
 	}
 	

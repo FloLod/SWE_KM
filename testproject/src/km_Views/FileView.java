@@ -8,7 +8,13 @@ public class FileView{
 
 	
 	public FileView(){}
-	public FileView(km_Entities.File file){}
+	public FileView(km_Entities.File file){
+		this.fileID = file.getFileID();
+		this.fileName = file.getFileName();
+		this.content = new ContentView(file.getContent(), file.getContent().getContentType());
+		this.text = new TextView(file.getText());
+		
+	}
 	
 	public FileView(int fileID, String fileName, ContentView content, TextView text) {
 		super();
