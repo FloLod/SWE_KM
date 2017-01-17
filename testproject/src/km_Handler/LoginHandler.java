@@ -10,7 +10,9 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
+import km_Entities.Student;
 import km_Services.LoginService;
+import km_Services.StudentService;
 import km_Views.StudentView;
 import km_Views.UserView;
 
@@ -38,13 +40,23 @@ public class LoginHandler implements Serializable{
 	private ServiceLocator serviceLocator;
 	
 	@ManagedProperty("#{loginServiceImpl}")
-	private LoginService loginservice;
+	private LoginService loginService;
 	
+
+	@ManagedProperty("#{studentServiceImpl}")
+	private StudentService studentService;
+	
+	public StudentService getStudentService() {
+		return studentService;
+	}
+	public void setStudentService(StudentService studentService) {
+		this.studentService = studentService;
+	}
 	public LoginService getLoginservice() {
-		return loginservice;
+		return loginService;
 	}
 	public void setLoginservice(LoginService loginservice) {
-		this.loginservice = loginservice;
+		this.loginService = loginservice;
 	}
 	public ServiceLocator getServiceLocator() { return serviceLocator; }
 	public void setServiceLocator(ServiceLocator serviceLocatorBean) { this.serviceLocator = serviceLocatorBean; }
@@ -52,10 +64,17 @@ public class LoginHandler implements Serializable{
 	public String login() {
 		System.out.println("in login");
 		System.out.println("Login attempt by"+email+ " " + password); //TO DELETE
-		user = loginservice.getLogin(email, password);
+		user = loginService.getLogin(email, password);
 		FacesContext context = FacesContext.getCurrentInstance();
 		if(user != null){
 			context.getExternalContext().getSessionMap().put("user", user);
+			if(!user.isAdmin())
+			{
+				Student s = studentService.findStudentByUserId(1); //placeholder needs to be fixed!!!!!!!!!!!!!!!
+				student = new StudentView(s);
+				context.getExternalContext().getSessionMap().put("student", student);
+			}
+				
 			loggedIn = true;
 			return "loggedin";
 		}
