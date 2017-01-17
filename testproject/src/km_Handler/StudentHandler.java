@@ -1,8 +1,12 @@
 package km_Handler;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+
 import km_Views.*;
 
 public class StudentHandler {
@@ -26,6 +30,10 @@ public class StudentHandler {
 	
 	
 	public StudentView getStudent() {
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		StudentView student = (StudentView) sessionMap.get("student");
+		this.student = student;
 		return student;
 	}
 	public void setStudent(StudentView student) {
