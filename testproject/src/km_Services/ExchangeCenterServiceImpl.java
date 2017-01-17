@@ -57,19 +57,15 @@ public class ExchangeCenterServiceImpl implements ExchangeCenterService {
 		EntityManager em = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager();
 		EducationDiary ed = null;
 		if (!newElem) {
-			try {
-				ed = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager()
-						.createQuery(
-								"from km_Entities.EducationDiary where educationDiaryID = " + edv.getEducationDiaryID(),
-								EducationDiary.class)
-						.getSingleResult();
-				if (ed == null)
-					throw new NullPointerException("No such element in the database. Custom Error.");
-				return ed;
-			} catch (NullPointerException e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
+			ed = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager()
+					.createQuery(
+							"from km_Entities.EducationDiary where educationDiaryID = " + edv.getEducationDiaryID(),
+							EducationDiary.class)
+					.getSingleResult();
+			if (ed == null)
+				throw new NullPointerException("No such element in the database. Custom Error.");
+			return ed;
+
 		}
 
 		// Erstellt ab hier ein neues EducationDiary und erstellt währenddessen
@@ -131,6 +127,7 @@ public class ExchangeCenterServiceImpl implements ExchangeCenterService {
 						EducationDiaryList.class).getSingleResult();
 
 			}
+			return ed;
 		}
 
 		try {
@@ -161,22 +158,18 @@ public class ExchangeCenterServiceImpl implements ExchangeCenterService {
 		EducationDiaryDay ed = null;
 
 		if (!newElem) {
-			try {
-				ed = q.getSingleResult();
-				if (ed == null)
-					throw new NullPointerException("No such EducationDiaryDay in the database...");
-				return ed;
-			} catch (NullPointerException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			ed = q.getSingleResult();
+			if (ed == null)
+				throw new NullPointerException("No such EducationDiaryDay in the database...");
+			return ed;
+
 		}
 
 		try {
-			ed = new EducationDiaryDay(this.getEducationDiary(edd.getEducationDiaryID()), edd.getDayID(), 
-					edd.getActivityViews().stream()
-					.map(a -> new Activity(a.getDescription(), a.getDuration())).collect(Collectors.toList()));
-			
+			ed = new EducationDiaryDay(this.getEducationDiary(edd.getEducationDiaryID()), edd.getDayID(),
+					edd.getActivityViews().stream().map(a -> new Activity(a.getDescription(), a.getDuration()))
+							.collect(Collectors.toList()));
+
 			em.getTransaction().begin();
 			em.persist(ed);
 			em.getTransaction().commit();
@@ -186,7 +179,7 @@ public class ExchangeCenterServiceImpl implements ExchangeCenterService {
 			em.getTransaction().rollback();
 			throw e;
 		}
-		
+
 		return ed;
 
 	}
@@ -214,10 +207,11 @@ public class ExchangeCenterServiceImpl implements ExchangeCenterService {
 						EducationDiaryDay.class)
 				.getResultList().stream().map(day -> new EducationDiaryDayView(day)).collect(Collectors.toList());
 	}
-	
-	public EducationDiary getEducationDiary(int id){
-		return EntityManagerFactoryService.getEntityManagerFactory().createEntityManager().createQuery("from km_Entities.EducationDiary where educationDiaryID = "
-										+ id, EducationDiary.class).getSingleResult();
+
+	public EducationDiary getEducationDiary(int id) {
+		return EntityManagerFactoryService.getEntityManagerFactory().createEntityManager()
+				.createQuery("from km_Entities.EducationDiary where educationDiaryID = " + id, EducationDiary.class)
+				.getSingleResult();
 	}
 
 }
