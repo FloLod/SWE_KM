@@ -5,12 +5,11 @@ import java.util.List;
 import javax.faces.bean.ManagedProperty;
 import km_Views.*;
 
-public class StudentHandler {
+public class SchuelerHandler {
 	private StudentView student;
 	private List<StudentView> students;
 	private BlockListView blockStudent;
 	private List<BlockListView> blockList;
-	int i;
 	
 	@ManagedProperty("#{serviceLocatorImpl}")
 	private ServiceLocator serviceLocator;
