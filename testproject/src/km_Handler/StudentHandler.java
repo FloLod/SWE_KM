@@ -33,7 +33,6 @@ public class StudentHandler {
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
 		StudentView student = (StudentView) sessionMap.get("student");
-		this.student = student;
 		return student;
 	}
 	public void setStudent(StudentView student) {
