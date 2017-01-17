@@ -5,14 +5,18 @@ import java.io.Serializable;
 
 public class EducationDiaryDayIdClass implements Serializable{
 
-	private km_Entities.EducationDiary educationDiaryID;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7851302135816204026L;
+	private int educationDiaryID;
 	private int day;
 	
 	
-	public EducationDiary getEducationDiaryID() {
+	public int getEducationDiaryID() {
 		return educationDiaryID;
 	}
-	public void setEducationDiaryID(EducationDiary educationDiaryID) {
+	public void setEducationDiaryID(int educationDiaryID) {
 		this.educationDiaryID = educationDiaryID;
 	}
 	public int getDay() {
@@ -21,14 +25,12 @@ public class EducationDiaryDayIdClass implements Serializable{
 	public void setDay(int day) {
 		this.day = day;
 	}
-	
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + day;
-		result = prime * result + ((educationDiaryID == null) ? 0 : educationDiaryID.hashCode());
+		result = prime * result + educationDiaryID;
 		return result;
 	}
 	@Override
@@ -42,13 +44,13 @@ public class EducationDiaryDayIdClass implements Serializable{
 		EducationDiaryDayIdClass other = (EducationDiaryDayIdClass) obj;
 		if (day != other.day)
 			return false;
-		if (educationDiaryID == null) {
-			if (other.educationDiaryID != null)
-				return false;
-		} else if (!educationDiaryID.equals(other.educationDiaryID))
+		if (educationDiaryID != other.educationDiaryID)
 			return false;
 		return true;
 	}
+	
+	
+	
 	
 	
 }

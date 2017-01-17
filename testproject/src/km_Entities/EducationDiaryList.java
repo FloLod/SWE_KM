@@ -1,5 +1,6 @@
 package km_Entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -10,8 +11,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
-public class EducationDiaryList{
+public class EducationDiaryList {
 	@Id
+	@GeneratedValue
 	private int EducationDiaryList;
 	@ManyToOne
 	private StudentClass studentClass;
@@ -19,9 +21,35 @@ public class EducationDiaryList{
 	private Student studentResponsible;
 	@OneToMany
 	private List<EducationDiary> educationDiary;
-	
-	public EducationDiaryList(){
-		
+
+	public EducationDiaryList() {
+
+	}
+
+	public EducationDiaryList(StudentClass studentClass) {
+		super();
+		this.studentClass = studentClass;
+	}
+
+	public EducationDiaryList(StudentClass studentClass, EducationDiary ed) {
+		super();
+		this.studentClass = studentClass;
+		this.educationDiary = new ArrayList<>();
+		this.educationDiary.add(ed);
+	}
+
+	public EducationDiaryList(StudentClass studentClass, List<EducationDiary> educationDiary) {
+		super();
+		this.studentClass = studentClass;
+		this.educationDiary = educationDiary;
+	}
+
+	public EducationDiaryList(StudentClass studentClass, Student studentResponsible,
+			List<EducationDiary> educationDiary) {
+		super();
+		this.studentClass = studentClass;
+		this.studentResponsible = studentResponsible;
+		this.educationDiary = educationDiary;
 	}
 
 	public int getEducationDiaryList() {
@@ -56,6 +84,4 @@ public class EducationDiaryList{
 		this.educationDiary = educationDiary;
 	}
 
-	
-	
 }
