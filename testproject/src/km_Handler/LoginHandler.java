@@ -10,8 +10,17 @@ import javax.faces.validator.ValidatorException;
 import km_Services.LoginService;
 import km_Views.UserView;
 
+import java.io.Serializable;
+
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean(name="loginHandler")
 @SessionScoped
-public class LoginHandler {
+public class LoginHandler implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 145257865L;
 	private String email;
 	private String password;
 	private UserView user;	//deleted get/set for security reasons
@@ -40,12 +49,20 @@ public class LoginHandler {
 		return null;
 	}	
 	
-	public void validateUsername(FacesContext context, UIComponent component, Object value)
+	public void validateEmail(FacesContext context, UIComponent component, Object value)
 			throws ValidatorException {
+		if(!((String) value).matches(".+@.\\..+")){
+			throw new ValidatorException(
+					new FacesMessage("Fehlerhafte Emailsyntax!"));
+		}
 	}
 
 	public void validatePassword(FacesContext context, UIComponent component, Object value)
 			throws ValidatorException {
+		if(!(((String) value).length()<6)){
+			throw new ValidatorException(
+					new FacesMessage("Passwort zu kurz!"));
+		}
 	}
 	public String getEmail() {
 		return email;
