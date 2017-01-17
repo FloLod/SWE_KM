@@ -3,12 +3,16 @@ package km_Handler;
 import java.io.FileNotFoundException;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 import km_Views.*;
 
+@ManagedBean
+@SessionScoped
 public class ExchangeCenterHandler {
 	private StudentView student;
 	private EducationDiaryListView diaries;
@@ -101,6 +105,14 @@ public class ExchangeCenterHandler {
 	
 	public NotificationView getNotification(int i){
 		return this.notification.getNotificationViews().get(i);
+	}
+
+	public String getFilepath() {
+		return filepath;
+	}
+
+	public void setFilepath(String filepath) {
+		this.filepath = filepath;
 	}
 
 }
