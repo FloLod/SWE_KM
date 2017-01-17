@@ -10,6 +10,7 @@ public class StudentHandler {
 	private List<StudentView> students;
 	private BlockListView blockStudent;
 	private List<BlockListView> blockList;
+	int i;
 	
 	@ManagedProperty("#{serviceLocatorImpl}")
 	private ServiceLocator serviceLocator;
