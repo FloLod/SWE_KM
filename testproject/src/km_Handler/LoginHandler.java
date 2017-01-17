@@ -52,10 +52,10 @@ public class LoginHandler implements Serializable{
 	public void setStudentService(StudentService studentService) {
 		this.studentService = studentService;
 	}
-	public LoginService getLoginservice() {
+	public LoginService getLoginService() {
 		return loginService;
 	}
-	public void setLoginservice(LoginService loginservice) {
+	public void setLoginService(LoginService loginservice) {
 		this.loginService = loginservice;
 	}
 	public ServiceLocator getServiceLocator() { return serviceLocator; }
