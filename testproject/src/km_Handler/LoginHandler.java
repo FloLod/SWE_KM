@@ -15,7 +15,7 @@ import km_Views.UserView;
 
 import java.io.Serializable;
 
-@ManagedBean(name="loginHandler")
+@ManagedBean(name="loginHandler", eager=true)
 @SessionScoped
 public class LoginHandler implements Serializable{
 	/**
@@ -25,6 +25,7 @@ public class LoginHandler implements Serializable{
 	private String email;
 	private String password;
 	private UserView user;	//deleted get/set for security reasons
+	
 	private boolean loggedIn;
 
 	@ManagedProperty("#{serviceLocatorImpl}")
@@ -33,26 +34,37 @@ public class LoginHandler implements Serializable{
 	@ManagedProperty("#{loginServiceImpl}")
 	private LoginService loginservice;
 	
+	public LoginService getLoginservice() {
+		return loginservice;
+	}
+	public void setLoginservice(LoginService loginservice) {
+		this.loginservice = loginservice;
+	}
 	public ServiceLocator getServiceLocator() { return serviceLocator; }
 	public void setServiceLocator(ServiceLocator serviceLocatorBean) { this.serviceLocator = serviceLocatorBean; }
 		
 	public String login() {
+		System.out.println("in login");
 		System.out.println("Login attempt by"+email+ " " + password); //TO DELETE
 		user = loginservice.getLogin(email, password);
 		FacesContext context = FacesContext.getCurrentInstance();
 		if(user != null){
 			context.getExternalContext().getSessionMap().put("user", user);
+			loggedIn = true;
 			return "loggedin";
 		}
 		context.addMessage(null, new FacesMessage("Unknown login, try again"));
         email = null;
         password = null;
-		return null;
+        loggedIn = false;
+		return "fail";
 	}	
 	
 	public void validateEmail(FacesContext context, UIComponent component, Object value)
 			throws ValidatorException {
 		if(!((String) value).matches(".+@.\\..+")){
+
+			System.out.println("in validateemail");
 			throw new ValidatorException(
 					new FacesMessage("Fehlerhafte Emailsyntax!"));
 		}
@@ -60,6 +72,8 @@ public class LoginHandler implements Serializable{
 
 	public void validatePassword(FacesContext context, UIComponent component, Object value)
 			throws ValidatorException {
+
+		System.out.println("in validatepassword");
 		if(!(((String) value).length()<6)){
 			throw new ValidatorException(
 					new FacesMessage("Passwort zu kurz!"));
