@@ -1,8 +1,6 @@
 package km_Services;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.MalformedURLException;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +24,7 @@ import km_Views.EducationDiaryDayView;
 import km_Views.EducationDiaryView;
 import km_Views.StudentView;
 
-public class PDFServiceImpl {
+public class PDFServiceImpl implements PDFService{
 	private static Font bold = new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD);
 	private static Font normal = new Font(Font.FontFamily.TIMES_ROMAN, 11, Font.NORMAL);
 	private static Font underline = new Font(Font.FontFamily.TIMES_ROMAN, 11, Font.UNDERLINE);
@@ -34,7 +32,9 @@ public class PDFServiceImpl {
 
 	private static Font small = new Font(Font.FontFamily.TIMES_ROMAN, 8, Font.NORMAL);
 	
-	public void createPDF(EducationDiaryView diary, FileOutputStream fo) {
+	
+	
+	public void createPDF(EducationDiaryView diary, OutputStream fo) {
 		try {
 			//TODO: later get student form session
 			StudentView student = new StudentView();
@@ -316,4 +316,5 @@ public class PDFServiceImpl {
 		}
 		return eduyear;
 	}
+
 }
