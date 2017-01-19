@@ -1,6 +1,5 @@
 package km_Views;
 
-import km_Entities.Activity;
 
 public class ActivityView {
 	
@@ -33,12 +32,6 @@ public class ActivityView {
 		this.duration = duration;
 	}
 	public ActivityView() {
-	}
-	
-	public ActivityView(Activity a) {
-		this.actvityID = a.getActvityID();
-		this.description = a.getDescription();
-		this.duration = a.getDuration();
 	}
 
 }
