@@ -11,13 +11,22 @@ public class Notification{
 	@GeneratedValue
 	private int notificationID;
 	@ManyToOne
-	private Student student;
+	private User student;
 	@ManyToOne
 	private NotificationType notificationType;
 	@ManyToOne
 	private Text text;
 	
 	public Notification(){}
+	
+
+	public Notification(User user, NotificationType notificationType, Text text) {
+		super();
+		this.student = user;
+		this.notificationType = notificationType;
+		this.text = text;
+	}
+
 
 	public int getNotificationID() {
 		return notificationID;
@@ -27,11 +36,11 @@ public class Notification{
 		this.notificationID = notificationID;
 	}
 
-	public Student getStudent() {
+	public User getStudent() {
 		return student;
 	}
 
-	public void setStudent(Student student) {
+	public void setStudent(User student) {
 		this.student = student;
 	}
 

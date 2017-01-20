@@ -2,7 +2,7 @@ package km_Views;
 
 public class NotificationView {
 	private int notificationID;
-	private StudentView student;
+	private UserView student;
 	private TextView text;
 	
 	private String notificationTypeName;
@@ -11,14 +11,14 @@ public class NotificationView {
 	public NotificationView(){}
 	public NotificationView(km_Entities.Notification note, km_Entities.NotificationType notetype){
 		this.notificationID = note.getNotificationID();
-		this.student = new StudentView(note.getStudent());
+		this.student = new UserView(note.getStudent());
 		this.text = new TextView(note.getText());
 		
 		this.notificationTypeID = notetype.getNotificationTypeID();
 		this.notificationTypeName = notetype.getName();
 	}
 	
-	public NotificationView(int notificationID, StudentView student, TextView text, String notificationTypeName,
+	public NotificationView(int notificationID, UserView student, TextView text, String notificationTypeName,
 			int notificationTypeID) {
 		super();
 		this.notificationID = notificationID;
@@ -34,10 +34,10 @@ public class NotificationView {
 	public void setNotificationID(int notificationID) {
 		this.notificationID = notificationID;
 	}
-	public StudentView getStudent() {
+	public UserView getStudent() {
 		return student;
 	}
-	public void setStudent(StudentView student) {
+	public void setStudent(UserView student) {
 		this.student = student;
 	}
 	public TextView getText() {

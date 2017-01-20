@@ -6,7 +6,6 @@ import javax.persistence.EntityManagerFactory;
 import org.hibernate.Query;
 
 import km_Entities.Student;
-import km_Entities.User;
 import km_Views.StudentView;
 
 public class StudentServiceImpl implements StudentService{

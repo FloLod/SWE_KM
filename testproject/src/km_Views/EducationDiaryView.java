@@ -54,6 +54,17 @@ public class EducationDiaryView {
 		this.days = days;
 	}
 
+	public EducationDiaryView(ClassView studentClass, ContentView content, int week,
+			Date startDate, Date endDate, List<EducationDiaryDayView> days) {
+		super();
+		this.studentClass = studentClass;
+		this.content = content;
+		this.week = week;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.days = days;
+	}
+
 	public int getEducationDiaryID() {
 		return educationDiaryID;
 	}

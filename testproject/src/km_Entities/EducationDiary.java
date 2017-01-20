@@ -9,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import km_Views.EducationDiaryView;
-
 @Entity
 public class EducationDiary {
 	@Id

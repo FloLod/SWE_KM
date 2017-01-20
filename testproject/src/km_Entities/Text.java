@@ -13,6 +13,16 @@ public class Text{
 	private String text;
 	
 	public Text(){}
+	
+	
+
+	public Text(String heading, String text) {
+		super();
+		this.heading = heading;
+		this.text = text;
+	}
+
+
 
 	public int getTextID() {
 		return textID;

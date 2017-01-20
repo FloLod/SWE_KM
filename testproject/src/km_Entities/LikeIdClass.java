@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class LikeIdClass implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2530344275517072779L;
 	private int student;
 	private int content;
 	public int getStudent() {
