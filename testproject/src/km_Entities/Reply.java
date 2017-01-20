@@ -1,9 +1,11 @@
 package km_Entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Reply{
@@ -12,7 +14,7 @@ public class Reply{
 	private int replyID;
 	@ManyToOne
 	private Content content;
-	@ManyToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Text text;
 	@ManyToOne
 	private Question question;

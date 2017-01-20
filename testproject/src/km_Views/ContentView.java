@@ -1,7 +1,6 @@
 package km_Views;
 
 import java.util.Date;
-import java.util.List;
 
 public class ContentView {
 
@@ -9,6 +8,7 @@ public class ContentView {
 	private Date created;
 	private Date changed;
 	private int contentID;
+	private int likes;
 
 	// contenttype
 	private int contentTypeID; // contentTypeID: 1 = EducationDiary
@@ -24,6 +24,7 @@ public class ContentView {
 		this.created = cont.getCreated();
 		this.changed = cont.getCanged();
 		this.contentID = cont.getContentID();
+		this.likes = cont.getLikes().size();
 
 		this.contentTypeID = conttype.getContentTypeID();
 		this.contentTypeName = conttype.getName();
@@ -117,6 +118,14 @@ public class ContentView {
 
 	public void setOwner(ClassView owner) {
 		this.owner = owner;
+	}
+
+	public int getLikes() {
+		return likes;
+	}
+
+	public void setLikes(int likes) {
+		this.likes = likes;
 	}
 
 }

@@ -1,16 +1,17 @@
 package km_Entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Category{
 	@Id
 	@GeneratedValue
 	private int categoryID;
-	@ManyToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Text text;
 
 	public Category(){}

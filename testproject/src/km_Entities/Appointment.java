@@ -1,10 +1,13 @@
 package km_Entities;
 
 import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Appointment{
@@ -13,9 +16,9 @@ public class Appointment{
 	private int AppointmentID;
 	@ManyToOne
 	private AppointmentType appointmentType;
-	@ManyToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Text text;
-	@ManyToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Content content;
 	private Date start;
 	private Date end;

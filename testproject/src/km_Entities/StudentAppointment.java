@@ -1,9 +1,11 @@
 package km_Entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class StudentAppointment{
@@ -14,7 +16,7 @@ public class StudentAppointment{
 	private Student student;
 	@ManyToOne
 	private StudentClass studentClass;
-	@ManyToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Appointment appointment;
 	
 	public StudentAppointment(){

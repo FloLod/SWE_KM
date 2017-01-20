@@ -1,9 +1,13 @@
 package km_Entities;
 
 import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User{
@@ -16,6 +20,8 @@ public class User{
 	private Date lastLogin;
 	private String password;
 	
+	@OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+	private List<Notification> notifications;
 	
 public int getUserID() {
 		return userID;
@@ -55,4 +61,10 @@ public int getUserID() {
 	}
 
 	public User(){}
+	public List<Notification> getNotifications() {
+		return notifications;
+	}
+	public void setNotifications(List<Notification> notifications) {
+		this.notifications = notifications;
+	}
 }

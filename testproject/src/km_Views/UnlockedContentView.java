@@ -3,29 +3,29 @@ package km_Views;
 import km_Entities.UnlockedContent;
 
 public class UnlockedContentView {
-	public StudentView student;
+	public UserView student;
 	public ContentView content;
 
 	public UnlockedContentView() {
 	}
 
 	public UnlockedContentView(UnlockedContent unlocked) {
-		this.student = new StudentView(unlocked.getStudent());
+		this.student = new UserView(unlocked.getUserID());
 		this.content = new ContentView(unlocked.getContent(), unlocked.getContent().getContentType());
 
 	}
 
-	public UnlockedContentView(StudentView student, ContentView content) {
+	public UnlockedContentView(UserView student, ContentView content) {
 		super();
 		this.student = student;
 		this.content = content;
 	}
 
-	public StudentView getStudent() {
+	public UserView getStudent() {
 		return student;
 	}
 
-	public void setStudent(StudentView student) {
+	public void setStudent(UserView student) {
 		this.student = student;
 	}
 
