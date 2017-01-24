@@ -10,20 +10,21 @@ a {
     color: #AAAAAA; 
 }
 
-.home{
-   width:100 px;
+.language{
+   width:50 px;
    height:100 px;
-   background:url(/resources/img/sprache.png);
+   background:url(/resources/img/sprache.png);"WebContent/resources/img/kmc.png"
    background-size: 100px 100px;
   }
 
 
 .home{
-   width:100 px;
-   height:100 px;
+   width:75 px;
+   height:75 px;
    background:url(/resources/img/kmc.png);
    background-size: 100px 100px;
   }
+  
 .div1{
 	background-color: #768657;
 	width: 100%;

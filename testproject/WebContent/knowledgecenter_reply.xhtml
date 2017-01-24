@@ -16,19 +16,21 @@
   	
   	<div>
     	<ul class="navbar">
-      		<li class="navelem"> <h:graphicImage value="/resources/img/kmc_small.png"></h:graphicImage> </li><!-- Home-Button -->
+      		<li class="navelem,home"></li><!-- Home-Button -->
       		<li class="navelem"> </li> <!-- Company-Logo -->
       		<li class="navelem"><a href=""> #{msg.exchangem} </a></li>
       		<li class="navelem"><a href=""> #{msg.knowledgec} </a></li>
       		<li class="navelem"><a href=""> #{msg.exchangec} </a></li>
-      		<li class="navelem">  <h:graphicImage value="/resources/img/language_small.png"></h:graphicImage> </li><!-- Language Change  -->
+      		<li class="navelem,language"> </li><!-- Language Change  -->
       	</ul>
-  	</div>  	
+  	</div>
   	
-  		<div id="contentdiv" class="div2">
-  	  	
-  	  	
-  	  	</div>
+  	<div id="contentdiv" class="div2">
+  	
+  	
+  	<h:commandButton action="" value="#{msg.answer}" />
+  	<h:commandButton action="" value="#{msg.abort}" />
+  	</div>
   
   </div>
 </body> 
