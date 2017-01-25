@@ -1,9 +1,11 @@
 package km_Entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Notification{
@@ -11,13 +13,22 @@ public class Notification{
 	@GeneratedValue
 	private int notificationID;
 	@ManyToOne
-	private Student student;
+	private User student;
 	@ManyToOne
 	private NotificationType notificationType;
-	@ManyToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Text text;
 	
 	public Notification(){}
+	
+
+	public Notification(User user, NotificationType notificationType, Text text) {
+		super();
+		this.student = user;
+		this.notificationType = notificationType;
+		this.text = text;
+	}
+
 
 	public int getNotificationID() {
 		return notificationID;
@@ -27,11 +38,11 @@ public class Notification{
 		this.notificationID = notificationID;
 	}
 
-	public Student getStudent() {
+	public User getStudent() {
 		return student;
 	}
 
-	public void setStudent(Student student) {
+	public void setStudent(User student) {
 		this.student = student;
 	}
 

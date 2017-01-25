@@ -6,7 +6,10 @@ import javax.persistence.EntityManagerFactory;
 import org.hibernate.Query;
 
 import km_Entities.Student;
+<<<<<<< HEAD
 import km_Entities.StudentClass;
+=======
+>>>>>>> branch 'master' of https://github.com/FloLod/SWE_KM
 import km_Views.StudentView;
 
 public class StudentServiceImpl implements StudentService{

@@ -10,19 +10,20 @@ import javax.persistence.ManyToOne;
 public class UnlockedContent {
 	@Id
 	@ManyToOne
-	private Student student;
+	private User userID;
 	@Id
 	@ManyToOne
 	private Content content;
-	
-	public UnlockedContent(){}
 
-	public Student getStudent() {
-		return student;
+	public UnlockedContent() {
 	}
 
-	public void setStudent(Student student) {
-		this.student = student;
+	public User getUserID() {
+		return userID;
+	}
+
+	public void setUserID(User userID) {
+		this.userID = userID;
 	}
 
 	public Content getContent() {
@@ -31,5 +32,5 @@ public class UnlockedContent {
 
 	public void setContent(Content content) {
 		this.content = content;
-	}	
+	}
 }

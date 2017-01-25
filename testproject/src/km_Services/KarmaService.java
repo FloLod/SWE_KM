@@ -9,8 +9,10 @@ public interface KarmaService {
 	
 	public void reduceKarma(int StudentID);
 	
-	public void increaseKarma(int StudentID);
+	public void increaseKarma(int StudentID, ContentView content);
 	
 	public void like(StudentView student, ContentView content);
+	
+	public int getKarmaReward(int contentTypeId);
 	
 }

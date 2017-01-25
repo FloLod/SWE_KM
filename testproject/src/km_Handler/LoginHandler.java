@@ -22,8 +22,6 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.faces.bean.ManagedBean;
-
 @ManagedBean(name="loginHandler", eager=true)
 @SessionScoped
 public class LoginHandler implements Serializable{

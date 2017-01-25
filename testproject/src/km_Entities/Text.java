@@ -5,14 +5,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Text{
+public class Text {
 	@Id
 	@GeneratedValue
 	private int textID;
 	private String heading;
 	private String text;
-	
-	public Text(){}
+
+	public Text() {
+	}
+
+	public Text(String heading, String text) {
+		super();
+		this.heading = heading;
+		this.text = text;
+	}
 
 	public int getTextID() {
 		return textID;
@@ -37,6 +44,5 @@ public class Text{
 	public void setText(String text) {
 		this.text = text;
 	}
-	
-	
+
 }

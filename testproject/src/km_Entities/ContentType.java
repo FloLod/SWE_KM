@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 public class ContentType{
 	@Id
 	@GeneratedValue
-	private int contentTypeID;
+	private int contentTypeID;  // contentTypeID: 1 = EducationDiary
 	private String Name;
 	private int KarmaReward;
 	@ManyToOne

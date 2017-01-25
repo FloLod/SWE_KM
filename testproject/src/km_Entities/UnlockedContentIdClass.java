@@ -9,16 +9,16 @@ public class UnlockedContentIdClass implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Integer student;
+	private Integer userID;
 	
 	private Integer content;
 	
 	
 	public Integer getStudentID() {
-		return student;
+		return userID;
 	}
 	public void setStudentID(Integer studentID) {
-		this.student = studentID;
+		this.userID = studentID;
 	}
 	public Integer getContentID() {
 		return content;
@@ -31,7 +31,7 @@ public class UnlockedContentIdClass implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + content;
-		result = prime * result + student;
+		result = prime * result + userID;
 		return result;
 	}
 	@Override
@@ -45,7 +45,7 @@ public class UnlockedContentIdClass implements Serializable{
 		UnlockedContentIdClass other = (UnlockedContentIdClass) obj;
 		if (content != other.content)
 			return false;
-		if (student != other.student)
+		if (userID != other.userID)
 			return false;
 		return true;
 	}

@@ -32,13 +32,14 @@ public class ActivityView {
 		this.description = description;
 		this.duration = duration;
 	}
-	public ActivityView() {
-	}
 	
-	public ActivityView(Activity a) {
+	public ActivityView(Activity a){
 		this.actvityID = a.getActvityID();
 		this.description = a.getDescription();
 		this.duration = a.getDuration();
+	}
+	
+	public ActivityView() {
 	}
 
 }

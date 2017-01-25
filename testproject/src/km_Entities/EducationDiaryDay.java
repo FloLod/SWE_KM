@@ -2,6 +2,7 @@ package km_Entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
@@ -16,7 +17,7 @@ public class EducationDiaryDay{
 	private km_Entities.EducationDiary educationDiaryID;
 	@Id
 	private int day;
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Activity> activity;
 	
 	public EducationDiaryDay(){}
