@@ -6,14 +6,35 @@ import javax.persistence.EntityManagerFactory;
 import org.hibernate.Query;
 
 import km_Entities.Student;
+import km_Entities.StudentClass;
 import km_Entities.User;
 import km_Views.StudentView;
 
 public class StudentServiceImpl implements StudentService{
 
 	@Override
-	public void addStudent(StudentView student) {
+	public void addStudent(StudentView student) throws IllegalArgumentException {
 		// TODO Auto-generated method stub
+		EntityManager em = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager();
+		
+		Student student2 = em.find(Student.class, student.getStudentID());
+		
+		if(student2 != null){
+			em.getTransaction().begin();
+			Student s = new Student();
+			StudentClass sc = em.find(StudentClass.class, student.getStudentClass().getClassID());
+			User user = em.find(User.class, student.getUser().getUserId());
+			s.setClassSpeaker(student.getClassSpeaker());
+			s.setKarma(0);
+			s.setStudentClass(sc);
+			s.setUser(user);
+			em.persist(s);
+			em.getTransaction().commit();
+			em.close();
+			
+		}else{
+			throw new IllegalArgumentException();
+		}
 		
 	}
 
@@ -24,9 +45,17 @@ public class StudentServiceImpl implements StudentService{
 	}
 
 	@Override
-	public void deleteStudent(int studentid) {
+	public void deleteStudent(int studentid) throws IllegalArgumentException {
 		// TODO Auto-generated method stub
+		EntityManager em = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager();
+		Student s = em.find(Student.class, studentid);
 		
+		if(s != null){
+			em.remove(s);
+			em.close();
+		}else{
+			throw new IllegalArgumentException();
+		}
 	}
 
 	@Override

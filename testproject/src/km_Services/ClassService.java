@@ -12,7 +12,7 @@ public interface ClassService {
 	
 	public StudentClass getStudentClass(int classID);
 	
-	public void addClass(int classID);
+	public void addClass(ClassView studentClass);
 	
 	public void deleteClass(int classID);
 	

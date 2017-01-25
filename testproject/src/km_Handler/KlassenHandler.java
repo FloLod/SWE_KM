@@ -15,7 +15,7 @@ public class KlassenHandler implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1729L;
-	private ClassView studentClass;
+	private ClassView studentClass = new ClassView();
 	private NotificationView notification;
 	List<ClassView> classes;
 	List<StudentView> students;
@@ -31,10 +31,10 @@ public class KlassenHandler implements Serializable{
 		this.serviceLocator = serviceLocatorBean;
 	}
 
-	public String createClass(int id) {
+	public String createClass() {
 		
 		try{
-			serviceLocator.getClassService().addClass(id);			
+			serviceLocator.getClassService().addClass(studentClass);			
 		}catch (Exception e) {
 			return "retry";
 		}
@@ -55,7 +55,7 @@ public class KlassenHandler implements Serializable{
 		return "success";
 	}
 
-	public String selectClass() {
+	public String selectClass(ClassView studentClass) {
 		try{
 		this.setStudents(serviceLocator.getClassService().getClass(studentClass.getClassID()));
 		}catch (Exception e) {
@@ -63,6 +63,7 @@ public class KlassenHandler implements Serializable{
 		}
 		return "success";
 	}
+	
 
 	public ClassView getStudentClass() {
 		return studentClass;

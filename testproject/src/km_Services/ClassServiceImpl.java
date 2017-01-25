@@ -21,15 +21,15 @@ public class ClassServiceImpl implements ClassService {
 	}
 
 	@Override
-	public void addClass(int classID) throws IllegalArgumentException {
-		// How are description and Year entered?
+	public void addClass(ClassView studentClass) throws IllegalArgumentException {
 		EntityManager em = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager();
 
-		StudentClass check = em.find(StudentClass.class, classID);
+		StudentClass check = em.find(StudentClass.class, studentClass.getClassID());
 		if (check != null) {
 			em.getTransaction().begin();
 			StudentClass c = new StudentClass();
-			c.setClassID(classID);
+			c.setEducationPath(studentClass.getEducationPath());
+			c.setYear(studentClass.getYear());
 			em.persist(c);
 			em.getTransaction().commit();
 		} else {
@@ -78,7 +78,11 @@ public class ClassServiceImpl implements ClassService {
 	@Override
 	public StudentClass getStudentClass(int classID) {
 		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager();
+		StudentClass retVal = em.find(StudentClass.class, classID);
+		
+		
+		return retVal;
 	}
 
 }
