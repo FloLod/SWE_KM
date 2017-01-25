@@ -1,6 +1,7 @@
 package km_Services;
 
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 public class EntityManagerFactoryService {
 
@@ -9,6 +10,9 @@ public class EntityManagerFactoryService {
 		private EntityManagerFactoryService() {}
 		
 		public static EntityManagerFactory getEntityManagerFactory() {
+			if (emf==null){
+				emf = Persistence.createEntityManagerFactory("testproject");
+			}
 			return emf;
 		}
 		
