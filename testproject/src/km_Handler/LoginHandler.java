@@ -12,7 +12,9 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
+import km_Entities.Admin;
 import km_Entities.Student;
 import km_Entities.StudentClass;
 import km_Entities.User;
@@ -89,25 +91,36 @@ public class LoginHandler implements Serializable{
 		try{
 			EntityManagerFactory emf = EntityManagerFactoryService.getEntityManagerFactory();
 			EntityManager em = emf.createEntityManager();
-			em.getTransaction().begin();
-			User u1 = new User("Max", "Mustermann", "max.mustermann@education-siemens.com", null, "Geheim");
-			User u2 = new User("Timo", "Böse", "blocked@education-siemens.com", null, "Geheim");
-			User u3 = new User("Short", "Short", "short@short.com", null, "Short");
-			StudentClass sc1 = new StudentClass("FS",null);
-			StudentClass sc2 = new StudentClass("FI",null);
-			Student s1 = new Student(100, u1, sc1, null, true);
-			Student s2 = new Student(3200, u2, sc2, null, true);
-			Student s3 = new Student(10, u3, sc1, null, false);
 			
-			em.persist(u1);
-			em.persist(u2);
-			em.persist(u3);
-			em.persist(sc1);
-			em.persist(sc2);
-			em.persist(s1);
-			em.persist(s2);
-			em.persist(s3);
-			em.getTransaction().commit();
+			Query q = em.createQuery("SELECT Count(*) from "+User.class.getName());
+			long count = (long)q.getSingleResult();
+			
+			if(count == 0){
+				em.getTransaction().begin();
+				User u1 = new User("Max", "Mustermann", "max.mustermann@education-siemens.com", null, "Geheim");
+				User u2 = new User("Timo", "Böse", "blocked@education-siemens.com", null, "Geheim");
+				User u3 = new User("Short", "Short", "short@short.com", null, "Short");
+				User u4 = new User("Armin", "Admin", "admin@education-siemens.com", null, "Geheim");
+				StudentClass sc1 = new StudentClass("FS",null);
+				StudentClass sc2 = new StudentClass("FI",null);
+				Student s1 = new Student(100, u1, sc1, null, true);
+				Student s2 = new Student(3200, u2, sc2, null, true);
+				Student s3 = new Student(10, u3, sc1, null, false);
+				Admin a1 = new Admin(u4);
+				
+				em.persist(u1);
+				em.persist(u2);
+				em.persist(u3);
+				em.persist(u4);
+				em.persist(sc1);
+				em.persist(sc2);
+				em.persist(s1);
+				em.persist(s2);
+				em.persist(s3);
+				em.persist(a1);
+				em.getTransaction().commit();
+			}
+
 			em.close();
 		}catch(Exception e){
 			System.out.println("Fehler beim setup der testuser!!!");
