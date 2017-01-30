@@ -5,51 +5,26 @@
 	  xmlns:ui="http://java.sun.com/jsf/facelets"
 	  xmlns:h="http://java.sun.com/jsf/html"
 	  xmlns:f="http://java.sun.com/jsf/core">
+
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>#{msg.title}</title>
 </h:head>
+
 <body>
 	<h:outputStylesheet library="css" name="style.css" />
   <div class="div1">
-  <div>
-    <ul class="navbar">
-      <li class="navelem,home"></li><!-- Home-Button -->
-      <li class="navelem"> </li> <!-- Company-Logo -->
-      <li class="navelem"><a href=""> #{msg.exchangec} </a></li>
-      <li class="navelem"><a href=""> #{msg.knowledgec} </a></li>
-      <li class="navelem"><a href=""> #{msg.exchangem} </a></li>
-      <li class="navelem,language"> </li><!-- Language Change  -->
-      </ul>
-  </div>
-  <div id="contentdiv" class="div2">
-  <!--  Space for thingies!-->
   
-  
-  <h1>#{msg.greeting}</h1>
-	
-	<h:panelGrid columns="1">
+  	<div class="logindiv" style= "background-color: #E6E6E6; border: 3px solid #5f5f5f;" >
 	<h:form id="loginForm">
-	
-	  	<h:panelGroup>
-	  	#{msg.mail}
-	<h:inputText value="#{loginHandler.email}" validator="#{loginHandler.validateEmail}" label="Email" required="true"/>
-	</h:panelGroup>
-  	<h:panelGroup>
-  	#{msg.password}
-  	<h:inputSecret value="#{loginHandler.password}" validator="#{loginHandler.validatePassword}" label="Passwort" required="true"/>
-	</h:panelGroup>
-	 
-  	<h:panelGroup>
-    <h:commandButton value="Login" action="#{loginHandler.login}"/>
-    	</h:panelGroup>
-    <h:messages for="loginForm"></h:messages>
-	</h:form>
-	</h:panelGrid>
-
-
-  </div>
+  		<div class="logindiv"> <h:graphicImage value="/resources/img/kmct.png"></h:graphicImage> </div>
+  		<div class="logindiv"> <h:inputText value="#{loginHandler.email}" validator="#{loginHandler.validateEmail}" label="Email" required="true"/></div>
+  		<div class="logindiv"> <h:inputSecret value="#{loginHandler.password}" validator="#{loginHandler.validatePassword}" label="Passwort" required="true"/></div>
+  		<div class="logindiv"> <h:commandButton value="Login" action="#{loginHandler.login}"/> </div>
+  	</h:form>
+  	</div>
+  
   </div>
 </body> 
 </html>
