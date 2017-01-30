@@ -17,8 +17,8 @@ public class StudentView{
 		this.user = new UserView(student.getUser());
 		this.studentClass = new ClassView(student.getStudentClass());
 		this.classSpeaker = student.isClassSpeaker();
+		if(student.getCompanyPicture()!=null)
 		this.companyPicture = new FileView(student.getCompanyPicture());
-		
 	}
 	
 	public StudentView(int studentID, int karma, UserView user, ClassView studentClass, boolean classSpeaker,

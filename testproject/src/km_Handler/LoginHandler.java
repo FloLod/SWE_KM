@@ -10,14 +10,20 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
 import km_Entities.Student;
+import km_Entities.StudentClass;
+import km_Entities.User;
+import km_Services.EntityManagerFactoryService;
 import km_Services.LoginService;
 import km_Services.StudentService;
 import km_Views.StudentView;
 import km_Views.UserView;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -78,6 +84,38 @@ public class LoginHandler implements Serializable{
 			e.printStackTrace();
 		}
 		System.out.println("in login");
+		
+		System.out.println("Set up test user");
+		try{
+			EntityManagerFactory emf = EntityManagerFactoryService.getEntityManagerFactory();
+			EntityManager em = emf.createEntityManager();
+			em.getTransaction().begin();
+			User u1 = new User("Max", "Mustermann", "max.mustermann@education-siemens.com", null, "Geheim");
+			User u2 = new User("Timo", "Böse", "blocked@education-siemens.com", null, "Geheim");
+			User u3 = new User("Short", "Short", "short@short.com", null, "Short");
+			StudentClass sc1 = new StudentClass("FS",null);
+			StudentClass sc2 = new StudentClass("FI",null);
+			Student s1 = new Student(100, u1, sc1, null, true);
+			Student s2 = new Student(3200, u2, sc2, null, true);
+			Student s3 = new Student(10, u3, sc1, null, false);
+			
+			em.persist(u1);
+			em.persist(u2);
+			em.persist(u3);
+			em.persist(sc1);
+			em.persist(sc2);
+			em.persist(s1);
+			em.persist(s2);
+			em.persist(s3);
+			em.getTransaction().commit();
+			em.close();
+		}catch(Exception e){
+			System.out.println("Fehler beim setup der testuser!!!");
+			e.printStackTrace();
+		}
+		
+		System.out.println("finished with setting up test user");
+		
 		System.out.println("Login attempt by"+email+ " " + password); //TO DELETE
 
 		System.out.println("vor getLogin");
@@ -98,9 +136,12 @@ public class LoginHandler implements Serializable{
 				System.out.println(user.getUserId());
 				//Student s = studentService.findStudentByUserId(user.getUserId()); //placeholder needs to be fixed!!!!!!!!!!!!!!!
 				Student s = studentService.findStudentByUser(user); 
-
+				if(null==s.getUser()){
+					System.out.println("user null");
+				}
 				System.out.println(s.getStudentID()+" name:"+s.getUser().getLastName());
-				student = new StudentView(s); //fails
+				student = new StudentView(s); //fails because no company picture, fixed by ignoring null company pics in constructor
+				
 				context.getExternalContext().getSessionMap().put("student", student);
 				return"student";
 			}else{

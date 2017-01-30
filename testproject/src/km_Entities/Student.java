@@ -36,6 +36,16 @@ public class Student{
 	}
 
 	
+	public Student(int karma, User user, StudentClass studentClass, File companyPicture, boolean classSpeaker) {
+		super();
+		this.karma = karma;
+		this.user = user;
+		this.studentClass = studentClass;
+		this.companyPicture = companyPicture;
+		this.classSpeaker = classSpeaker;
+	}
+
+
 	public boolean isClassSpeaker() {
 		return classSpeaker;
 	}
