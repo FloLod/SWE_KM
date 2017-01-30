@@ -92,7 +92,7 @@ public class LoginHandler implements Serializable{
 			EntityManagerFactory emf = EntityManagerFactoryService.getEntityManagerFactory();
 			EntityManager em = emf.createEntityManager();
 			
-			Query q = em.createQuery("SELECT Count(*) from "+User.class.getName());
+			Query q = em.createQuery("SELECT Count(*) from User");
 			long count = (long)q.getSingleResult();
 			
 			if(count == 0){
@@ -129,22 +129,22 @@ public class LoginHandler implements Serializable{
 		
 		System.out.println("finished with setting up test user");
 		
-		System.out.println("Login attempt by"+email+ " " + password); //TO DELETE
-
-		System.out.println("vor getLogin");
-
-		System.out.println("email:"+email);
-		System.out.println("password:"+password);
-
-		//System.out.println("LoginService:"+loginService.toString());
+		System.out.println("Login attempt by "+email+ " using: " + password); //TO DELETE
 		
-		user = loginService.getLogin(email, password);
+		try{
+			user = loginService.getLogin(email, password);
+		}catch(Exception e){
+
+			e.printStackTrace();
+			throw new ValidatorException(
+							new FacesMessage("Bitte wiederholen Sie den Login Vorgang!"));
+			}
 		FacesContext context = FacesContext.getCurrentInstance();
 		if(user != null){
 			context.getExternalContext().getSessionMap().put("user", user);
 			loggedIn = true;
 			
-			if(!user.isAdmin())
+			if(!user.isAdmin())	//Bug hier, siehe User Konstruktor!
 			{
 				System.out.println(user.getUserId());
 				//Student s = studentService.findStudentByUserId(user.getUserId()); //placeholder needs to be fixed!!!!!!!!!!!!!!!
@@ -158,7 +158,7 @@ public class LoginHandler implements Serializable{
 				context.getExternalContext().getSessionMap().put("student", student);
 				return"student";
 			}else{
-				return "admin";
+				return "admin";	//will never happen, see bug in condition above. REQUIRES FIX!
 			}
 		}
 		context.addMessage(null, new FacesMessage("Unknown login, try again"));
