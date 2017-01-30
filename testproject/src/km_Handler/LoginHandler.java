@@ -65,20 +65,28 @@ public class LoginHandler implements Serializable{
 		try{
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
-		StudentView student = (StudentView) sessionMap.get("student");
+		UserView user = (UserView) sessionMap.get("user");
 		if(student!=null){
-			this.student = student;
-			System.out.println("student in session "+student.toString());
-			return "student";
+			this.user = user;
+			System.out.println("user in session "+user.toString());
+			return "student"; 	//additional check required to forward admin
 		}else{
-			System.out.println("no student in session");
+			System.out.println("no user in session");
 		}
 		}catch(Exception e){
-			System.out.println("Fehler bei prüfen ob student im chache ");
+			System.out.println("Fehler bei prüfen ob user im chache ");
 			e.printStackTrace();
 		}
 		System.out.println("in login");
 		System.out.println("Login attempt by"+email+ " " + password); //TO DELETE
+
+		System.out.println("vor getLogin");
+
+		System.out.println("email:"+email);
+		System.out.println("password:"+password);
+
+		//System.out.println("LoginService:"+loginService.toString());
+		
 		user = loginService.getLogin(email, password);
 		FacesContext context = FacesContext.getCurrentInstance();
 		if(user != null){
@@ -87,8 +95,12 @@ public class LoginHandler implements Serializable{
 			
 			if(!user.isAdmin())
 			{
-				Student s = studentService.findStudentByUserId(user.getUserId()); //placeholder needs to be fixed!!!!!!!!!!!!!!!
-				student = new StudentView(s);
+				System.out.println(user.getUserId());
+				//Student s = studentService.findStudentByUserId(user.getUserId()); //placeholder needs to be fixed!!!!!!!!!!!!!!!
+				Student s = studentService.findStudentByUser(user); 
+
+				System.out.println(s.getStudentID()+" name:"+s.getUser().getLastName());
+				student = new StudentView(s); //fails
 				context.getExternalContext().getSessionMap().put("student", student);
 				return"student";
 			}else{

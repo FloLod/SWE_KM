@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="testproject">
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">	
+<persistence-unit name="testproject">
+
 		<class>km_Entities.Activity</class>
 		<class>km_Entities.Admin</class>
 		<class>km_Entities.Appointment</class>
@@ -25,5 +25,42 @@
 		<class>km_Entities.UnlockedContent</class>
 		<class>km_Entities.User</class>
 		<class>km_Entities.NotificationType</class>
+		
+		
+		
+		 <properties>
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost/"/>
+            <property name="hibernate.default_schema" value="waterfall"/>
+            <property name="hibernate.connection.username" value="root"/>
+            <property name="hibernate.connection.password" value=""/>
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <property name="show_sql" value="true"/>
+            <property name="show_sql" value="true"/>
+			<property name="use_sql_comments" value="true"/>
+        </properties>
+        
 	</persistence-unit>
+	
+	<!--  
+	Fehler an Hibernate könnten auch daran liegen, dass sich die persistence unit zum Reck massiv unterscheidet. 
+	
+	<persistence-unit name="OnlineFerries">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+			
+		<properties>
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost/onlineferries"/>
+			<property name="hibernate.connection.username" value="root"/>
+			<property name="hibernate.connection.password" value="root"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+
+	        
+			<property name="hibernate.show_sql" value="true"/>
+			<property name="hibernate.archive.autodetection" value="class"/>
+		</properties>
+
+	</persistence-unit>	
+	-->
 </persistence>

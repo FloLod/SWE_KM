@@ -19,7 +19,7 @@ public class UserView{
 	}
 	
 	public UserView(User user){
-		isAdmin = false;
+		isAdmin = false;				//ist falsch, jeder User kann auch Admin sein, bitte überarbeiten!
 		this.setFromUser(user);
 	}
 
