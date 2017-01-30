@@ -149,11 +149,7 @@ public class LoginHandler implements Serializable{
 				System.out.println(user.getUserId());
 				//Student s = studentService.findStudentByUserId(user.getUserId()); //placeholder needs to be fixed!!!!!!!!!!!!!!!
 				Student s = studentService.findStudentByUser(user); 
-				if(null==s.getUser()){
-					System.out.println("user null");
-				}
-				System.out.println(s.getStudentID()+" name:"+s.getUser().getLastName());
-				student = new StudentView(s); //fails because no company picture, fixed by ignoring null company pics in constructor
+				student = new StudentView(s); //fixed by ignoring null company pics in constructor
 				
 				context.getExternalContext().getSessionMap().put("student", student);
 				return"student";
