@@ -76,7 +76,6 @@ public class ExchangeCenterHandler {
 			serviceLocator.getExchangeCenterService().downloadEducationDiary(getStudent(), getSelectedDiary(),
 					filepath);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

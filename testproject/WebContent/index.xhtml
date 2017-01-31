@@ -20,15 +20,14 @@
       		<li> <h:graphicImage value="#{student.companyPicture.fileName}"/> #{user.firstname} #{user.lastname} </li> 
       		<li> <a href=""> #{msg.exchangem} </a> </li>
       		<li> <a href=""> #{msg.knowledgec} </a> </li>
-      		<li> <a href=""> #{msg.exchangec} </a> </li>
+      		<li> <h:commandLink value="#{msg.exchangec}" action="#{exchangeCenterHandler.overview}"/> </li>
       		<li> <h:commandLink action="#{localeHandler.changeLocale()}"> <h:graphicImage value="/resources/img/language_small.png"> </h:graphicImage></h:commandLink> </li><!-- Language Change  -->
       	</ul>
   	</div>  	
   	</h:form>
   	
-  		<div id="contentdiv" class="div2">
-  	  	
-  	  	
+  		<div id="contentdiv" class="div2">  	  	
+				<ui:insert name="contentdiv"></ui:insert>
   	  	</div>
   
   </div>

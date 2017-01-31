@@ -95,11 +95,12 @@ public class LoginHandler implements Serializable{
 			Query q = em.createQuery("SELECT Count(*) from User");
 			long count = (long)q.getSingleResult();
 			
+			//TODO: REMOVE THIS => debug
 			if(count == 0){
 				em.getTransaction().begin();
 				User u1 = new User("Max", "Mustermann", "max.mustermann@education-siemens.com", null, "Geheim");
 				User u2 = new User("Timo", "Böse", "blocked@education-siemens.com", null, "Geheim");
-				User u3 = new User("Short", "Short", "short@short.com", null, "Short");
+				User u3 = new User("Short", "Short", "short@short.com", null, "Geheim");
 				User u4 = new User("Armin", "Admin", "admin@education-siemens.com", null, "Geheim");
 				StudentClass sc1 = new StudentClass("FS",null);
 				StudentClass sc2 = new StudentClass("FI",null);
@@ -154,7 +155,7 @@ public class LoginHandler implements Serializable{
 				context.getExternalContext().getSessionMap().put("student", student);
 				return"student";
 			}else{
-				return "admin";	//will never happen, see bug in condition above. REQUIRES FIX!
+				return "admin";	//TODO: will never happen, see bug in condition above. REQUIRES FIX!
 			}
 		}
 		context.addMessage(null, new FacesMessage("Unknown login, try again"));
