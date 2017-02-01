@@ -1,6 +1,7 @@
 package km_Handler;
 
 import java.io.FileNotFoundException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -17,7 +18,7 @@ import km_Views.*;
 
 @ManagedBean
 @SessionScoped
-public class ExchangeCenterHandler {
+public class ExchangeCenterHandler implements Serializable{
 	private StudentView student;
 	private EducationDiaryListView diaries;
 	private String filepath;
@@ -40,7 +41,10 @@ public class ExchangeCenterHandler {
 	}
 
 	public String overview() {
-		return "ToExchangeCenter";
+		student = (StudentView) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("student");
+		if(null != student)
+			return "ToExchangeCenter";
+		return "loginfailed";
 	}
 
 	public String selectEducationDiary(int index) {

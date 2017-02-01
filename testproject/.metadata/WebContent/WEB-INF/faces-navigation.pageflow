@@ -2,14 +2,18 @@
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14846854573430" configfile="/testproject/WebContent/WEB-INF/faces-navigation.xml">
   <nodes xsi:type="pageflow:PFPage" name="Index_Moritz.xhtml" comment="Login" x="122" y="178" id="pf14846855576321" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" outlinks="pf14846855576332 pf14846855576333" inlinks="pf14846855576333" path="/Index_Moritz.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="Admin_Overview.xhtml" x="338" y="178" id="pf14846855576334" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf14846855576332 pf14846855576335" path="/Admin_Overview.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="z.xhtml" comment="Login" id="pf14846855576336" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf14846855576335 pf14846855576337" path="/Login.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" id="pf14846855576339" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" inlinks="pf14846855576337" path="/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="z.xhtml" comment="Login" x="122" y="562" id="pf14846855576336" referenceLink="//@navigationRule.1/@navigationCase.2/@toViewId|" outlinks="pf14846855576335 pf14846855576337 pf14859681419360" inlinks="pf14859681419360" path="/Login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="338" y="562" id="pf14846855576339" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" inlinks="pf14846855576337" path="/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" comment="IndexNavbar" x="122" y="946" id="pf14859681419361" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf14859681419362" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="exchangeCenter_Overview.xhtml" x="338" y="946" id="pf14859681419363" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf14859681419362" path="/exchangeCenter_Overview.xhtml"/>
   <links id="pf14846855576332" target="pf14846855576334" source="pf14846855576321" outcome="success"/>
+  <links id="pf14846855576335" target="pf14846855576334" source="pf14846855576336" outcome="admin"/>
+  <links id="pf14846855576337" target="pf14846855576339" source="pf14846855576336" outcome="student"/>
+  <links id="pf14859681419362" target="pf14859681419363" source="pf14859681419361" outcome="ToExchangeCenter/from-outcome>"/>
   <links id="pf14846855576333" target="pf14846855576321" source="pf14846855576321" outcome="retry">
     <bendPoints d1Height="-36" d2Height="-36"/>
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
     <bendPoints d1Width="-64" d2Width="-64"/>
   </links>
-  <links id="pf14846855576335" target="pf14846855576334" source="pf14846855576336" outcome="admin"/>
-  <links id="pf14846855576337" target="pf14846855576339" source="pf14846855576336" outcome="student"/>
+  <links id="pf14859681419360" target="pf14846855576336" source="pf14846855576336" outcome="loginfailed"/>
 </pageflow:Pageflow>

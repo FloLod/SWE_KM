@@ -1,8 +1,9 @@
 package km_Views;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class StudentView{
+public class StudentView implements Serializable{
 	private int studentID;
 	private int karma;
 	private UserView user;

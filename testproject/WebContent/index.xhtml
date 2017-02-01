@@ -17,12 +17,13 @@
   	<div>
     	<ul>
       		<li> <h:commandLink action="index.html"> <h:graphicImage value="/resources/img/kmc_small.png"> </h:graphicImage> </h:commandLink> </li>
-      		<li> <h:graphicImage value="#{student.companyPicture.fileName}"/> #{user.firstname} #{user.lastname} </li> 
+<!--       		<li> <h:graphicImage value="#{student.companyPicture.fileName}"/> </li>  -->
       		<li> <a href=""> #{msg.exchangem} </a> </li>
       		<li> <a href=""> #{msg.knowledgec} </a> </li>
       		<li> <h:commandLink value="#{msg.exchangec}" action="#{exchangeCenterHandler.overview}"/> </li>
       		<li> <h:commandLink action="#{localeHandler.changeLocale()}"> <h:graphicImage value="/resources/img/language_small.png"> </h:graphicImage></h:commandLink> </li><!-- Language Change  -->
       	</ul>
+      	Hallo #{user.firstname} #{user.lastname}
   	</div>  	
   	</h:form>
   	

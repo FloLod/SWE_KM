@@ -1,20 +1,37 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html	xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:ui="http://java.sun.com/jsf/facelets"
-		xmlns:h="http://java.sun.com/jsf/html"
-		xmlns:f="http://java.sun.com/jsf/core">
-		
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<title>#{msg.onlineferries_index_title1}</title>
+	<title>#{msg.title}</title>
 </h:head>
+
 <ui:composition template="/index.xhtml">
 	<ui:define name="contentdiv">
-		<f:facet name="text">text</f:facet>
+		<h:form>
+			<h:dataTable var="diary" value="#{exchangeCenterHandler.diaries.educationDiaryList}">
+				<h:column headerText="#{msg.StartDate}">
+					<h:outputText value="#{diary.startDate}"/>
+				</h:column>
+			
+				<h:column headerText="#{msg.endDate}">
+					<h:outputText value="#{diary.endDate}"/>
+				</h:column>
+				
+				<h:column headerText="#{msg.StartDate}">
+					<h:outputText value="#{diary.weeek}"/>
+				</h:column>
+				
+				<h:column>
+					<h:outputLink value="ShowDiary" onclick="/exchangeCenter_show.xhtml"/>
+				</h:column>
+			</h:dataTable>
+		</h:form>
 	</ui:define>
 </ui:composition>
-
 </html>

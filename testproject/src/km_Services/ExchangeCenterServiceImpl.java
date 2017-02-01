@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import km_Entities.Activity;
@@ -193,10 +194,11 @@ public class ExchangeCenterServiceImpl implements ExchangeCenterService {
 	@Override
 	public EducationDiaryListView getEducationDiaries(ClassView cv) {
 		// TODO Auto-generated method stub
-		return new EducationDiaryListView(EntityManagerFactoryService.getEntityManagerFactory().createEntityManager()
-				.createQuery("from km_Entities.EducationDiaryList where studentClass = " + cv.getClassID(),
-						EducationDiaryList.class)
-				.getSingleResult());
+		Query q1 = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager()
+		.createQuery("from km_Entities.EducationDiaryList where studentClass = '" + cv.getClassID() + "'");
+		EducationDiaryList diary =(EducationDiaryList) q1.getSingleResult();
+		
+		return new EducationDiaryListView(diary);
 	}
 
 	@Override

@@ -30,12 +30,18 @@
 		</navigation-case>
 	</navigation-rule>
 	
+	
+	
 	<navigation-rule>
-		<description>ExchangeCenter</description>
+		<description>IndexNavbar</description>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
 			<from-outcome>ToExchangeCenter</from-outcome>
 			<to-view-id>/exchangeCenter_Overview.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>loginfailed</from-outcome>
+			<to-view-id>/Login.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	</faces-config>
