@@ -18,15 +18,21 @@ public class KarmaServiceImpl implements KarmaService {
 	}
 
 	@Override
-	public void increaseKarma(int StudentID) {
+	public void like(StudentView student, ContentView content) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void like(StudentView student, ContentView content) {
+	public void increaseKarma(int StudentID, ContentView content) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public int getKarmaReward(int contentTypeId) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

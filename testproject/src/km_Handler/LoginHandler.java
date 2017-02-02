@@ -10,14 +10,22 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
+import km_Entities.Admin;
 import km_Entities.Student;
+import km_Entities.StudentClass;
+import km_Entities.User;
+import km_Services.EntityManagerFactoryService;
 import km_Services.LoginService;
 import km_Services.StudentService;
 import km_Views.StudentView;
 import km_Views.UserView;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -63,48 +71,52 @@ public class LoginHandler implements Serializable{
 		
 	public String login() {
 		try{
-		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-		Map<String, Object> sessionMap = externalContext.getSessionMap();
-		StudentView student = (StudentView) sessionMap.get("student");
-		if(student!=null){
-			this.student = student;
-			System.out.println("student in session "+student.toString());
-			return "student";
-		}else{
-			System.out.println("no student in session");
-		}
+			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+			Map<String, Object> sessionMap = externalContext.getSessionMap();
+			UserView user = (UserView) sessionMap.get("user");
+			if(student!=null){
+				this.user = user;
+				return "student"; 	//additional check required to forward admin
+			}else{
+			}
 		}catch(Exception e){
-			System.out.println("Fehler bei prüfen ob student im chache ");
 			e.printStackTrace();
 		}
-		System.out.println("in login");
-		System.out.println("Login attempt by"+email+ " " + password); //TO DELETE
-		user = loginService.getLogin(email, password);
+				
+		try{
+			user = loginService.getLogin(email, password);
+		}catch(Exception e){
+			e.printStackTrace();
+//		throw new ValidatorException(new FacesMessage("Bitte wiederholen Sie den Login Vorgang!"));
+		}
+		
 		FacesContext context = FacesContext.getCurrentInstance();
 		if(user != null){
 			context.getExternalContext().getSessionMap().put("user", user);
 			loggedIn = true;
 			
-			if(!user.isAdmin())
+			if(!user.isAdmin())	//Bug hier, siehe User Konstruktor!
 			{
-				Student s = studentService.findStudentByUserId(user.getUserId()); //placeholder needs to be fixed!!!!!!!!!!!!!!!
-				student = new StudentView(s);
+				//Student s = studentService.findStudentByUserId(user.getUserId()); //placeholder needs to be fixed!!!!!!!!!!!!!!!
+				Student s = studentService.findStudentByUser(user); 
+				student = new StudentView(s); //fixed by ignoring null company pics in constructor
+				
 				context.getExternalContext().getSessionMap().put("student", student);
 				return"student";
 			}else{
-				return "admin";
+				return "admin";	//TODO: will never happen, see bug in condition above. REQUIRES FIX!
 			}
 		}
 		context.addMessage(null, new FacesMessage("Unknown login, try again"));
         email = null;
         password = null;
         loggedIn = false;
-		return null;
+		return "loginfailed";
 	}	
+	
 	
 	public void validateEmail(FacesContext context, UIComponent component, Object value)
 			throws ValidatorException {
-		System.out.println("in validateemail");
 		if(value==null){
 			throw new ValidatorException(
 					new FacesMessage("Bitte geben sie eine Email Adresse ein!"));
@@ -113,13 +125,11 @@ public class LoginHandler implements Serializable{
 			throw new ValidatorException(
 					new FacesMessage("Fehlerhafte Emailsyntax!"));
 		}
-		System.out.println("out validateemail");
 	}
 
 	public void validatePassword(FacesContext context, UIComponent component, Object value)
 			throws ValidatorException {
 
-		System.out.println("in validatepassword");
 		if(value==null){
 			throw new ValidatorException(
 					new FacesMessage("Bitte geben sie ein Passwort ein!"));
@@ -128,7 +138,6 @@ public class LoginHandler implements Serializable{
 			throw new ValidatorException(
 					new FacesMessage("Passwort zu kurz!"));
 		}
-		System.out.println("out validatepassword");
 	}
 	public String getEmail() {
 		return email;

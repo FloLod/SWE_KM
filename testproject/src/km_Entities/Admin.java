@@ -16,6 +16,11 @@ public class Admin{
 	
 	public Admin(){}
 
+	public Admin(User user) {
+		super();
+		this.user = user;
+	}
+
 	public int getAdminID() {
 		return adminID;
 	}

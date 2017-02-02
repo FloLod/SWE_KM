@@ -1,16 +1,20 @@
 package km_Services;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-
-import org.hibernate.Query;
-
+import javax.persistence.Query;
 import km_Entities.Student;
 import km_Entities.StudentClass;
 import km_Entities.User;
 //github.com/FloLod/SWE_KM
-import km_Views.StudentView;
 
+import km_Views.StudentView;
+import km_Views.UserView;
+
+@ManagedBean
+@SessionScoped
 public class StudentServiceImpl implements StudentService{
 
 	@Override
@@ -70,17 +74,65 @@ public class StudentServiceImpl implements StudentService{
 		EntityManagerFactory emf = EntityManagerFactoryService.getEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
-		Query q = (Query) em.createQuery("from student where user= :userid");
-		q.setParameter(":userid", userid);
-		em.close();
+		System.out.println("in findstudentbyid");
+		Query q = em.createQuery("from "+Student.class.getName()+" where user= :userid");
+		q.setParameter("userid", userid);	//crashes because no foreign key in hibernate
+		System.out.println("in findstudentbyid query:"+q.toString());
 		Object result = null;
 		Student s = null;
 		try{
-			result = q.uniqueResult();
+			result = q.getSingleResult();
 			s = (Student) result;
+			System.out.println("findstudentbyid student: "+s.getStudentID()+" Klassensprecher: "+ s.isClassSpeaker() + " Lastname:"+s.getUser().getLastName());
 		}catch(Exception e){
 			e.printStackTrace();
+		}finally{
+			em.close();
 		}
+		System.out.println("findstudentbyid raus");
+
+		return s;
+	}
+	@Override
+	public Student findStudentByUser(UserView user) {
+		// TODO Auto-generated method stub
+		EntityManagerFactory emf = EntityManagerFactoryService.getEntityManagerFactory();
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		System.out.println("in findstudentbyid");
+		//
+		Query q = em.createQuery("from "+User.class.getName()+" where email = :email");
+		q.setParameter("email", user.getEmail());
+		System.out.println("in getlogin query:" + q.toString());
+		Object result = null;
+		User u = null;
+		try{
+			result = q.getSingleResult();
+			u = (User) result;
+			System.out.println("in getlogin user name"+u.getFirstName()+u.getLastName()+"Password: "+u.getPassword()+" Email:"+u.geteMail());
+		}catch(Exception e){
+			e.printStackTrace();
+
+			System.out.println("in getlogin gescheitert bei unique result");
+		}
+		
+		q = em.createQuery("from "+Student.class.getName()+" where user= :userid");
+		System.out.println("in findstudentbyid id:"+user);
+		q.setParameter("userid", u);	//crashes because no foreign key in hibernate has to be a user but then no fit
+		System.out.println("in findstudentbyid query:"+q.toString() +" "+q);
+		result = null;
+		Student s = null;
+		try{
+			result = q.getSingleResult();
+			s = (Student) result;
+			System.out.println("findstudentbyid student: "+s.getStudentID()+" Klassensprecher: "+ s.isClassSpeaker() + " Lastname:"+s.getUser().getLastName());
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			em.close();
+		}
+		System.out.println("findstudentbyid raus");
+
 		return s;
 	}
 

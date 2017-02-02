@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -18,6 +19,7 @@ public class Student{
 	private int studentID;
 	private int karma;
 	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn
 	private User user;
 	@ManyToOne
 	private StudentClass studentClass;
@@ -34,6 +36,16 @@ public class Student{
 	}
 
 	
+	public Student(int karma, User user, StudentClass studentClass, File companyPicture, boolean classSpeaker) {
+		super();
+		this.karma = karma;
+		this.user = user;
+		this.studentClass = studentClass;
+		this.companyPicture = companyPicture;
+		this.classSpeaker = classSpeaker;
+	}
+
+
 	public boolean isClassSpeaker() {
 		return classSpeaker;
 	}

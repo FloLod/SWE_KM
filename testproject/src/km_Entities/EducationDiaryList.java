@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -16,6 +17,7 @@ public class EducationDiaryList {
 	@GeneratedValue
 	private int EducationDiaryList;
 	@ManyToOne
+	@JoinColumn(name = "classID")
 	private StudentClass studentClass;
 	@ManyToOne
 	private Student studentResponsible;

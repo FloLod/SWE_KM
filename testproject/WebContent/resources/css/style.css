@@ -3,28 +3,52 @@
 /* KM-Green  #768657 */
 /* KM-Gold   #AC8249 */
 /* KM-Blue   #       */
+/* KM-Grey1  #5F5F5F */
+/* KM-Grey2  #E6E6E6 */
 /*********************/
 
-a {
-    text-decoration: none; 
-    color: #AAAAAA; 
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:  #404040;
+    border-bottom: 3px solid #5f5f5f;
 }
 
-.language{
-   width:50 px;
-   height:100 px;
-   background:url(/resources/img/sprache.png);"WebContent/resources/img/kmc.png"
-   background-size: 100px 100px;
-  }
+li {
+    float: left;
+	border-right: 3px solid #5F5F5F;
+}
+.navelem {
+	height: 100px;
+}
+
+li a {
+    display: block;
+    color: #AAAAAA;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
 
 
-.home{
-   width:75 px;
-   height:75 px;
-   background:url(/resources/img/kmc.png);
-   background-size: 100px 100px;
-  }
-  
+li a:hover {
+    background-color:#768657;
+}
+
+button {
+	
+}
+
+.logindiv {
+	margin: auto;
+	width: 45%;
+	heigt: 45%;
+	padding: 5px;
+}
+
 .div1{
 	background-color: #768657;
 	width: 100%;
@@ -32,20 +56,11 @@ a {
 	margin-bottom: 1px;
 }
 
-.navbar{
-	background-color: #404040;
-	border-bottom: 3px solid #5f5f5f;
-}
-
-.navelem {
-	height: 100px;
-	border-left: 3px solid #5F5F5F;
-	display: inline;
-}
 
 /*Highlights active tab*/ 
 .active {
-	background-color: #768657;
+	background-color:#5F5F5F;
+	color: #768657;
 }
 
 .div2{
@@ -53,6 +68,14 @@ a {
 	border: 3px solid #5f5f5f;
 	margin-left: 5%;
 	margin-right: 5%;
-	margin bottom:1%;
-	padding: 10px;
+	margin-bottom:1%;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+}
+
+body {
+	margin: 0;
+	height: 100%;
+	width: 100%;
 }
