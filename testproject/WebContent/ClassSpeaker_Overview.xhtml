@@ -13,7 +13,21 @@
 </h:head>
 
 <body>
-
+<h:outputStylesheet library="css" name="style.css" />
+  <div class="div1">
+  	
+  	<div>
+    	<ul class="navbar">
+      		<li class="navelem"> <h:graphicImage value="/resources/img/kmc_small.png"></h:graphicImage> </li><!-- Home-Button -->
+      		<li class="navelem"> </li> <!-- Company-Logo -->
+      		<li class="navelem"><a href=""> #{msg.exchangem} </a></li>
+      		<li class="navelem"><a href=""> #{msg.knowledgec} </a></li>
+      		<li class="navelem"><a href=""> #{msg.exchangec} </a></li>
+      		<li class="navelem">  <h:graphicImage value="/resources/img/language_small.png"></h:graphicImage> </li><!-- Language Change  -->
+      	</ul>
+  	</div>  	
+  	
+  		<div id="contentdiv" class="div2">
 	<h:form>
 		<h:commandButton action="ClassSpeaker_CreateStudent.xhtml"
 			value="#{msg.ClassSpeaker_create}" />
@@ -36,5 +50,7 @@
 		<h:column>
 			<f:facet name="header">#{msg.ClassSpeaker_blocked}</f:facet>#{student.blocked}</h:column>
 	</h:dataTable>
+	</div>
+	</div>
 </body>
 </html>
