@@ -35,20 +35,20 @@
 
 	<h:dataTable value="#{studentHandler.students}" var="student">
 		<h:column>
-			<f:facet name="header">#{msg.ClassSpeaker_firstname}</f:facet>
+			<f:facet name="header">#{msg.firstname}</f:facet>
 #{student.user.firstname}
 </h:column>
 		<h:column>
-			<f:facet name="header">#{msg.ClassSpeaker_lastname}</f:facet>
+			<f:facet name="header">#{msg.lastname}</f:facet>
 #{student.user.lastname}
 </h:column>
 		<h:column>
-			<f:facet name="header">#{msg.ClassSpeaker_email}</f:facet>
+			<f:facet name="header">#{msg.email}</f:facet>
 #{student.user.email}</h:column>
 		<h:column>
-			<f:facet name="header">#{msg.ClassSpeaker_lastlogin}</f:facet>#{student.user.lastlogin}</h:column>
+			<f:facet name="header">#{msg.lastlogin}</f:facet>#{student.user.lastlogin}</h:column>
 		<h:column>
-			<f:facet name="header">#{msg.ClassSpeaker_blocked}</f:facet>#{student.blocked}</h:column>
+			<f:facet name="header">#{msg.blocked}</f:facet>#{student.blocked}</h:column>
 	</h:dataTable>
 	</div>
 	</div>
