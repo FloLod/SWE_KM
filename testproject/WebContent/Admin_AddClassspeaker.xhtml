@@ -26,12 +26,12 @@
   	</div>  	
   	
   		<div id="contentdiv" class="div2">
+  		<h:form>
   	  	<h:selectOneListbox  valueChangeListener="#{klassenHandler.classspeakerChanged}" value="#{klassenHandler.classspeaker}" converter="#{klassenHandler.studentViewConverter}" >
   	  	<f:selectItems value="#{klassenHandler.students}" var="student"
 							itemValue="#{student}" itemLabel="#{student.user.firstname} - #{student.user.lastname}" />
   	  	</h:selectOneListbox>
-  	  	<h:form>
-  	  	<h:commandButton action="#{klassenHandler.addClasspeaker}" value="#{msg.Admin_AddClassspeaker_confirm}" />
+  	  	<h:commandButton action="#{klassenHandler.addClasspeaker}" value="#{msg.confirm}" />
   	  	</h:form>
   	  	
   	  	</div>
