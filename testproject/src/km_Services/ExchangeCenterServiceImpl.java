@@ -195,7 +195,8 @@ public class ExchangeCenterServiceImpl implements ExchangeCenterService {
 	public EducationDiaryListView getEducationDiaries(ClassView cv) {
 		// TODO Auto-generated method stub
 		Query q1 = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager()
-		.createQuery("from km_Entities.EducationDiaryList where studentClass = '" + cv.getClassID() + "'");
+		.createQuery("from km_Entities.EducationDiaryList where studentClass_classID = '" + cv.getClassID() + "'");
+		System.out.println(cv.getClassID());
 		EducationDiaryList diary =(EducationDiaryList) q1.getSingleResult();
 		
 		return new EducationDiaryListView(diary);

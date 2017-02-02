@@ -1,5 +1,5 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">	
-<persistence-unit name="testproject">
+<persistence-unit name="waterfall">
 
 		 <properties>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
@@ -9,9 +9,9 @@
             <property name="hibernate.connection.password" value="root"/>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
             <!-- to get new blank database and create it with every run -->
-<!--             <property name="hibernate.hbm2ddl.auto" value="create"/> -->
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
 			<!--  to use already existing database -->
-            <property name="hibernate.hbm2ddl.auto" value="none"/>
+<!--             <property name="hibernate.hbm2ddl.auto" value="none"/> -->
             <property name="show_sql" value="true"/>
 			<property name="use_sql_comments" value="true"/>
         </properties>

@@ -1,21 +1,33 @@
 package km_Entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
 
-@Entity
-@IdClass(LikeIdClass.class)
+@Entity(name="Likes")
+//@IdClass(LikeIdClass.class)
 public class Like{
 	@Id
+	@GeneratedValue
+	private int likeID;
+
 	@ManyToOne
 	private Student student;
-	@Id
+
 	@ManyToOne
 	private Content content;
 	
 	public Like(){}
+	
+	public int getLikeID() {
+		return likeID;
+	}
+
+	public void setLikeID(int likeID) {
+		this.likeID = likeID;
+	}
 
 	public Student getStudent() {
 		return student;

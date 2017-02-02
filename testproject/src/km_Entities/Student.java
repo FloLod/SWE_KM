@@ -30,7 +30,8 @@ public class Student{
 	private List<Content> contents;
 	@OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
 	private List<StudentAppointment> appointments;
-	
+	@OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+	private List<Like> likes;
 	public Student(){
 		contents = new ArrayList<>();
 	}
