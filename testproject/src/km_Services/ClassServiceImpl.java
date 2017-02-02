@@ -8,6 +8,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import km_Entities.Student;
 import km_Entities.StudentClass;
 import km_Views.ClassView;
 import km_Views.StudentView;
@@ -83,6 +84,29 @@ public class ClassServiceImpl implements ClassService {
 		
 		
 		return retVal;
+	}
+
+	@Override
+	public void addClassspeaker(StudentView studentView) throws IllegalArgumentException {
+		// TODO Auto-generated method stub
+		EntityManager em = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager();
+		
+		Student s = em.find(Student.class, studentView.getStudentID());
+		
+		if (s != null){
+			if(!s.isClassSpeaker()){
+				em.getTransaction().begin();
+				s.setClassSpeaker(true);
+				em.persist(s);
+				em.getTransaction().commit();
+				em.close();
+			}else{
+				throw new IllegalArgumentException();
+			}
+		}else{
+			throw new IllegalArgumentException();
+		}
+		
 	}
 
 }

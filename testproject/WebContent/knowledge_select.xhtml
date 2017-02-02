@@ -27,7 +27,36 @@
   	
   	<div id="contentdiv" class="div2">
   	<!--  Space for thingies!-->
-  
+  	<h:panelGrid columns="4">
+  	<f:facet name="header">#{msg.question}</f:facet>
+  	<h:outputLabel value="#{knowledgeCenterHandler.question.text.heading}" />
+  	<h:outputText value="#{knowledgeCenterHandler.question.text.text}" />
+  	<h:outputText value="#{knowledgeCenterHandler.question.content.creator.user.firstname} #{knowledgeCenterHandler.question.content.creator.user.lastname}" />
+  	<h:outputText value="#{knowledgeCenterHandler.question.content.created}" />
+  	</h:panelGrid>
+  	<hr></hr>
+  	<h:form>
+  	<h:commandButton action="knowledgecenter_reply.xhtml" value="#{msg.reply}" />
+  	</h:form>
+  	<h:dataTable value="#{knowledgeCenterHandler.replys}" var="reply">
+  	<f:facet name="header">#{msg.replies}</f:facet>
+  	<h:column>
+  	<f:facet name="header">#{msg.heading}</f:facet>
+  	#{reply.text.heading}
+  	</h:column>
+  	<h:column>
+  	<f:facet name="header">#{msg.text}</f:facet>
+  	#{reply.text.text}
+  	</h:column>
+  	<h:column>
+  	<f:facet name="header">#{msg.creator}</f:facet>
+  	<h:outputText value="#{reply.content.creator.user.firstname} #{reply.content.creator.user.lastname}" />
+  	</h:column>
+  	<h:column>
+  	<f:facet name="header">#{msg.created}</f:facet>
+  	#{reply.content.created}
+  	</h:column>
+  	</h:dataTable>
   	</div>
   
   </div>

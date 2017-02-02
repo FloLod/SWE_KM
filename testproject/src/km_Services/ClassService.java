@@ -18,4 +18,6 @@ public interface ClassService {
 	
 	public List<ClassView> getClasses();
 	
+	public void addClassspeaker(StudentView studentView);
+	
 }

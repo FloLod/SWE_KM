@@ -13,11 +13,15 @@ public interface KnowledgeCenterService {
 	
 	public void addQuestion(QuestionView question);
 	
+	public void answerQuestion(int id, ReplyView reply);
+	
 	public void updateThread(int id);
 	
 	public void deleteQuestion(int id);
 	
 	public List<ReplyView> showQA(int id);
+	
+	public List<QuestionView> showAllQuestions();
 	
 	
 }

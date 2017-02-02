@@ -31,7 +31,6 @@ public class StudentHandler {
 	}
 
 	public String createStudent() {
-
 		try {
 			serviceLocator.getStudentService().addStudent(student);
 		} catch (Exception e) {

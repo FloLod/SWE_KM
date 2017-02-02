@@ -6,10 +6,9 @@ import javax.persistence.EntityManagerFactory;
 import org.hibernate.Query;
 
 import km_Entities.Student;
-<<<<<<< HEAD
 import km_Entities.StudentClass;
-=======
->>>>>>> branch 'master' of https://github.com/FloLod/SWE_KM
+import km_Entities.User;
+//github.com/FloLod/SWE_KM
 import km_Views.StudentView;
 
 public class StudentServiceImpl implements StudentService{
@@ -25,8 +24,13 @@ public class StudentServiceImpl implements StudentService{
 			em.getTransaction().begin();
 			Student s = new Student();
 			StudentClass sc = em.find(StudentClass.class, student.getStudentClass().getClassID());
-			User user = em.find(User.class, student.getUser().getUserId());
-			s.setClassSpeaker(student.getClassSpeaker());
+			User user = new User();
+			user.setFirstName(student.getUser().getFirstname());
+			user.setLastName(student.getUser().getLastname());
+			
+			user.setPassword(student.getUser().getPasswort());
+			user.seteMail(student.getUser().getEmail());
+			s.setClassSpeaker(false);
 			s.setKarma(0);
 			s.setStudentClass(sc);
 			s.setUser(user);
