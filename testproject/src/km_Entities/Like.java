@@ -5,8 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
-@Entity(name="Likes")
+//@Entity(name="Likes")
 //@IdClass(LikeIdClass.class)
 public class Like{
 	@Id
