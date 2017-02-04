@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-@Entity
+@Entity(name = "users")
 public class User{
 	@Id
 	@GeneratedValue
@@ -23,6 +23,14 @@ public class User{
 	@OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
 	private List<Notification> notifications;
 	
+public User(String firstName, String lastName, String eMail, Date lastLogin, String password) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.eMail = eMail;
+		this.lastLogin = lastLogin;
+		this.password = password;
+	}
 public int getUserID() {
 		return userID;
 	}

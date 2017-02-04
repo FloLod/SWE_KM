@@ -24,7 +24,7 @@ public class ContentView {
 		this.created = cont.getCreated();
 		this.changed = cont.getCanged();
 		this.contentID = cont.getContentID();
-		this.likes = cont.getLikes().size();
+//		this.likes = cont.getLikes().size();
 
 		this.contentTypeID = conttype.getContentTypeID();
 		this.contentTypeName = conttype.getName();

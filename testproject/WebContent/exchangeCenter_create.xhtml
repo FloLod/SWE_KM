@@ -13,14 +13,7 @@
 </h:head>
 <ui:composition template="/index.xhtml">
 	<ui:define name="contentdiv">
-		<h:form id="loginForm">
-	  		<div class="logindiv"> <h:graphicImage value="/resources/img/kmct.png"></h:graphicImage> </div>
-	  		<div class="logindiv"> <h:inputText value="#{loginHandler.email}" validator="#{loginHandler.validateEmail}" label="Email" required="true"/></div>
-	  		<div class="logindiv"> <h:inputSecret value="#{loginHandler.password}" validator="#{loginHandler.validatePassword}" label="Passwort" required="true"/></div>
-	  		<div class="logindiv"> <h:commandButton value="Login" action="#{loginHandler.login}"/> </div>
-  		</h:form>
 	</ui:define>
 </ui:composition>
 
 </html>
-

@@ -30,12 +30,23 @@ public class Student{
 	private List<Content> contents;
 	@OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
 	private List<StudentAppointment> appointments;
-	
+//	@OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+//	private List<Like> likes;
 	public Student(){
 		contents = new ArrayList<>();
 	}
 
 	
+	public Student(int karma, User user, StudentClass studentClass, File companyPicture, boolean classSpeaker) {
+		super();
+		this.karma = karma;
+		this.user = user;
+		this.studentClass = studentClass;
+		this.companyPicture = companyPicture;
+		this.classSpeaker = classSpeaker;
+	}
+
+
 	public boolean isClassSpeaker() {
 		return classSpeaker;
 	}

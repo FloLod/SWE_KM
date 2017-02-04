@@ -26,6 +26,12 @@ public class StudentClass {
 		return classID;
 	}
 
+	public StudentClass(String educationPath, Date year) {
+		super();
+		this.educationPath = educationPath;
+		this.year = year;
+	}
+
 	public void setClassID(int classID) {
 		this.classID = classID;
 	}

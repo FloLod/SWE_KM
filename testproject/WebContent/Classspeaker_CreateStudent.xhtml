@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>#{msg.title}</title>
+</h:head>
+<body>
+	<h:outputStylesheet library="css" name="style.css" />
+  <div class="div1">
+  	
+  	<div>
+    	<ul class="navbar">
+      		<li class="navelem"> <h:graphicImage value="/resources/img/kmc_small.png"></h:graphicImage> </li><!-- Home-Button -->
+      		<li class="navelem"> </li> <!-- Company-Logo -->
+      		<li class="navelem"><a href=""> #{msg.exchangem} </a></li>
+      		<li class="navelem"><a href=""> #{msg.knowledgec} </a></li>
+      		<li class="navelem"><a href=""> #{msg.exchangec} </a></li>
+      		<li class="navelem">  <h:graphicImage value="/resources/img/language_small.png"></h:graphicImage> </li><!-- Language Change  -->
+      	</ul>
+  	</div>  	
+  	
+  		<div id="contentdiv" class="div2">
+		<h:form>
+  	  	<h:panelGrid columns="2">
+		<f:facet name="header">#{msg.studentdata}</f:facet>
+		<h:outputLabel value="#{msg.firstname}" />
+		<h:inputText value="#{studentHandler.student.user.firstname}" />
+		<h:outputLabel value="#{msg.lastname}" />
+		<h:inputText value="#{studentHandler.student.user.lastname}" />
+		<h:outputLabel value="#{msg.email}" />
+		<h:inputText value="#{studentHandler.student.user.email}" />
+		<h:outputLabel value="#{msg.password}" />
+		<h:inputText value="#{studentHandler.student.user.passwort}" />
+		<f:facet name="footer">
+            <h:panelGroup style="display:block; text-align:center">
+               <h:commandButton value="#{msg.create}" action="#{studentHandler.createStudent()}"/>
+            </h:panelGroup>
+         </f:facet>
+  	  	</h:panelGrid>
+		</h:form>
+  	  	
+
+  	  	
+  	  	</div>
+  
+  </div>
+</body> 
+</html>

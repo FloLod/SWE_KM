@@ -27,7 +27,19 @@
   	
   	<div id="contentdiv" class="div2">
   	<!--  Space for thingies!-->
-  
+  	<h:form>
+  	<h:panelGrid columns="2">
+  	<h:outputLabel value="#{msg.heading}" />
+  	<h:inputText value="#{knowledgeCenterHandler.question.text.heading}" />
+  	<h:outputLabel value="#{msg.text}" />
+  	<h:inputTextarea value="#{knowledgeCenterHandler.question.text.text}" />
+  	<f:facet name="footer">
+            <h:panelGroup style="display:block; text-align:center">
+               <h:commandButton value="#{msg.create}" action="#{knowledgeCenterHandler.createQuestion()}"/>
+            </h:panelGroup>
+         </f:facet>
+  	</h:panelGrid>
+  	</h:form>
   	</div>
   
   </div>

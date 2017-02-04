@@ -12,9 +12,9 @@ public class Notification{
 	@Id
 	@GeneratedValue
 	private int notificationID;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private User student;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private NotificationType notificationType;
 	@OneToOne(cascade = CascadeType.ALL)
 	private Text text;

@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-@Entity
+@Entity(name ="admins")
 public class Admin{
 	@Id
 	@GeneratedValue
@@ -15,6 +15,11 @@ public class Admin{
 	private User user;
 	
 	public Admin(){}
+
+	public Admin(User user) {
+		super();
+		this.user = user;
+	}
 
 	public int getAdminID() {
 		return adminID;

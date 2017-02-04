@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import km_Entities.Activity;
@@ -14,6 +15,8 @@ import km_Entities.Content;
 import km_Entities.EducationDiary;
 import km_Entities.EducationDiaryDay;
 import km_Entities.EducationDiaryList;
+import km_Entities.StudentClass;
+import km_Entities.User;
 import km_Views.ClassView;
 import km_Views.EducationDiaryDayView;
 import km_Views.EducationDiaryListView;
@@ -193,10 +196,29 @@ public class ExchangeCenterServiceImpl implements ExchangeCenterService {
 	@Override
 	public EducationDiaryListView getEducationDiaries(ClassView cv) {
 		// TODO Auto-generated method stub
-		return new EducationDiaryListView(EntityManagerFactoryService.getEntityManagerFactory().createEntityManager()
-				.createQuery("from km_Entities.EducationDiaryList where studentClass = " + cv.getClassID(),
-						EducationDiaryList.class)
-				.getSingleResult());
+		EducationDiaryList diarylist = null;
+		StudentClass theclass = new StudentClass();
+		theclass.setClassID(cv.getClassID());
+		theclass.setEducationPath(cv.getEducationPath());
+		theclass.setYear(cv.getYear());
+		
+		EntityManager em = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager();
+		em.getTransaction().begin();
+		Query q1 = em.createQuery("from " + EducationDiaryList.class.getName() + " where studentClass = :class");
+		q1.setParameter("class", theclass);
+
+		Object result = null;
+		try{
+			result = q1.getSingleResult();
+			diarylist = (EducationDiaryList) result;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		em.close();
+		
+		
+		return new EducationDiaryListView(diarylist);
 	}
 
 	@Override

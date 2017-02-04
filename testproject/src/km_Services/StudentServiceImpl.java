@@ -5,10 +5,11 @@ import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
-
 import km_Entities.Student;
 import km_Entities.StudentClass;
 import km_Entities.User;
+//github.com/FloLod/SWE_KM
+
 import km_Views.StudentView;
 import km_Views.UserView;
 
@@ -27,8 +28,13 @@ public class StudentServiceImpl implements StudentService{
 			em.getTransaction().begin();
 			Student s = new Student();
 			StudentClass sc = em.find(StudentClass.class, student.getStudentClass().getClassID());
-			User user = em.find(User.class, student.getUser().getUserId());
-			s.setClassSpeaker(student.getClassSpeaker());
+			User user = new User();
+			user.setFirstName(student.getUser().getFirstname());
+			user.setLastName(student.getUser().getLastname());
+			
+			user.setPassword(student.getUser().getPasswort());
+			user.seteMail(student.getUser().getEmail());
+			s.setClassSpeaker(false);
 			s.setKarma(0);
 			s.setStudentClass(sc);
 			s.setUser(user);

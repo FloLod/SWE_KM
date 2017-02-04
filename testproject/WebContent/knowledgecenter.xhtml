@@ -26,8 +26,23 @@
   	</div>
   	
   	<div id="contentdiv" class="div2">
-  	<!--  Space for thingies!-->
-  
+  	<h:form>
+  	<h:commandButton action="knowledgecenter_create.xhtml" value="#{msg.ask}" />
+  	<h:dataTable value="#{knowledgeCenterHandler.questions}" var="question">
+  	<h:column>
+  	<f:facet name="header">#{msg.heading}</f:facet>
+  	<h:commandLink action="#{knowledgeCenterHandler.selectQuestion(question)}" value="#{question.text.heading}" />
+  	</h:column>
+  	<h:column>
+  	<f:facet name="header">#{msg.creator}</f:facet>
+  	<h:outputText value="#{question.content.creator.user.firstname} #{question.content.creator.user.lastname}" />
+  	</h:column>
+  	<h:column>
+  	<f:facet name="header">#{msg.created}</f:facet>
+  	#{question.content.created}
+  	</h:column>
+  	</h:dataTable>
+  	</h:form>
   	</div>
   
   </div>
