@@ -1,6 +1,7 @@
 package km_Handler;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -24,6 +25,15 @@ public class KlassenHandler implements Serializable{
 	List<ClassView> classes;
 	List<StudentView> students;
 	private StudentView classspeaker;
+	private int date;
+
+	public int getDate() {
+		return date;
+	}
+
+	public void setDate(int date) {
+		this.date = date;
+	}
 
 	public StudentView getClassspeaker() {
 		return classspeaker;
@@ -47,6 +57,9 @@ public class KlassenHandler implements Serializable{
 	public String createClass() {
 		
 		try{
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+			studentClass.setYear(sdf.parse(String.valueOf(date)));
 			serviceLocator.getClassService().addClass(studentClass);			
 		}catch (Exception e) {
 			return "retry";

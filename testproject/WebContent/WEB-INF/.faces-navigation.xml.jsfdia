@@ -25,7 +25,7 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#Login.xhtml" PATH="/Login.xhtml"
-  SHAPE="128,264,50,57" model-entity="JSFProcessGroup">
+  SHAPE="128,336,50,57" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#Login.xhtml:0" NAME="item"
    PATH="/Login.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="admin::#Admin_Overview.xhtml" NAME="output"
@@ -35,7 +35,7 @@
     PATH="/index.xhtml" TARGET="rules:#index.xhtml" TITLE="student" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,161,0,0" model-entity="JSFProcessGroup">
+ <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="24,232,53,58" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
     ID="ToExchangeCenter::#exchangeCenter_Overview.xhtml" NAME="output"
@@ -54,7 +54,7 @@
   PATH="/Admin_Select.xhtml" SHAPE="336,136,50,25"
   model-entity="JSFProcessGroup" persistent="true"/>
  <PROCESS-ITEM NAME="rules:#Admin_AddClassspeaker.xhtml"
-  PATH="/Admin_AddClassspeaker.xhtml" SHAPE="32,88,50,57" model-entity="JSFProcessGroup">
+  PATH="/Admin_AddClassspeaker.xhtml" SHAPE="24,144,50,57" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#Admin_AddClassspeaker.xhtml:0" NAME="item"
    PATH="/Admin_AddClassspeaker.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="success::#Admin_Select.xhtml" NAME="output"

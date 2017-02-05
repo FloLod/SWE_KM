@@ -33,9 +33,13 @@ public class KnowledgeCenterHandler {
 	public void overview(){
 		try{
 			questions = serviceLocator.getKnowledgeCenterService().showAllQuestions();
-			
+			this.reply = new ReplyView();
+			reply.setText(new TextView());
+			question = new QuestionView();
+			question.setText(new TextView());
 		}catch (Exception e) {
 			//return "retry";
+			e.printStackTrace();
 		}
 		
 		//return "success";
@@ -46,6 +50,7 @@ public class KnowledgeCenterHandler {
 			replys = serviceLocator.getKnowledgeCenterService().showQA(question.getQuestionID());
 		}catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 			return "retry";
 		}
 		return "success";}
@@ -65,6 +70,7 @@ public class KnowledgeCenterHandler {
 			serviceLocator.getKnowledgeCenterService().answerQuestion(question.getQuestionID(), reply);
 		}catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 			return "retry";
 		}
 		return "success";}

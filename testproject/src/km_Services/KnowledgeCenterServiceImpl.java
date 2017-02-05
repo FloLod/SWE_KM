@@ -41,12 +41,12 @@ public class KnowledgeCenterServiceImpl implements KnowledgeCenterService {
 		EntityManager em = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager();
 		em.getTransaction().begin();
 		Question q = new Question();
-		Category c = em.find(Category.class, question.getCategoryID());
+		Category c = em.find(Category.class, 1);
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
 		StudentView student = (StudentView) sessionMap.get("student");
 		Student s = em.find(Student.class, student.getStudentID());
-		ContentType cot = em.find(ContentType.class, question.getContent().getContentID());
+		ContentType cot = em.find(ContentType.class, 4);
 		Content co = new Content(s, cot, new Date(), new Date());
 		Text t = new Text(question.getText().getHeading(), question.getText().getText());
 		
@@ -129,11 +129,13 @@ public class KnowledgeCenterServiceImpl implements KnowledgeCenterService {
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
 		StudentView student = (StudentView) sessionMap.get("student");
 		Student s = em.find(Student.class, student.getStudentID());
-		ContentType ct = em.find(ContentType.class, reply.getContent().getContentTypeID());
+		ContentType ct = em.find(ContentType.class, 5);
 		Content c = new Content(s, ct, new Date(), new Date());
 		r.setQuestion(q);
 		r.setText(t);
 		r.setContent(c);
+		em.persist(c);
+		em.persist(t);
 		em.persist(r);
 		em.getTransaction().commit();
 		em.close();

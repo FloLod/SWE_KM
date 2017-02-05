@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -18,25 +19,36 @@ public class ClassServiceImpl implements ClassService {
 	@Override
 	public List<StudentView> getClass(int classID) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		EntityManager em = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager();
+		
+		TypedQuery<Student> query = em.createQuery("from km_Entities.Student s where s.studentClass.classID=:class", Student.class);
+		query.setParameter("class", classID);
+		List<Student> result = query.getResultList();
+		List<StudentView> retList = new ArrayList<StudentView>();
+		
+		for (Student s  : result){
+			retList.add(new StudentView(s));
+		}
+		
+		
+		
+		return retList;
 	}
 
 	@Override
 	public void addClass(ClassView studentClass) throws IllegalArgumentException {
 		EntityManager em = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager();
 
-		StudentClass check = em.find(StudentClass.class, studentClass.getClassID());
-		if (check != null) {
+	
+
 			em.getTransaction().begin();
 			StudentClass c = new StudentClass();
 			c.setEducationPath(studentClass.getEducationPath());
 			c.setYear(studentClass.getYear());
 			em.persist(c);
 			em.getTransaction().commit();
-		} else {
-			em.close();
-			throw new IllegalArgumentException();
-		}
+		
 		em.close();
 	}
 

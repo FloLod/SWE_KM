@@ -10,6 +10,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>#{msg.title}</title>
+	#{studentHandler.overviewStudents()}
 </h:head>
 
 <body>
@@ -29,8 +30,8 @@
   	
   		<div id="contentdiv" class="div2">
 	<h:form>
-		<h:commandButton action="ClassSpeaker_CreateStudent.xhtml"
-			value="#{msg.ClassSpeaker_create}" />
+		<h:commandButton action="Classspeaker_CreateStudent.xhtml"
+			value="#{msg.create}" />
 	</h:form>
 
 	<h:dataTable value="#{studentHandler.students}" var="student">

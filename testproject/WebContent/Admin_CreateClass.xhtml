@@ -20,10 +20,6 @@
   	<div>
     	<ul class="navbar">
       		<li class="navelem"> <h:graphicImage value="/resources/img/kmc_small.png"></h:graphicImage> </li><!-- Home-Button -->
-      		<li class="navelem"> </li> <!-- Company-Logo -->
-      		<li class="navelem"><a href=""> #{msg.exchangem} </a></li>
-      		<li class="navelem"><a href=""> #{msg.knowledgec} </a></li>
-      		<li class="navelem"><a href=""> #{msg.exchangec} </a></li>
       		<li class="navelem">  <h:graphicImage value="/resources/img/language_small.png"></h:graphicImage> </li><!-- Language Change  -->
       	</ul>
   	</div>  
@@ -33,7 +29,7 @@
 <h:outputText value="#{msg.EduPath}" />
 <h:inputText value="#{klassenHandler.studentClass.educationPath}" /><br/>
 <h:outputText value="#{msg.Year}" />
-<h:inputText value="#{klassenHandler.studentClass.year}" /><br/>
+<h:inputText value="#{klassenHandler.date}" /><br/>
 
 <h:commandButton action="#{klassenHandler.createClass}" value="#{msg.create}"></h:commandButton>
 </h:form>

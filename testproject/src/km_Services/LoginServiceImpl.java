@@ -6,8 +6,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
+import km_Entities.Admin;
 import km_Entities.User;
 import km_Views.UserView;
 
@@ -58,5 +61,24 @@ public class LoginServiceImpl implements LoginService {
 
 		System.out.println("in getlogin passwörter stimmen nicht");
 		return null;
+	}
+
+	@Override
+	public Boolean getAdmin(UserView user) {
+		EntityManager em = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager();
+		
+		TypedQuery<Admin> query = em.createQuery("from km_Entities.Admin a where a.user.userID=:user", Admin.class);
+		
+		query.setParameter("user", user.getUserId());
+		try{
+			Admin a = query.getSingleResult();
+			if (a != null) return true;
+		
+		}catch (NoResultException e) {
+			// TODO: handle exception
+			return false;
+		}
+		
+		return true;
 	}
 }

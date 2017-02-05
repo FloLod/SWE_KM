@@ -26,17 +26,18 @@
   	</div>
   	
   	<div id="contentdiv" class="div2">
-  	
+  	<h:form>
   	<h:panelGrid columns="2">
   	<h:outputLabel value="#{msg.heading}" />
   	<h:inputText value="#{knowledgeCenterHandler.reply.text.heading}" />
   	<h:outputLabel value="#{msg.reply}" />
-  	<h:inputText value="#{knowledgeCenterHandler.reply.text.heading}" />
+  	<h:inputText value="#{knowledgeCenterHandler.reply.text.text}" />
   	</h:panelGrid>
   	
   	
   	<h:commandButton action="#{knowledgeCenterHandler.answerQuestion()}" value="#{msg.answer}" />
   	<h:commandButton action="knowledge_select.xhtml" value="#{msg.abort}" />
+  	</h:form>
   	</div>
   
   </div>
