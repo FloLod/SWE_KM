@@ -39,8 +39,8 @@ public class LoginHandler implements Serializable{
 	private static final long serialVersionUID = 145257865L;
 	private String email;
 	private String password;
-	private UserView user;	//deleted get/set for security reasons
-	private StudentView student; //no get/set for security reasons
+	private UserView user;
+	private StudentView student; 
 	
 	private boolean loggedIn;
 

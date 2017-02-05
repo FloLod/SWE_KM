@@ -13,5 +13,122 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#Admin_Overview.xhtml"
-  PATH="/Admin_Overview.xhtml" SHAPE="256,33,0,0" model-entity="JSFProcessGroup"/>
+  PATH="/Admin_Overview.xhtml" SHAPE="256,40,50,57" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#Admin_Overview.xhtml:0" NAME="item"
+   PATH="/Admin_Overview.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#Admin_Select.xhtml" NAME="output"
+    PATH="/Admin_Select.xhtml" TARGET="rules:#Admin_Select.xhtml"
+    TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="retry::#Admin_Overview.xhtml" NAME="output1"
+    PATH="/Admin_Overview.xhtml" TARGET="rules:#Admin_Overview.xhtml"
+    TITLE="retry" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#Login.xhtml" PATH="/Login.xhtml"
+  SHAPE="128,264,50,57" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#Login.xhtml:0" NAME="item"
+   PATH="/Login.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="admin::#Admin_Overview.xhtml" NAME="output"
+    PATH="/Admin_Overview.xhtml" TARGET="rules:#Admin_Overview.xhtml"
+    TITLE="admin" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="student::#index.xhtml" NAME="output1"
+    PATH="/index.xhtml" TARGET="rules:#index.xhtml" TITLE="student" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,161,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="ToExchangeCenter::#exchangeCenter_Overview.xhtml" NAME="output"
+    PATH="/exchangeCenter_Overview.xhtml"
+    TARGET="rules:#exchangeCenter_Overview.xhtml"
+    TITLE="ToExchangeCenter" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="loginfailed::#Login.xhtml" NAME="output1"
+    PATH="/Login.xhtml" TARGET="rules:#Login.xhtml" TITLE="loginfailed" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#index.xhtml" PATH="/index.xhtml"
+  SHAPE="392,304,50,25" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#exchangeCenter_Overview.xhtml"
+  PATH="/exchangeCenter_Overview.xhtml" SHAPE="320,216,50,25" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Admin_Select.xhtml"
+  PATH="/Admin_Select.xhtml" SHAPE="336,136,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#Admin_AddClassspeaker.xhtml"
+  PATH="/Admin_AddClassspeaker.xhtml" SHAPE="32,88,50,57" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#Admin_AddClassspeaker.xhtml:0" NAME="item"
+   PATH="/Admin_AddClassspeaker.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#Admin_Select.xhtml" NAME="output"
+    PATH="/Admin_Select.xhtml" TARGET="rules:#Admin_Select.xhtml"
+    TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="retry::#Admin_AddClassspeaker.xhtml"
+    NAME="output1" PATH="/Admin_AddClassspeaker.xhtml"
+    TARGET="rules:#Admin_AddClassspeaker.xhtml" TITLE="retry" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#Admin_CreateClass.xhtml"
+  PATH="/Admin_CreateClass.xhtml" SHAPE="624,288,50,57" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#Admin_CreateClass.xhtml:0" NAME="item"
+   PATH="/Admin_CreateClass.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#Admin_Overview.xhtml"
+    NAME="output" PATH="/Admin_Overview.xhtml"
+    TARGET="rules:#Admin_Overview.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="retry::#Admin_CreateClass.xhtml"
+    NAME="output1" PATH="/Admin_CreateClass.xhtml"
+    TARGET="rules:#Admin_CreateClass.xhtml" TITLE="retry" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ClassSpeaker_Overview.xhtml"
+  PATH="/ClassSpeaker_Overview.xhtml" SHAPE="192,472,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#Classspeaker_CreateStudent.xhtml"
+  PATH="/Classspeaker_CreateStudent.xhtml" SHAPE="48,448,50,57" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#Classspeaker_CreateStudent.xhtml:0"
+   NAME="item" PATH="/Classspeaker_CreateStudent.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#ClassSpeaker_Overview.xhtml"
+    NAME="output" PATH="/ClassSpeaker_Overview.xhtml"
+    TARGET="rules:#ClassSpeaker_Overview.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="retry::#Classspeaker_CreateStudent.xhtml"
+    NAME="output1" PATH="/Classspeaker_CreateStudent.xhtml"
+    TARGET="rules:#Classspeaker_CreateStudent.xhtml" TITLE="retry" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#knowledgecenter.xhtml"
+  PATH="/knowledgecenter.xhtml" SHAPE="40,568,50,25" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#knowledgecenter.xhtml:0" NAME="item"
+   PATH="/knowledgecenter.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#knowledge_select.xhtml"
+    NAME="output" PATH="/knowledge_select.xhtml"
+    TARGET="rules:#knowledge_select.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="retry::#knowledgecenter.xhtml"
+    NAME="output1" PATH="/knowledgecenter.xhtml"
+    TARGET="rules:#knowledgecenter.xhtml" TITLE="retry" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#knowledge_select.xhtml"
+  PATH="/knowledge_select.xhtml" SHAPE="288,552,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#knowledgecenter_create.xhtml"
+  PATH="/knowledgecenter_create.xhtml" SHAPE="488,568,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#knowledgecenter_create.xhtml:0" NAME="item"
+   PATH="/knowledgecenter_create.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="retry::#knowledgecenter_create.xhtml"
+    NAME="output1" PATH="/knowledgecenter_create.xhtml"
+    TARGET="rules:#knowledgecenter_create.xhtml" TITLE="retry" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="success::#knowledgecenter.xhtml"
+    NAME="output" PATH="/knowledgecenter.xhtml"
+    TARGET="rules:#knowledgecenter.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#knowledgecenter_reply.xhtml"
+  PATH="/knowledgecenter_reply.xhtml" SHAPE="796,598,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#knowledgecenter_reply.xhtml:0" NAME="item"
+   PATH="/knowledgecenter_reply.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#knowledge_select.xhtml"
+    NAME="output" PATH="/knowledge_select.xhtml"
+    TARGET="rules:#knowledge_select.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="retry::#knowledgecenter_reply.xhtml"
+    NAME="output1" PATH="/knowledgecenter_reply.xhtml"
+    TARGET="rules:#knowledgecenter_reply.xhtml" TITLE="retry" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>

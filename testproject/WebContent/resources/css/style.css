@@ -101,6 +101,10 @@ button {
 	
 }
 
+.edutable{
+	float: left;
+}
+
 body {
 	margin: 0;
 	height: 100%;

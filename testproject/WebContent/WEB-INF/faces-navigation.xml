@@ -1,47 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
-	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
-
-	<navigation-rule>
-		<description>Login</description>
-		<from-view-id>/Index_Moritz.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>success</from-outcome>
-			<to-view-id>/Admin_Overview.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>retry</from-outcome>
-			<to-view-id>/Index_Moritz.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	
-	<navigation-rule>
-		<description>Login</description>
-		<from-view-id>/Login.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>admin</from-outcome>
-			<to-view-id>/Admin_Overview.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>student</from-outcome>
-			<to-view-id>/index.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	
-	
-	
-	<navigation-rule>
-		<description>IndexNavbar</description>
-		<from-view-id>*</from-view-id>
-		<navigation-case>
-			<from-outcome>ToExchangeCenter</from-outcome>
-			<to-view-id>/exchangeCenter_Overview.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>loginfailed</from-outcome>
-			<to-view-id>/Login.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	</faces-config>
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+ <navigation-rule>
+  <description>Login</description>
+  <from-view-id>/Index_Moritz.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/Admin_Overview.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>retry</from-outcome>
+   <to-view-id>/Index_Moritz.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ 
+ <navigation-rule>
+  <description>Login</description>
+  <from-view-id>/Login.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>admin</from-outcome>
+   <to-view-id>/Admin_Overview.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>student</from-outcome>
+   <to-view-id>/index.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ 
+ <navigation-rule>
+  <description>IndexNavbar</description>
+  <from-view-id>*</from-view-id>
+  <navigation-case>
+   <from-outcome>ToExchangeCenter</from-outcome>
+   <to-view-id>/exchangeCenter_Overview.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>loginfailed</from-outcome>
+   <to-view-id>/Login.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ 
+ <navigation-rule>
+  <from-view-id>/Admin_Overview.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/Admin_Select.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>retry</from-outcome>
+   <to-view-id>/Admin_Overview.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ <navigation-rule>
+ 	<description>Show Diary for week</description>
+ 	<from-view-id>/exchangeCenter_Overview.xhtml</from-view-id>
+ 	<navigation-case>
+ 		<from-outcome>ToShowDiary</from-outcome>
+ 		<to-view-id>/exchangeCenter_show.xhtml</to-view-id>
+ 	</navigation-case>
+ </navigation-rule>
+ 
+ 
+ <navigation-rule>
+  <from-view-id>/Admin_AddClassspeaker.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/Admin_Select.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>retry</from-outcome>
+   <to-view-id>/Admin_AddClassspeaker.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ 
+ <navigation-rule>
+  <from-view-id>/Admin_CreateClass.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/Admin_Overview.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>retry</from-outcome>
+   <to-view-id>/Admin_CreateClass.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ 
+ <navigation-rule>
+  <from-view-id>/Classspeaker_CreateStudent.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/ClassSpeaker_Overview.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>retry</from-outcome>
+   <to-view-id>/Classspeaker_CreateStudent.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ 
+ <navigation-rule>
+  <from-view-id>/knowledgecenter.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/knowledge_select.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>retry</from-outcome>
+   <to-view-id>/knowledgecenter.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ 
+ <navigation-rule>
+  <from-view-id>/knowledgecenter_create.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>retry</from-outcome>
+   <to-view-id>/knowledgecenter_create.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/knowledgecenter.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ 
+ <navigation-rule>
+  <from-view-id>/knowledgecenter_reply.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/knowledge_select.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>retry</from-outcome>
+   <to-view-id>/knowledgecenter_reply.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+</faces-config>

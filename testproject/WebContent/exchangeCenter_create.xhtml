@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -13,19 +14,7 @@
 </h:head>
 <ui:composition template="/index.xhtml">
 	<ui:define name="contentdiv">
-  	<h:form>
-	  	<h:panelGrid columns="2">
-	  	<h:outputLabel value="#{msg.heading}" />
-	  	<h:inputText value="#{knowledgeCenterHandler.question.text.heading}" />
-	  	<h:outputLabel value="#{msg.text}" />
-	  	<h:inputTextarea value="#{knowledgeCenterHandler.question.text.text}" />
-	  	<f:facet name="footer">
-	            <h:panelGroup style="display:block; text-align:center">
-	               <h:commandButton value="#{msg.create}" action="#{knowledgeCenterHandler.createQuestion()}"/>
-	            </h:panelGroup>
-	         </f:facet>
-	  	</h:panelGrid>
-  	</h:form>
+		
 	</ui:define>
 </ui:composition>
 

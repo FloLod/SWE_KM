@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
+import km_Entities.Admin;
 import km_Entities.User;
 import km_Views.UserView;
 
@@ -18,45 +19,40 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	@PostConstruct
 	public UserView getLogin(String email, String pw) {
-		// TODO Auto-generated method stub
+		Admin admin = null;
 		EntityManagerFactory emf = EntityManagerFactoryService.getEntityManagerFactory();
-		if(emf == null){
-			System.out.println("EMF IST NULL IN GET LOGIN");
-		}
+
 		EntityManager em = emf.createEntityManager();
-		if(em == null){
-			System.out.println("EM IST NULL IN GET LOGIN");
-		}
-		System.out.println("in getlogin");
 		em.getTransaction().begin();
 		Query q = em.createQuery("from "+User.class.getName()+" where email = :email");
 		q.setParameter("email", email);
-		System.out.println("in getlogin query:" + q.toString());
+		
 		Object result = null;
 		User u = null;
 		try{
 			result = q.getSingleResult();
 			u = (User) result;
-			System.out.println("in getlogin user name"+u.getFirstName()+u.getLastName()+"Password: "+u.getPassword()+" Email:"+u.geteMail());
 		}catch(Exception e){
 			e.printStackTrace();
-
-			System.out.println("in getlogin gescheitert bei unique result");
+		}
+		try
+		{
+			Query q1 = em.createQuery("from " + Admin.class.getName() + " where user_userID = :user_userID");
+			q1.setParameter("user_userID", u);
+			
+			admin = (Admin) q1.getSingleResult();
+		}catch (Exception e) {
+		
 		}
 		em.close();
+		
 		UserView uv = new UserView(u);
-
-		System.out.println("in getlogin userview geladen");
-		
-
-		System.out.println("in getlogin Userview"+uv.getFirstname()+uv.getLastname()+" Password:"+uv.getPasswort()+ " Email:"+uv.getEmail());
-		
+		if(null != admin)
+			uv.setAdmin(true);
 		
 		if(uv.getPasswort().contentEquals(pw)){
 			return uv;
 		}
-
-		System.out.println("in getlogin passwörter stimmen nicht");
 		return null;
 	}
 }

@@ -93,7 +93,8 @@ public class StudentServiceImpl implements StudentService{
 
 		return s;
 	}
-	@Override
+	
+	@Override	
 	public Student findStudentByUser(UserView user) {
 		// TODO Auto-generated method stub
 		EntityManagerFactory emf = EntityManagerFactoryService.getEntityManagerFactory();
@@ -109,7 +110,6 @@ public class StudentServiceImpl implements StudentService{
 		try{
 			result = q.getSingleResult();
 			u = (User) result;
-			System.out.println("in getlogin user name"+u.getFirstName()+u.getLastName()+"Password: "+u.getPassword()+" Email:"+u.geteMail());
 		}catch(Exception e){
 			e.printStackTrace();
 
