@@ -47,8 +47,8 @@ public class ExchangeCenterHandler implements Serializable{
 		return "loginfailed";
 	}
 
-	public String selectEducationDiary(int index) {
-		this.selectedDiary = this.getDiaries().getEducationDiaryList().get(index);
+	public String selectEducationDiary(EducationDiaryView diary) {
+		this.selectedDiary = diary;
 		return "ToShowDiary";
 	}
 
@@ -75,13 +75,15 @@ public class ExchangeCenterHandler implements Serializable{
 		return "ToDiaryCreation";
 	}
 
-	public void pdfActionListener(final ActionEvent event) {
+	public String pdfdownload() {
 		try {
-			serviceLocator.getExchangeCenterService().downloadEducationDiary(getStudent(), getSelectedDiary(),
+			System.out.println("start");
+			serviceLocator.getExchangeCenterService().downloadEducationDiary(getStudent(), selectedDiary,
 					filepath);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		return "";
 
 	}
 

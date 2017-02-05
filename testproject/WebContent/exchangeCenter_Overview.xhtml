@@ -15,22 +15,26 @@
 	<ui:define name="contentdiv">
 		<h:form>
 			<h:dataTable var="diary" value="#{exchangeCenterHandler.diaries.educationDiaryList}">
-				<h:column headerText="#{msg.StartDate}">
+				<h:column headerText="">
+					<f:facet name="header">#{msg.StartDate}</f:facet>
 					<h:outputText value="#{diary.startDate}"/>
 				</h:column>
 			
-				<h:column headerText="#{msg.endDate}">
+				<h:column headerText="">
+					<f:facet name="header">#{msg.endDate}</f:facet>
 					<h:outputText value="#{diary.endDate}"/>
 				</h:column>
 				
-				<h:column headerText="#{msg.StartDate}">
+				<h:column headerText="">
+					<f:facet name="header">#{msg.week}</f:facet>
 					<h:outputText value="#{diary.week}"/>
 				</h:column>
 				
-				<h:column>
-					<h:outputLink onclick="/exchangeCenter_show.xhtml">Show Diary</h:outputLink>
+				<h:column headerText="">
+					<h:commandLink action="#{exchangeCenterHandler.selectEducationDiary(diary)}">Show Diary</h:commandLink>
 				</h:column>
 			</h:dataTable>
+			<h:button value="#{msg.newDiaryBtn}"></h:button>
 		</h:form>
 	</ui:define>
 </ui:composition>

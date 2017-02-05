@@ -19,14 +19,7 @@ public class UserView{
 	}
 	
 	public UserView(User user){
-		isAdmin = false;				//ist falsch, jeder User kann auch Admin sein, bitte überarbeiten!
 		this.setFromUser(user);
-	}
-
-	public UserView(Admin user){
-		this.isAdmin = true;
-		this.setFromUser(user.getUser());
-		
 	}
 	
 	public UserView(String firstname, String lastname, String email, Date lastlogin, String passwort) {
@@ -47,8 +40,13 @@ public class UserView{
 		this.passwort = user.getPassword();
 	}
 	
+
 	public boolean isAdmin() {
 		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 
 	public int getUserId() {

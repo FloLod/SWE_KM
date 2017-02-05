@@ -2,10 +2,14 @@ package km_Services;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
@@ -35,8 +39,23 @@ public class ExchangeCenterServiceImpl implements ExchangeCenterService {
 	public void downloadEducationDiary(StudentView sv, EducationDiaryView edv, String filePath)
 			throws FileNotFoundException {
 		// TODO Auto-generated method stub
+		
+		FacesContext fc = FacesContext.getCurrentInstance();
+	    ExternalContext ec = fc.getExternalContext();
+	    
+	    ec.responseReset(); 
+		ec.setResponseContentType("application/pdf");
+		ec.setResponseHeader("Content-Disposition", "attachment;filename=Reservierung.pdf");
+	    
+	    try {
+	    	ec.getResponseOutputStream().flush();
+			OutputStream output = ec.getResponseOutputStream();
 
-		pdf.createPDF(edv, new FileOutputStream(filePath));
+			pdf.createPDF(edv, output);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override

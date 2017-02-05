@@ -36,15 +36,14 @@ public class PDFServiceImpl implements PDFService{
 	
 	public void createPDF(EducationDiaryView diary, OutputStream fo) {
 		try {
-			//TODO: later get student form session
+			System.out.println("create pdf");
 			StudentView student = new StudentView();
-			student = (StudentView) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(student);
+			student = (StudentView) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("student");
 			Document document = new Document();
 			PdfWriter.getInstance(document, fo);
 			
 			document.open();
 	
-			//TODO: image File auf serverspeicherort
 			try{
 			Image logo = Image.getInstance(student.getCompanyPicture().getFileName());
 			logo.setAbsolutePosition(10, document.getPageSize().getHeight() -50);
@@ -71,6 +70,7 @@ public class PDFServiceImpl implements PDFService{
 			//footer for signing
 			document.add(createFooter());
 			document.close();
+			System.out.println("done");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -303,6 +303,7 @@ public class PDFServiceImpl implements PDFService{
 	}
 	
 	private int countYear(EducationDiaryView diary){
+		try{
 		int eduyear = 0;
 		int syear = diary.getStudentClass().getYear().getYear();
 		
@@ -315,6 +316,10 @@ public class PDFServiceImpl implements PDFService{
 			eduyear++;
 		}
 		return eduyear;
+	
+		}
+		catch(Exception e){
+			return 0;
+		}
 	}
-
 }

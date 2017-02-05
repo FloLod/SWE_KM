@@ -10,26 +10,83 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>#{msg.title}</title>
 </h:head>
-<body>
-	<h:outputStylesheet library="css" name="style.css" />
-  <div class="div1">
-  	
-  	<div>
-    	<ul class="navbar">
-      		<li class="navelem,home"></li><!-- Home-Button -->
-      		<li class="navelem"> </li> <!-- Company-Logo -->
-      		<li class="navelem"><a href=""> #{msg.exchangem} </a></li>
-      		<li class="navelem"><a href=""> #{msg.knowledgec} </a></li>
-      		<li class="navelem"><a href=""> #{msg.exchangec} </a></li>
-      		<li class="navelem,language"> </li><!-- Language Change  -->
-      	</ul>
-  	</div>
-  	
-  	<div id="contentdiv" class="div2">
-  	<!--  Space for thingies!-->
-  
-  	</div>
-  
-  </div>
-</body> 
+
+<ui:composition template="/index.xhtml">
+	<ui:define name="contentdiv">
+		<h:form>
+			<h:dataTable  var="day" value="#{exchangeCenterHandler.selectedDiary.days}" style="edutable">
+				<h:column>
+					<f:facet name="header">#{msg.Montag}</f:facet>
+					<h:dataTable var="action" value="#{day.activityViews}">
+						<h:column>
+							<f:facet name="header">#{msg.Tätigkeit}</f:facet>
+							#{action.description}
+						</h:column>
+						<h:column>
+							<f:facet name="header">#{msg.Dauer}</f:facet>
+							#{action.duration}
+						</h:column>
+					</h:dataTable>
+				</h:column>
+			
+				<h:column headerText="">
+					<f:facet name="header">#{msg.Dienstag}</f:facet>
+					<h:dataTable var="action" value="#{day.activityViews}">
+						<h:column>
+							<f:facet name="header">#{msg.Tätigkeit}</f:facet>
+							#{action.description}
+						</h:column>
+						<h:column>
+							<f:facet name="header">#{msg.Dauer}</f:facet>
+							#{action.duration}
+						</h:column>
+					</h:dataTable>
+				</h:column>
+				
+				<h:column headerText="">
+					<f:facet name="header">#{msg.Mittwoch}</f:facet>
+					<h:dataTable var="action" value="#{day.activityViews}">
+						<h:column>
+							<f:facet name="header">#{msg.Tätigkeit}</f:facet>
+							#{action.description}
+						</h:column>
+						<h:column>
+							<f:facet name="header">#{msg.Dauer}</f:facet>
+							#{action.duration}
+						</h:column>
+					</h:dataTable>
+				</h:column>
+				
+				<h:column headerText="">
+					<f:facet name="header">#{msg.Donnerstag}</f:facet>
+					<h:dataTable var="action" value="#{day.activityViews}">
+						<h:column>
+							<f:facet name="header">#{msg.Tätigkeit}</f:facet>
+							#{action.description}
+						</h:column>
+						<h:column>
+							<f:facet name="header">#{msg.Dauer}</f:facet>
+							#{action.duration}
+						</h:column>
+					</h:dataTable>
+				</h:column>
+				
+				<h:column headerText="">
+					<f:facet name="header">#{msg.Freitag}</f:facet>
+					<h:dataTable var="action" value="#{day.activityViews}">
+						<h:column>
+							<f:facet name="header">#{msg.Tätigkeit}</f:facet>
+							#{action.description}
+						</h:column>
+						<h:column>
+							<f:facet name="header">#{msg.Dauer}</f:facet>
+							#{action.duration}
+						</h:column>
+					</h:dataTable>
+				</h:column>
+			</h:dataTable>
+			<h:commandButton value="#{msg.drucke}" action="#{exchangeCenterHandler.pdfdownload()}"/>
+		</h:form>
+	</ui:define>
+</ui:composition>
 </html>

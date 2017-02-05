@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.List;
 
 public class StudentView implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int studentID;
 	private int karma;
 	private UserView user;
