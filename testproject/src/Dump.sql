@@ -43,29 +43,29 @@ INSERT INTO `activity` VALUES (1,'tag1',2),(2,'tag2',2),(3,'tag3',2),(4,'tag4',2
 UNLOCK TABLES;
 
 --
--- Table structure for table `admin`
+-- Table structure for table `admins`
 --
 
-DROP TABLE IF EXISTS `admin`;
+DROP TABLE IF EXISTS `admins`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `admin` (
+CREATE TABLE `admins` (
   `adminID` int(11) NOT NULL AUTO_INCREMENT,
   `user_userID` int(11) DEFAULT NULL,
   PRIMARY KEY (`adminID`),
   KEY `FK_4qv1lwx6bmvma70d9jox04t4b` (`user_userID`),
-  CONSTRAINT `FK_4qv1lwx6bmvma70d9jox04t4b` FOREIGN KEY (`user_userID`) REFERENCES `user` (`userID`)
+  CONSTRAINT `FK_4qv1lwx6bmvma70d9jox04t4b` FOREIGN KEY (`user_userID`) REFERENCES `users` (`userID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `admin`
+-- Dumping data for table `admins`
 --
 
-LOCK TABLES `admin` WRITE;
-/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES (1,4);
-/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
+LOCK TABLES `admins` WRITE;
+/*!40000 ALTER TABLE `admins` DISABLE KEYS */;
+INSERT INTO `admins` VALUES (1,4);
+/*!40000 ALTER TABLE `admins` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -390,13 +390,13 @@ INSERT INTO `educationdiarylist_educationdiary` VALUES (1,1);
 UNLOCK TABLES;
 
 --
--- Table structure for table `file`
+-- Table structure for table `files`
 --
 
-DROP TABLE IF EXISTS `file`;
+DROP TABLE IF EXISTS `files`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `file` (
+CREATE TABLE `files` (
   `fileID` int(11) NOT NULL AUTO_INCREMENT,
   `fileName` varchar(255) DEFAULT NULL,
   `content_contentID` int(11) DEFAULT NULL,
@@ -410,13 +410,38 @@ CREATE TABLE `file` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `file`
+-- Dumping data for table `files`
 --
 
-LOCK TABLES `file` WRITE;
-/*!40000 ALTER TABLE `file` DISABLE KEYS */;
-INSERT INTO `file` VALUES (1,'Stundenplan Klasse1',3,2);
-/*!40000 ALTER TABLE `file` ENABLE KEYS */;
+LOCK TABLES `files` WRITE;
+/*!40000 ALTER TABLE `files` DISABLE KEYS */;
+INSERT INTO `files` VALUES (1,'Stundenplan Klasse1',3,2);
+/*!40000 ALTER TABLE `files` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `likes`
+--
+
+DROP TABLE IF EXISTS `likes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `likes` (
+  `likesID` int(11) NOT NULL AUTO_INCREMENT,
+  `student_studentID` int(11) NOT NULL,
+  `content_contentID` int(11) NOT NULL,
+  PRIMARY KEY (`likesID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `likes`
+--
+
+LOCK TABLES `likes` WRITE;
+/*!40000 ALTER TABLE `likes` DISABLE KEYS */;
+INSERT INTO `likes` VALUES (1,1,1);
+/*!40000 ALTER TABLE `likes` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -437,7 +462,7 @@ CREATE TABLE `notification` (
   KEY `FK_5vb6jg2vh7oqc0p0sft2dcgtt` (`text_textID`),
   CONSTRAINT `FK_5vb6jg2vh7oqc0p0sft2dcgtt` FOREIGN KEY (`text_textID`) REFERENCES `text` (`textID`),
   CONSTRAINT `FK_c0iweher512l6s0w5rydisusq` FOREIGN KEY (`notificationType_notificationTypeID`) REFERENCES `notificationtype` (`notificationTypeID`),
-  CONSTRAINT `FK_kpv4w2fa7k6394fd3s01v8k68` FOREIGN KEY (`student_userID`) REFERENCES `user` (`userID`)
+  CONSTRAINT `FK_kpv4w2fa7k6394fd3s01v8k68` FOREIGN KEY (`student_userID`) REFERENCES `users` (`userID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -557,8 +582,8 @@ CREATE TABLE `student` (
   KEY `FK_3cqxj15pv0ym0o4rxs7acvhli` (`companyPicture_fileID`),
   KEY `FK_ki8a4pvvffegbeyppi658pdix` (`studentClass_classID`),
   KEY `FK_5r8celocd77gttrg7wdpkuhhl` (`user_userID`),
-  CONSTRAINT `FK_3cqxj15pv0ym0o4rxs7acvhli` FOREIGN KEY (`companyPicture_fileID`) REFERENCES `file` (`fileID`),
-  CONSTRAINT `FK_5r8celocd77gttrg7wdpkuhhl` FOREIGN KEY (`user_userID`) REFERENCES `user` (`userID`),
+  CONSTRAINT `FK_3cqxj15pv0ym0o4rxs7acvhli` FOREIGN KEY (`companyPicture_fileID`) REFERENCES `files` (`fileID`),
+  CONSTRAINT `FK_5r8celocd77gttrg7wdpkuhhl` FOREIGN KEY (`user_userID`) REFERENCES `users` (`userID`),
   CONSTRAINT `FK_ki8a4pvvffegbeyppi658pdix` FOREIGN KEY (`studentClass_classID`) REFERENCES `studentclass` (`classID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -671,7 +696,7 @@ CREATE TABLE `timetable` (
   PRIMARY KEY (`timeTableID`),
   KEY `FK_1cf8am1k698g5g51ie8q1o49u` (`file_fileID`),
   KEY `FK_8ng0i14m0sqncxjylf5tahroe` (`studentClass_classID`),
-  CONSTRAINT `FK_1cf8am1k698g5g51ie8q1o49u` FOREIGN KEY (`file_fileID`) REFERENCES `file` (`fileID`),
+  CONSTRAINT `FK_1cf8am1k698g5g51ie8q1o49u` FOREIGN KEY (`file_fileID`) REFERENCES `files` (`fileID`),
   CONSTRAINT `FK_8ng0i14m0sqncxjylf5tahroe` FOREIGN KEY (`studentClass_classID`) REFERENCES `studentclass` (`classID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -700,7 +725,7 @@ CREATE TABLE `unlockedcontent` (
   KEY `FK_o139e25rup7645onga5q7m9id` (`content_contentID`),
   KEY `FK_r4iuop6sc1q0upfo9lbijnawm` (`userID_userID`),
   CONSTRAINT `FK_o139e25rup7645onga5q7m9id` FOREIGN KEY (`content_contentID`) REFERENCES `content` (`contentID`),
-  CONSTRAINT `FK_r4iuop6sc1q0upfo9lbijnawm` FOREIGN KEY (`userID_userID`) REFERENCES `user` (`userID`)
+  CONSTRAINT `FK_r4iuop6sc1q0upfo9lbijnawm` FOREIGN KEY (`userID_userID`) REFERENCES `users` (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -714,13 +739,13 @@ LOCK TABLES `unlockedcontent` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `user`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user` (
+CREATE TABLE `users` (
   `userID` int(11) NOT NULL AUTO_INCREMENT,
   `eMail` varchar(255) DEFAULT NULL,
   `firstName` varchar(255) DEFAULT NULL,
@@ -732,13 +757,13 @@ CREATE TABLE `user` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `users`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'test@test.com','Max',NULL,'Mustermann','Geheim'),(2,'blocked@education-siemens.com','Timo',NULL,'Böse','Geheim'),(3,'short@short.com','Short',NULL,'Short','Geheim'),(4,'admin@education-siemens.com','Armin',NULL,'Admin','Geheim');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'test@test.com','Max',NULL,'Mustermann','Geheim'),(2,'blocked@education-siemens.com','Timo',NULL,'Böse','Geheim'),(3,'short@short.com','Short',NULL,'Short','Geheim'),(4,'admin@education-siemens.com','Armin',NULL,'Admin','Geheim');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -750,4 +775,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-02 18:14:38
+-- Dump completed on 2017-02-02 20:12:47

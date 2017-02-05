@@ -8,6 +8,8 @@
             <property name="hibernate.connection.username" value="root"/>
              <property name="hibernate.connection.password" value="root"/> 
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+			
+			
             <!-- to get new blank database and create it with every run -->
             <!--   <property name="hibernate.hbm2ddl.auto" value="create"/>  -->
 			<!--  to use already existing database -->
@@ -15,6 +17,5 @@
             <property name="show_sql" value="true"/>
 			<property name="use_sql_comments" value="true"/>
         </properties>
-        
 	</persistence-unit>
 </persistence>

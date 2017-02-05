@@ -2,13 +2,21 @@ package km_Entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+
 public class LikeIdClass implements Serializable{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -2530344275517072779L;
+	@ManyToOne
 	private int student;
+
+	@ManyToOne
 	private int content;
 	public int getStudent() {
 		return student;

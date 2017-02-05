@@ -22,8 +22,8 @@ public class Content {
 	private ContentType contentType;
 	private Date created;
 	private Date canged;
-	@OneToMany(mappedBy = "content")
-	private List<Like> likes;
+//	@OneToMany(mappedBy = "content" , cascade = CascadeType.ALL)
+//	private List<Like> likes;
 
 	public Content() {
 	}
@@ -76,12 +76,12 @@ public class Content {
 		this.canged = canged;
 	}
 
-	public List<Like> getLikes() {
-		return likes;
-	}
-
-	public void setLikes(List<Like> likes) {
-		this.likes = likes;
-	}
+//	public List<Like> getLikes() {
+//		return likes;
+//	}
+//
+//	public void setLikes(List<Like> likes) {
+//		this.likes = likes;
+//	}
 
 }
