@@ -30,15 +30,15 @@ public class KnowledgeCenterHandler {
 	public ServiceLocator getServiceLocator() { return serviceLocator; }
 	public void setServiceLocator(ServiceLocator serviceLocatorBean) { this.serviceLocator = serviceLocatorBean; }
 	
-	public String overview(){
+	public void overview(){
 		try{
 			questions = serviceLocator.getKnowledgeCenterService().showAllQuestions();
 			
 		}catch (Exception e) {
-			return "retry";
+			//return "retry";
 		}
 		
-		return "success";
+		//return "success";
 		}
 	public String selectQuestion(QuestionView question){
 		this.question = question;
