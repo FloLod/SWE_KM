@@ -9,14 +9,15 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<title>#{msg.title}</title>
+	<title>#{msg.title1}</title>
 </h:head>
+<ui:composition template="/index.xhtml">
+	<ui:define name="contentdiv">
+	 	<h:form>
+			<h1>Hallo</h1>
+			<h:commandLink action="#{klassenHandler.showClasses}" value="Hallo"></h:commandLink>
+		</h:form>
+	</ui:define>
+</ui:composition>
 
-<body>
-<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
-<h1>Hallo</h1>
- <h:form>
-<h:commandLink action="#{klassenHandler.showClasses}" value="Hallo"></h:commandLink>
- </h:form>
-</body>
-</html>	
+</html>

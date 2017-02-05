@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
+import km_Entities.Admin;
 import km_Entities.User;
 import km_Views.UserView;
 
@@ -18,11 +19,10 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	@PostConstruct
 	public UserView getLogin(String email, String pw) {
-		// TODO Auto-generated method stub
+		Admin admin = null;
 		EntityManagerFactory emf = EntityManagerFactoryService.getEntityManagerFactory();
 
 		EntityManager em = emf.createEntityManager();
-
 		em.getTransaction().begin();
 		Query q = em.createQuery("from "+User.class.getName()+" where email = :email");
 		q.setParameter("email", email);
@@ -35,9 +35,20 @@ public class LoginServiceImpl implements LoginService {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		try
+		{
+			Query q1 = em.createQuery("from " + Admin.class.getName() + " where user_userID = :user_userID");
+			q1.setParameter("user_userID", u);
+			
+			admin = (Admin) q1.getSingleResult();
+		}catch (Exception e) {
 		
+		}
 		em.close();
+		
 		UserView uv = new UserView(u);
+		if(null != admin)
+			uv.setAdmin(true);
 		
 		if(uv.getPasswort().contentEquals(pw)){
 			return uv;

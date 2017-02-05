@@ -22,6 +22,11 @@ public class UserView{
 		this.setFromUser(user);
 	}
 	
+	public UserView(Admin admin){
+		this.setFromUser(admin.getUser());
+		isAdmin = true;
+	}
+	
 	public UserView(String firstname, String lastname, String email, Date lastlogin, String passwort) {
 		super();
 		this.firstname = firstname;
