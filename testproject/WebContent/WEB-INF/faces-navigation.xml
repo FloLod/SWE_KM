@@ -69,7 +69,6 @@
  	</navigation-case>
  </navigation-rule>
  
- 
  <navigation-rule>
   <from-view-id>/Admin_AddClassspeaker.xhtml</from-view-id>
   <navigation-case>

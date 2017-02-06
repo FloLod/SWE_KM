@@ -22,6 +22,7 @@ public class ExchangeCenterHandler implements Serializable{
 	private StudentView student;
 	private EducationDiaryListView diaries;
 	private String filepath;
+	private String fachrichtung, abteilung;
 
 	private EducationDiaryView selectedDiary;
 	private List<EducationDiaryDayView> days;
@@ -77,23 +78,26 @@ public class ExchangeCenterHandler implements Serializable{
 
 	public String pdfdownload() {
 		try {
-			System.out.println("start");
 			serviceLocator.getExchangeCenterService().downloadEducationDiary(getStudent(), selectedDiary,
-					filepath);
+					filepath, fachrichtung, abteilung);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 		return "";
-
 	}
 
+	public String prepareDownload()
+	{
+		fachrichtung = "";
+		abteilung = "";
+		return "fillHeaderInfos";
+	}
 	public String like(ContentView content) {
 		try {
 			this.serviceLocator.getKarmaService().like(getStudent(), content);
 
 			return "LikeSuccess";
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return "LikeRetry";
 		}
@@ -168,4 +172,19 @@ public class ExchangeCenterHandler implements Serializable{
 		this.week = week;
 	}
 
+	public String getFachrichtung() {
+		return fachrichtung;
+	}
+
+	public void setFachrichtung(String fachrichtung) {
+		this.fachrichtung = fachrichtung;
+	}
+
+	public String getAbteilung() {
+		return abteilung;
+	}
+
+	public void setAbteilung(String abteilung) {
+		this.abteilung = abteilung;
+	}
 }

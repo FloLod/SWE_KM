@@ -34,7 +34,7 @@ public class PDFServiceImpl implements PDFService{
 	
 	
 	
-	public void createPDF(EducationDiaryView diary, OutputStream fo) {
+	public void createPDF(EducationDiaryView diary, OutputStream fo, String fachrichtung, String abteilung) {
 		try {
 			System.out.println("create pdf");
 			StudentView student = new StudentView();
@@ -60,7 +60,7 @@ public class PDFServiceImpl implements PDFService{
 			document.add(p);
 			
 			//student specific header
-			document.add(generateHeader(student, diary));
+			document.add(generateHeader(student, diary, fachrichtung, abteilung));
 			newline(document);		
 			
 			//weekly work
@@ -81,7 +81,8 @@ public class PDFServiceImpl implements PDFService{
 		document.add(p);
 	}
 	
-	private PdfPTable generateHeader(StudentView student, EducationDiaryView diary) throws DocumentException{
+	
+	private PdfPTable generateHeader(StudentView student, EducationDiaryView diary, String fachrichtung, String abteilung) throws DocumentException{
 		PdfPTable header = new PdfPTable(10);		
 		header.setWidthPercentage(100);
 		
@@ -113,22 +114,19 @@ public class PDFServiceImpl implements PDFService{
 		cells[9].setHorizontalAlignment(Element.ALIGN_CENTER);
 		cells[10] = new PdfPCell(new Paragraph("Ausbildungsberuf", tnormal));
 		cells[10].setColspan(2);
-		//TODO: ausbildungsberuf extrahieren
-		cells[11] = new PdfPCell(new Phrase("", tnormal));
+		cells[11] = new PdfPCell(new Phrase(student.getStudentClass().getEducationPath(), tnormal));
 		cells[11].setHorizontalAlignment(Element.ALIGN_CENTER);
 		cells[11].setColspan(3);
 		
 		//row3
 		cells[12] = new PdfPCell(new Paragraph("Ausbildende Abteilung", tnormal));
 		cells[12].setColspan(2);
-		//TODO: Abteilung extrahieren
-		cells[13] = new PdfPCell(new Phrase("", tnormal));
+		cells[13] = new PdfPCell(new Phrase(abteilung, tnormal));
 		cells[13].setHorizontalAlignment(Element.ALIGN_CENTER);
 		cells[13].setColspan(3);
 		cells[14] = new PdfPCell(new Paragraph("Fachrichtung", tnormal));
 		cells[14].setColspan(2);
-		//TODO: fachrichtung extrahieren
-		cells[15] = new PdfPCell(new Phrase("", tnormal));
+		cells[15] = new PdfPCell(new Phrase(fachrichtung, tnormal));
 		cells[15].setHorizontalAlignment(Element.ALIGN_CENTER);
 		cells[15].setColspan(3);
 		

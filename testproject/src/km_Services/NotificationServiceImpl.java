@@ -17,7 +17,6 @@ public class NotificationServiceImpl implements NotificationService {
 
 	@Override
 	public void sendNotification(UserView user, NotificationView nfv) {
-		// TODO Auto-generated method stub
 		EntityManager em = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager();
 
 		em.getTransaction().begin();
@@ -30,11 +29,12 @@ public class NotificationServiceImpl implements NotificationService {
 						.getSingleResult(),
 				new Text(nfv.getText().getHeading(), nfv.getText().getText())));
 		em.getTransaction().commit();
+		
+		//TODO:create trigger
 	}
 
 	@Override
 	public List<NotificationView> getNotifications(UserView user) {
-		// TODO Auto-generated method stub
 		EntityManager em = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager();
 
 		return em
