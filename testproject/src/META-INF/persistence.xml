@@ -6,7 +6,7 @@
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost/waterfall"/>
             <property name="hibernate.connection.username" value="root"/>
-            
+<!--             <property name="hibernate.connection.password" value="root"/> -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
 			
 			

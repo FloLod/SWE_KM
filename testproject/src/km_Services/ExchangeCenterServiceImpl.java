@@ -36,24 +36,22 @@ public class ExchangeCenterServiceImpl implements ExchangeCenterService {
 	ContentService cos = new ContentServiceImpl();
 
 	@Override
-	public void downloadEducationDiary(StudentView sv, EducationDiaryView edv, String filePath)
+	public void downloadEducationDiary(StudentView sv, EducationDiaryView edv, String filePath, String fachrichtung, String abteilung)
 			throws FileNotFoundException {
-		// TODO Auto-generated method stub
 		
 		FacesContext fc = FacesContext.getCurrentInstance();
 	    ExternalContext ec = fc.getExternalContext();
 	    
 	    ec.responseReset(); 
 		ec.setResponseContentType("application/pdf");
-		ec.setResponseHeader("Content-Disposition", "attachment;filename=Reservierung.pdf");
+		ec.setResponseHeader("Content-Disposition", "attachment;filename=Ausbildungsnachweis.pdf");
 	    
 	    try {
 	    	ec.getResponseOutputStream().flush();
 			OutputStream output = ec.getResponseOutputStream();
 
-			pdf.createPDF(edv, output);
+			pdf.createPDF(edv, output, fachrichtung, abteilung);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -61,7 +59,6 @@ public class ExchangeCenterServiceImpl implements ExchangeCenterService {
 	@Override
 	public void uploadEducationDiary(EducationDiaryView edv, EducationDiaryListView edl,
 			List<EducationDiaryDayView> days) {
-		// TODO Auto-generated method stub
 
 		EducationDiary ed = parseDiaryView(edv, true);
 

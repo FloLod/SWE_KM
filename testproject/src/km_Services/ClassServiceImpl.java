@@ -11,6 +11,7 @@ import javax.persistence.criteria.Root;
 
 import km_Entities.Student;
 import km_Entities.StudentClass;
+import km_Entities.User;
 import km_Views.ClassView;
 import km_Views.StudentView;
 
@@ -40,8 +41,6 @@ public class ClassServiceImpl implements ClassService {
 	public void addClass(ClassView studentClass) throws IllegalArgumentException {
 		EntityManager em = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager();
 
-	
-
 			em.getTransaction().begin();
 			StudentClass c = new StudentClass();
 			c.setEducationPath(studentClass.getEducationPath());
@@ -70,7 +69,6 @@ public class ClassServiceImpl implements ClassService {
 
 	@Override
 	public List<ClassView> getClasses() {
-		System.out.println("Hi");
 		List<ClassView> retList = new ArrayList<ClassView>();
 
 		EntityManager em = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager();
@@ -118,6 +116,32 @@ public class ClassServiceImpl implements ClassService {
 		}else{
 			throw new IllegalArgumentException();
 		}
+		
+	}
+
+	@Override
+	public void createClassspeaker(StudentView classspeaker) {
+		// TODO Auto-generated method stub
+EntityManager em = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager();
+		
+		
+			em.getTransaction().begin();
+			Student s = new Student();
+			StudentClass sc = em.find(StudentClass.class, classspeaker.getStudentClass().getClassID());
+			User user = new User();
+			user.setFirstName(classspeaker.getUser().getFirstname());
+			user.setLastName(classspeaker.getUser().getLastname());
+			
+			user.setPassword(classspeaker.getUser().getPasswort());
+			user.seteMail(classspeaker.getUser().getEmail());
+			s.setClassSpeaker(true);
+			s.setKarma(0);
+			s.setStudentClass(sc);
+			s.setUser(user);
+			em.persist(s);
+			em.getTransaction().commit();
+			em.close();
+			
 		
 	}
 

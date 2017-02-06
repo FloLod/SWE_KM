@@ -16,9 +16,9 @@
   	<h:form>
 	  	<h:panelGrid columns="2">
 	  	<h:outputLabel value="#{msg.heading}" />
-	  	<h:inputText value="#{knowledgeCenterHandler.question.text.heading}" />
+	  	<h:inputText value="#{knowledgeCenterHandler.question.text.heading}" size="100"/>
 	  	<h:outputLabel value="#{msg.text}" />
-	  	<h:inputTextarea value="#{knowledgeCenterHandler.question.text.text}" />
+	  	<h:inputTextarea value="#{knowledgeCenterHandler.question.text.text}" rows="5" />
 	  	<f:facet name="footer">
 	            <h:panelGroup style="display:block; text-align:center">
 	               <h:commandButton value="#{msg.create}" action="#{knowledgeCenterHandler.createQuestion()}"/>

@@ -30,50 +30,51 @@ public class KnowledgeCenterHandler {
 	public ServiceLocator getServiceLocator() { return serviceLocator; }
 	public void setServiceLocator(ServiceLocator serviceLocatorBean) { this.serviceLocator = serviceLocatorBean; }
 	
-	public void overview(){
+	public String overview(){
 		try{
 			questions = serviceLocator.getKnowledgeCenterService().showAllQuestions();
 			this.reply = new ReplyView();
 			reply.setText(new TextView());
 			question = new QuestionView();
 			question.setText(new TextView());
+			return "ToKnowledgeCenter";
 		}catch (Exception e) {
-			//return "retry";
-			e.printStackTrace();
+			return "retry";
 		}
-		
-		//return "success";
-		}
+	}
+	
 	public String selectQuestion(QuestionView question){
 		this.question = question;
+		System.out.println(question.getQuestionID());
 		try{
 			replys = serviceLocator.getKnowledgeCenterService().showQA(question.getQuestionID());
 		}catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
 			return "retry";
 		}
-		return "success";}
+		return "showquestion";
+	}
+	
 	public String createQuestion(){
 		try {
 			
 			question.setContent(new ContentView());
 			serviceLocator.getKnowledgeCenterService().addQuestion(question);
 		}catch (Exception e) {
-			// TODO: handle exception
 			return "retry";
 		}
 		
-		return "success";}
+		return overview();
+	}
+	
 	public String answerQuestion(){
 		try{
 			serviceLocator.getKnowledgeCenterService().answerQuestion(question.getQuestionID(), reply);
 		}catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
 			return "retry";
 		}
-		return "success";}
+		selectQuestion(question);
+		return "success";
+	}
 
 	public void like(ContentView content){
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();

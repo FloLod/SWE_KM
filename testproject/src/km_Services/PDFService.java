@@ -6,5 +6,5 @@ import km_Views.EducationDiaryView;
 
 public interface PDFService{
 	
-	public void createPDF(EducationDiaryView diary, OutputStream os);
+	public void createPDF(EducationDiaryView diary, OutputStream os, String fachrichtung, String abteilung);
 }

@@ -85,7 +85,7 @@ public class KnowledgeCenterServiceImpl implements KnowledgeCenterService {
 	@Override
 	public List<ReplyView> showQA(int id) throws IllegalArgumentException {
 		EntityManager em = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager();
-		TypedQuery<Reply> query = em.createQuery("from km_Entities.Reply r where r.question.questionID=:question", Reply.class);
+		TypedQuery<Reply> query = em.createQuery("from " + Reply.class.getName() + " r where r.question.questionID=:question", Reply.class);
 		query.setParameter("question", id);
 		List<ReplyView> retList = new ArrayList<ReplyView>();
 		

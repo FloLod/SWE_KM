@@ -18,6 +18,7 @@
 				<h:column>
 					<f:facet name="header">#{msg.Montag}</f:facet>
 					<h:dataTable var="action" value="#{day.activityViews}">
+					<f:facet name="header"></f:facet>
 						<h:column>
 							<f:facet name="header">#{msg.Tätigkeit}</f:facet>
 							#{action.description}
@@ -29,63 +30,63 @@
 					</h:dataTable>
 				</h:column>
 			
-				<h:column headerText="">
-					<f:facet name="header">#{msg.Dienstag}</f:facet>
-					<h:dataTable var="action" value="#{day.activityViews}">
-						<h:column>
-							<f:facet name="header">#{msg.Tätigkeit}</f:facet>
-							#{action.description}
-						</h:column>
-						<h:column>
-							<f:facet name="header">#{msg.Dauer}</f:facet>
-							#{action.duration}
-						</h:column>
-					</h:dataTable>
-				</h:column>
+<!-- 				<h:column headerText=""> -->
+<!-- 					<f:facet name="header">#{msg.Dienstag}</f:facet> -->
+<!-- 					<h:dataTable var="action" value="#{day.activityViews}"> -->
+<!-- 						<h:column> -->
+<!-- 							<f:facet name="header">#{msg.Tätigkeit}</f:facet> -->
+<!-- 							#{action.description} -->
+<!-- 						</h:column> -->
+<!-- 						<h:column> -->
+<!-- 							<f:facet name="header">#{msg.Dauer}</f:facet> -->
+<!-- 							#{action.duration} -->
+<!-- 						</h:column> -->
+<!-- 					</h:dataTable> -->
+<!-- 				</h:column> -->
 				
-				<h:column headerText="">
-					<f:facet name="header">#{msg.Mittwoch}</f:facet>
-					<h:dataTable var="action" value="#{day.activityViews}">
-						<h:column>
-							<f:facet name="header">#{msg.Tätigkeit}</f:facet>
-							#{action.description}
-						</h:column>
-						<h:column>
-							<f:facet name="header">#{msg.Dauer}</f:facet>
-							#{action.duration}
-						</h:column>
-					</h:dataTable>
-				</h:column>
+<!-- 				<h:column headerText=""> -->
+<!-- 					<f:facet name="header">#{msg.Mittwoch}</f:facet> -->
+<!-- 					<h:dataTable var="action" value="#{day.activityViews}"> -->
+<!-- 						<h:column> -->
+<!-- 							<f:facet name="header">#{msg.Tätigkeit}</f:facet> -->
+<!-- 							#{action.description} -->
+<!-- 						</h:column> -->
+<!-- 						<h:column> -->
+<!-- 							<f:facet name="header">#{msg.Dauer}</f:facet> -->
+<!-- 							#{action.duration} -->
+<!-- 						</h:column> -->
+<!-- 					</h:dataTable> -->
+<!-- 				</h:column> -->
 				
-				<h:column headerText="">
-					<f:facet name="header">#{msg.Donnerstag}</f:facet>
-					<h:dataTable var="action" value="#{day.activityViews}">
-						<h:column>
-							<f:facet name="header">#{msg.Tätigkeit}</f:facet>
-							#{action.description}
-						</h:column>
-						<h:column>
-							<f:facet name="header">#{msg.Dauer}</f:facet>
-							#{action.duration}
-						</h:column>
-					</h:dataTable>
-				</h:column>
+<!-- 				<h:column headerText=""> -->
+<!-- 					<f:facet name="header">#{msg.Donnerstag}</f:facet> -->
+<!-- 					<h:dataTable var="action" value="#{day.activityViews}"> -->
+<!-- 						<h:column> -->
+<!-- 							<f:facet name="header">#{msg.Tätigkeit}</f:facet> -->
+<!-- 							#{action.description} -->
+<!-- 						</h:column> -->
+<!-- 						<h:column> -->
+<!-- 							<f:facet name="header">#{msg.Dauer}</f:facet> -->
+<!-- 							#{action.duration} -->
+<!-- 						</h:column> -->
+<!-- 					</h:dataTable> -->
+<!-- 				</h:column> -->
 				
-				<h:column headerText="">
-					<f:facet name="header">#{msg.Freitag}</f:facet>
-					<h:dataTable var="action" value="#{day.activityViews}">
-						<h:column>
-							<f:facet name="header">#{msg.Tätigkeit}</f:facet>
-							#{action.description}
-						</h:column>
-						<h:column>
-							<f:facet name="header">#{msg.Dauer}</f:facet>
-							#{action.duration}
-						</h:column>
-					</h:dataTable>
-				</h:column>
+<!-- 				<h:column headerText=""> -->
+<!-- 					<f:facet name="header">#{msg.Freitag}</f:facet> -->
+<!-- 					<h:dataTable var="action" value="#{day.activityViews}"> -->
+<!-- 						<h:column> -->
+<!-- 							<f:facet name="header">#{msg.Tätigkeit}</f:facet> -->
+<!-- 							#{action.description} -->
+<!-- 						</h:column> -->
+<!-- 						<h:column> -->
+<!-- 							<f:facet name="header">#{msg.Dauer}</f:facet> -->
+<!-- 							#{action.duration} -->
+<!-- 						</h:column> -->
+<!-- 					</h:dataTable> -->
+<!-- 				</h:column> -->
 			</h:dataTable>
-			<h:commandButton value="#{msg.drucke}" action="#{exchangeCenterHandler.pdfdownload()}"/>
+			<h:commandButton value="#{msg.drucke}" action="#{exchangeCenterHandler.prepareDownload()}"/>
 		</h:form>
 	</ui:define>
 </ui:composition>

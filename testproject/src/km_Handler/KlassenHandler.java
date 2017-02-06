@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
@@ -64,32 +65,52 @@ public class KlassenHandler implements Serializable{
 		}catch (Exception e) {
 			return "retry";
 		}
-		return "success";
+		return showClasses();
 	}
 
 	public String showClasses() {
-		System.out.println("Hallo");
 		try {
 			this.setClasses(serviceLocator.getClassService().getClasses());
-			System.out.println("Succ");
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Fail");
 			return "retry";
 		}
-		System.out.println("Success");
-		return "success";
+		return "adminOverview";
 	}
 
 	public String selectClass(ClassView studentClass) {
 		try{
 		this.setStudents(serviceLocator.getClassService().getClass(studentClass.getClassID()));
+		
 		}catch (Exception e) {
 			return "retry";
 		}
 		return "success";
 	}
 	
+	public String selectClassspeaker(){
+		
+		if (this.getStudents().size() == 0) { classspeaker = new StudentView();
+		classspeaker.setUser(new UserView());
+		
+		return "newStudentforClassspeaker";
+		}
+		return "selectStudentforClassspeaker";
+		
+	}
+	
+	
+	public String createClassspeaker(){
+		try {
+			classspeaker.setStudentClass(studentClass);
+			serviceLocator.getClassService().createClassspeaker(classspeaker);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "retry";
+		}
+		
+		return selectClass(studentClass);
+	}
 	public void classspeakerChanged(ValueChangeEvent e){
 		try{
 			StudentView student = (StudentView)e.getNewValue();
@@ -170,6 +191,12 @@ public class KlassenHandler implements Serializable{
 	}
 	public void setStudentViewConverter(Converter studentViewConverter) {
 		this.studentViewConverter = studentViewConverter;
+	}
+	
+	@PostConstruct
+	public void init() {
+	    classspeaker = new StudentView();
+	    classspeaker.setUser(new UserView());
 	}
 
 	

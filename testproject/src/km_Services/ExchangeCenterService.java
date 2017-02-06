@@ -14,7 +14,7 @@ public interface ExchangeCenterService {
 
 	public void uploadEducationDiary( EducationDiaryView edv, EducationDiaryListView edl, List<EducationDiaryDayView> days);
 	
-	public void downloadEducationDiary(StudentView sv,EducationDiaryView edv, String filePath) throws FileNotFoundException;
+	public void downloadEducationDiary(StudentView sv,EducationDiaryView edv, String filePath, String fachrichtung, String abteilung) throws FileNotFoundException;
 	
 	public EducationDiaryListView getEducationDiaries(ClassView cv, Date from, Date until);
 	public EducationDiaryListView getEducationDiaries(ClassView cv);

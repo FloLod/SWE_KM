@@ -36,8 +36,8 @@ public class StudentHandler {
 		} catch (Exception e) {
 			return "retry";
 		}
-
-		return "success";
+		
+		return overviewStudents();
 	}
 
 	public String blockStudent() {
@@ -46,6 +46,8 @@ public class StudentHandler {
 	}
 
 	public String overviewStudents() {
+		
+		System.out.println("overviewStudents");
 
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
@@ -55,7 +57,7 @@ public class StudentHandler {
 		} catch (Exception e) {
 			return "retry";
 		}
-		return "success";
+		return "classSpeakerOverView";
 	}
 
 	public String overviewBlocked() {
