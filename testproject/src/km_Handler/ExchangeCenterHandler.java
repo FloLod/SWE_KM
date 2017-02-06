@@ -19,6 +19,7 @@ import km_Views.*;
 @ManagedBean
 @SessionScoped
 public class ExchangeCenterHandler implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private StudentView student;
 	private EducationDiaryListView diaries;
 	private String filepath;
@@ -29,6 +30,9 @@ public class ExchangeCenterHandler implements Serializable{
 
 	private Date created;
 	private int week;
+	
+	private String[] work;
+	private String[] duration;
 
 	@ManagedProperty("#{serviceLocatorImpl}")
 	private ServiceLocator serviceLocator;
@@ -40,6 +44,60 @@ public class ExchangeCenterHandler implements Serializable{
 	public void setServiceLocator(ServiceLocator serviceLocatorBean) {
 		this.serviceLocator = serviceLocatorBean;
 	}
+	
+	public String convertDownload()
+	{
+		Calendar c = new GregorianCalendar();
+		c.setTime(created);
+		Calendar c2 = c;
+		c2.add(Calendar.DAY_OF_MONTH, 5);
+
+		this.days = new ArrayList<>();
+		EducationDiaryDayView day;
+		
+		for(int i = 0; i < 5; i++)
+		{
+			String[] daywork = work[i].split(";");
+			
+			String[] times = duration[i].split(";");
+			Integer[] actiontime = new Integer[duration.length];
+			
+			for(int j = 0; j < duration[i].split(";").length; j++)
+			{
+				try{ actiontime[j] = Integer.parseInt(duration[i].split(";")[j]);}
+				catch(Exception e){actiontime[j] = 0;}
+			}
+			
+			day = new EducationDiaryDayView();
+			
+			List<ActivityView> activities = new ArrayList<ActivityView>();
+			
+			for(int k = 0; k < duration[i].split(";").length; k++)
+			{
+				ActivityView act = new ActivityView();
+				act.setDescription(daywork[k]);
+				act.setDuration(actiontime[k]);
+				
+				activities.add(act);
+			}
+			
+			day.setActivityViews(activities);
+			
+			days.add(day);
+		}
+		
+		this.getServiceLocator().getExchangeCenterService().uploadEducationDiary(
+				new EducationDiaryView(this.getStudent().getStudentClass(),
+						new ContentView(getStudent(), created, created, 1,
+								this.getServiceLocator().getKarmaService().getKarmaReward(1),
+								this.getStudent().getStudentClass()),
+						week, c.getTime(), c2.getTime(), days),
+				this.getDiaries(), days);		
+
+		this.days = new ArrayList<>();
+		return "created";
+	}
+	
 
 	public String overview() {
 		student = (StudentView) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("student");
@@ -50,7 +108,7 @@ public class ExchangeCenterHandler implements Serializable{
 
 	public String selectEducationDiary(EducationDiaryView diary) {
 		this.selectedDiary = diary;
-		return "ToShowDiary";
+		return overview();
 	}
 
 	public String uploadEducationDiary() {
@@ -73,6 +131,8 @@ public class ExchangeCenterHandler implements Serializable{
 	}
 
 	public String newDiary() {
+		work = new String[5];
+		duration = new String[5];
 		return "ToDiaryCreation";
 	}
 
@@ -102,6 +162,22 @@ public class ExchangeCenterHandler implements Serializable{
 			return "LikeRetry";
 		}
 
+	}
+
+	public String[] getWork() {
+		return work;
+	}
+
+	public void setWork(String[] work) {
+		this.work = work;
+	}
+
+	public String[] getDuration() {
+		return duration;
+	}
+
+	public void setDuration(String[] duration) {
+		this.duration = duration;
 	}
 
 	public StudentView getStudent() {
