@@ -36,8 +36,8 @@ public class StudentHandler {
 		} catch (Exception e) {
 			return "retry";
 		}
-
-		return "adminOverview";
+		
+		return overviewStudents();
 	}
 
 	public String blockStudent() {
@@ -57,7 +57,7 @@ public class StudentHandler {
 		} catch (Exception e) {
 			return "retry";
 		}
-		return "success";
+		return "classSpeakerOverView";
 	}
 
 	public String overviewBlocked() {

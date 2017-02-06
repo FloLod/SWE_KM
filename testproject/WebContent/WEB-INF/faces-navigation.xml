@@ -27,6 +27,10 @@
    <from-outcome>student</from-outcome>
    <to-view-id>/index.xhtml</to-view-id>
   </navigation-case>
+  <navigation-case>
+   <from-outcome>classspeaker</from-outcome>
+   <to-view-id>/index_classspeaker.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
  
  
@@ -44,6 +48,10 @@
   <navigation-case>
    <from-outcome>loginfailed</from-outcome>
    <to-view-id>/Login.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+  <from-outcome>classSpeakerOverView</from-outcome>
+  <to-view-id>ClassSpeaker_Overview.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  
@@ -84,14 +92,23 @@
  
  
  <navigation-rule>
-  <from-view-id>/Admin_AddClassspeaker.xhtml</from-view-id>
+  <description>Show Diary for week</description>
+  <from-view-id>/exchangeCenter_Overview.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>success</from-outcome>
-   <to-view-id>/Admin_Select.xhtml</to-view-id>
+   <from-outcome>ToShowDiary</from-outcome>
+   <to-view-id>/exchangeCenter_show.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <!--  fillHeaderInfos -->
+ <navigation-rule>
+  <from-view-id>/Admin_Select.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>selectStudentforClassspeaker</from-outcome>
+   <to-view-id>/Admin_AddClassspeaker.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
-   <from-outcome>retry</from-outcome>
-   <to-view-id>/Admin_AddClassspeaker.xhtml</to-view-id>
+   <from-outcome>newStudentforClassspeaker</from-outcome>
+   <to-view-id>/Admin_AddNewClassspeaker.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  
