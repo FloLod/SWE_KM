@@ -37,7 +37,7 @@ public class StudentHandler {
 			return "retry";
 		}
 
-		return "success";
+		return "adminOverview";
 	}
 
 	public String blockStudent() {
@@ -46,6 +46,8 @@ public class StudentHandler {
 	}
 
 	public String overviewStudents() {
+		
+		System.out.println("overviewStudents");
 
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();

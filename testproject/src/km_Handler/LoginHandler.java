@@ -56,7 +56,12 @@ public class LoginHandler implements Serializable{
 	
 	@ManagedProperty(value="#{klassenHandler}")
 	private KlassenHandler classHandler;
-		
+	
+	public String isClassspeaker(){
+//		return "classspeaker";
+		return "student";
+	}
+	
 	public String login() {
 		try{
 			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
@@ -64,7 +69,7 @@ public class LoginHandler implements Serializable{
 			UserView user = (UserView) sessionMap.get("user");
 			if(student!=null){
 				this.user = user;
-				return "student"; 	//additional check required to forward admin
+				return isClassspeaker(); 	//additional check required to forward admin
 			}else{
 			}
 		}catch(Exception e){
@@ -92,7 +97,7 @@ public class LoginHandler implements Serializable{
 				student = new StudentView(s);
 				
 				context.getExternalContext().getSessionMap().put("student", student);
-				return"student";
+				return isClassspeaker();
 			}else{
 				return classHandler.showClasses();
 			}
