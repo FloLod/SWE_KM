@@ -12,46 +12,43 @@
 	<title>#{msg.title}</title>
 	#{studentHandler.overviewStudents()}
 </h:head>
+<ui:composition template="/index.xhtml">
+	<ui:define name="contentdiv">
+		<div id="contentdiv" class="div2">
+			<h:form>
+				<h:commandButton action="ClassSpeaker_CreateStudent.xhtml"
+					value="#{msg.ClassSpeaker_create}" />
+			</h:form>
+		
+			<h:dataTable value="#{studentHandler.students}" var="student">
+				<h:column>
+					<f:facet name="header">#{msg.firstname}</f:facet>
+					#{student.user.firstname}
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">#{msg.lastname}</f:facet>
+					#{student.user.lastname}
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">#{msg.email}</f:facet>
+					#{student.user.email}
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">#{msg.lastlogin}</f:facet>
+					#{student.user.lastlogin}		
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">#{msg.blocked}</f:facet>
+					#{student.blocked}
+				</h:column>
+			</h:dataTable>
+		</div>
+	</ui:define>
+</ui:composition>
 
-<body>
-<h:outputStylesheet library="css" name="style.css" />
-  <div class="div1">
-  	
-  	<div>
-    	<ul class="navbar">
-      		<li class="navelem"> <h:graphicImage value="/resources/img/kmc_small.png"></h:graphicImage> </li><!-- Home-Button -->
-      		<li class="navelem"> </li> <!-- Company-Logo -->
-      		<li class="navelem"><a href=""> #{msg.exchangem} </a></li>
-      		<li class="navelem"><a href=""> #{msg.knowledgec} </a></li>
-      		<li class="navelem"><a href=""> #{msg.exchangec} </a></li>
-      		<li class="navelem">  <h:graphicImage value="/resources/img/language_small.png"></h:graphicImage> </li><!-- Language Change  -->
-      	</ul>
-  	</div>  	
-  	
-  		<div id="contentdiv" class="div2">
-	<h:form>
-		<h:commandButton action="Classspeaker_CreateStudent.xhtml"
-			value="#{msg.create}" />
-	</h:form>
 
-	<h:dataTable value="#{studentHandler.students}" var="student">
-		<h:column>
-			<f:facet name="header">#{msg.firstname}</f:facet>
-#{student.user.firstname}
-</h:column>
-		<h:column>
-			<f:facet name="header">#{msg.lastname}</f:facet>
-#{student.user.lastname}
-</h:column>
-		<h:column>
-			<f:facet name="header">#{msg.email}</f:facet>
-#{student.user.email}</h:column>
-		<h:column>
-			<f:facet name="header">#{msg.lastlogin}</f:facet>#{student.user.lastlogin}</h:column>
-		<h:column>
-			<f:facet name="header">#{msg.blocked}</f:facet>#{student.blocked}</h:column>
-	</h:dataTable>
-	</div>
-	</div>
-</body>
 </html>

@@ -9,18 +9,20 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<title>#{msg.onlineferries_index_title1}</title>
+	<title>#{msg.title}</title>
 </h:head>
-<ui:composition template="/index.xhtml">
-	<ui:define name="contentdiv">
+<body>
+<h:outputStylesheet library="css" name="style.css" />
+	<div class="div1">
+		<div class="div3">
 		<h:form id="loginForm">
-	  		<div class="logindiv"> <h:graphicImage value="/resources/img/kmct.png"></h:graphicImage> </div>
-	  		<div class="logindiv"> <h:inputText value="#{loginHandler.email}" validator="#{loginHandler.validateEmail}" label="Email" required="true"/></div>
-	  		<div class="logindiv"> <h:inputSecret value="#{loginHandler.password}" validator="#{loginHandler.validatePassword}" label="Passwort" required="true"/></div>
-	  		<div class="logindiv"> <h:commandButton value="Login" action="#{loginHandler.login}"/> </div>
+	  		<div class="logindiv"> <h:graphicImage value="/resources/img/kmct.png" styleClass="logindiv"></h:graphicImage> </div>
+	  		<div class="logindiv"> <h:inputText value="#{loginHandler.email}" validator="#{loginHandler.validateEmail}" label="Email" required="true" styleClass="logindiv"/></div>
+	  		<div class="logindiv"> <h:inputSecret value="#{loginHandler.password}" validator="#{loginHandler.validatePassword}" label="Passwort" required="true" styleClass="logindiv"/></div>
+	  		<div class="logindiv"> <h:commandButton value="Login" action="#{loginHandler.login}" styleClass="logindiv"/> </div>
   		</h:form>
-	</ui:define>
-</ui:composition>
-
+		</div>
+		</div>
+	</body>
 </html>
 

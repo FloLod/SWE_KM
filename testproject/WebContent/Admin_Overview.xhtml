@@ -14,46 +14,32 @@
 #{klassenHandler.showClasses()}
 </h:head>
 
-<body>
-<h:outputStylesheet library="css" name="style.css" />
-	<div class="div1">
+<ui:composition template="/index.xhtml">
+	<ui:define name="contentdiv">
+		<h:form>
+			<h:commandButton action="Admin_CreateClass.xhtml" value="#{msg.CreateClass}" />
+		</h:form>
+		
+		<h:dataTable value="#{klassenHandler.classes}" var="studentClass">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.EduPath}"></h:outputText>
+				</f:facet>
+				<h:form>
+				<h:commandLink action="#{klassenHandler.selectClass(studentClass)}"
+					value="#{studentClass.educationPath}" />
+				</h:form>
+	
+			</h:column>
+			<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg.Year}"></h:outputText>
+					</f:facet>
+			#{studentClass.year}
+			</h:column>
+</h:dataTable>
+		
+	</ui:define>
+</ui:composition>
 
-		<div>
-			<ul class="navbar">
-				<li class="navelem"><h:graphicImage
-						value="/resources/img/kmc_small.png"></h:graphicImage></li>
-				<!-- Home-Button -->
-				<li class="navelem"><h:graphicImage
-						value="/resources/img/language_small.png"></h:graphicImage></li>
-				<!-- Language Change  -->
-			</ul>
-		</div>
-
-		<div id="contentdiv" class="div2">
-<h:form>
-
-<h:commandButton action="Admin_CreateClass.xhtml" value="#{msg.CreateClass}" />
-</h:form>
-
-	<h:dataTable value="#{klassenHandler.classes}" var="studentClass">
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="#{msg.EduPath}"></h:outputText>
-			</f:facet>
-			<h:form>
-			<h:commandLink action="#{klassenHandler.selectClass(studentClass)}"
-				value="#{studentClass.educationPath}" />
-			</h:form>
-
-		</h:column>
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="#{msg.Year}"></h:outputText>
-			</f:facet>
-	#{studentClass.year}
-	</h:column>
-	</h:dataTable>
-	</div>
-	</div>
-</body>
 </html>

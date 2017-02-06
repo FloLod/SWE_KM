@@ -10,19 +10,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>#{msg.title}</title>
 </h:head>
-<body>
-	<h:outputStylesheet library="css" name="style.css" />
-  <div class="div1">
-  	
-  	<div>
-    	<ul class="navbar">
-      		<li class="navelem"> <h:graphicImage value="/resources/img/kmc_small.png"></h:graphicImage> </li><!-- Home-Button -->
-
-      		<li class="navelem">  <h:graphicImage value="/resources/img/language_small.png"></h:graphicImage> </li><!-- Language Change  -->
-      	</ul>
-  	</div>  	
-  	
-  		<div id="contentdiv" class="div2">
+<ui:composition template="/index.xhtml">
+	<ui:define name="contentdiv">
   		<h:form>
   	  	<h:selectOneListbox  valueChangeListener="#{klassenHandler.classspeakerChanged}" value="#{klassenHandler.classspeaker}" converter="#{klassenHandler.studentViewConverter}" >
   	  	<f:selectItems value="#{klassenHandler.students}" var="student"
@@ -30,9 +19,9 @@
   	  	</h:selectOneListbox>
   	  	<h:commandButton action="#{klassenHandler.addClasspeaker}" value="#{msg.confirm}" />
   	  	</h:form>
-  	  	
-  	  	</div>
-  
-  </div>
-</body> 
+	</ui:define>
+</ui:composition>
+
 </html>
+
+  	  	

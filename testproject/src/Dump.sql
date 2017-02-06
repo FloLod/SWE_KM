@@ -298,6 +298,10 @@ CREATE TABLE `educationdiaryday` (
 LOCK TABLES `educationdiaryday` WRITE;
 /*!40000 ALTER TABLE `educationdiaryday` DISABLE KEYS */;
 INSERT INTO `educationdiaryday` VALUES (1,1);
+INSERT INTO `educationdiaryday` VALUES (2,1);
+INSERT INTO `educationdiaryday` VALUES (3,1);
+INSERT INTO `educationdiaryday` VALUES (4,1);
+INSERT INTO `educationdiaryday` VALUES (5,1);
 /*!40000 ALTER TABLE `educationdiaryday` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -326,6 +330,7 @@ CREATE TABLE `educationdiaryday_activity` (
 
 LOCK TABLES `educationdiaryday_activity` WRITE;
 /*!40000 ALTER TABLE `educationdiaryday_activity` DISABLE KEYS */;
+insert into educationdiaryday_activity values(1,1,1),(2,1,2),(3,1,3),(4,1,4),(5,1,5);
 /*!40000 ALTER TABLE `educationdiaryday_activity` ENABLE KEYS */;
 UNLOCK TABLES;
 
