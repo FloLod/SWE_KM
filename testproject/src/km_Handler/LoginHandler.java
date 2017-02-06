@@ -95,8 +95,7 @@ public class LoginHandler implements Serializable{
 			context.getExternalContext().getSessionMap().put("user", user);
 			loggedIn = true;
 			
-			Boolean isAdmin = serviceLocator.getLoginService().getAdmin(user);
-			
+			Boolean isAdmin = serviceLocator.getLoginService().getAdmin(user);			
 			
 			if(!isAdmin)	//Bug hier, siehe User Konstruktor!
 			{
