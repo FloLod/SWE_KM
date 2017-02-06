@@ -64,21 +64,17 @@ public class KlassenHandler implements Serializable{
 		}catch (Exception e) {
 			return "retry";
 		}
-		return "success";
+		return showClasses();
 	}
 
 	public String showClasses() {
-		System.out.println("Hallo");
 		try {
 			this.setClasses(serviceLocator.getClassService().getClasses());
-			System.out.println("Succ");
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Fail");
 			return "retry";
 		}
-		System.out.println("Success");
-		return "success";
+		return "adminOverview";
 	}
 
 	public String selectClass(ClassView studentClass) {

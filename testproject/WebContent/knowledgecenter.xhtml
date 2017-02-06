@@ -12,27 +12,28 @@
 	<title>#{msg.title1}</title>
 </h:head>
 <ui:composition template="/index.xhtml">
-	<ui:define name="contentdiv">
- 	
-  	<div id="contentdiv" class="div2">
-  	<h:form>
-  	<h:commandButton action="knowledgecenter_create.xhtml" value="#{msg.ask}" />
-  	<h:dataTable value="#{knowledgeCenterHandler.questions}" var="question">
-  	<h:column>
-  	<f:facet name="header">#{msg.heading}</f:facet>
-  	<h:commandLink action="#{knowledgeCenterHandler.selectQuestion(question)}" value="#{question.text.heading}" />
-  	</h:column>
-  	<h:column>
-  	<f:facet name="header">#{msg.creator}</f:facet>
-  	<h:outputText value="#{question.content.creator.user.firstname} #{question.content.creator.user.lastname}" />
-  	</h:column>
-  	<h:column>
-  	<f:facet name="header">#{msg.created}</f:facet>
-  	#{question.content.created}
-  	</h:column>
-  	</h:dataTable>
-  	</h:form>
-  	</div>
+	<ui:define name="contentdiv"> 	
+	  	<div id="contentdiv" class="div2">
+		  	<h:form>
+			  	<h:commandButton action="knowledgecenter_create.xhtml" value="#{msg.ask}" />
+			  	<h:dataTable value="#{knowledgeCenterHandler.questions}" var="thequestion">
+				  	<h:column>
+				  		<f:facet name="header">#{msg.heading}</f:facet>
+				  		<h:commandLink action="#{knowledgeCenterHandler.selectQuestion(thequestion)}" value="#{thequestion.text.heading}" />
+				  	</h:column>
+				  	
+				  	<h:column>
+				  		<f:facet name="header">#{msg.creator}</f:facet>
+				  		<h:outputText value="#{thequestion.content.creator.user.firstname} #{thequestion.content.creator.user.lastname}" />
+				  	</h:column>
+				  	
+				  	<h:column>
+				  		<f:facet name="header">#{msg.created}</f:facet>
+						#{thequestion.content.created}
+				  	</h:column>
+			  	</h:dataTable>
+		  	</h:form>
+	  	</div>
   	</ui:define>
 </ui:composition>
 

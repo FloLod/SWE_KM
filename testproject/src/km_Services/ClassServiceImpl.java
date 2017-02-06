@@ -40,8 +40,6 @@ public class ClassServiceImpl implements ClassService {
 	public void addClass(ClassView studentClass) throws IllegalArgumentException {
 		EntityManager em = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager();
 
-	
-
 			em.getTransaction().begin();
 			StudentClass c = new StudentClass();
 			c.setEducationPath(studentClass.getEducationPath());
@@ -70,7 +68,6 @@ public class ClassServiceImpl implements ClassService {
 
 	@Override
 	public List<ClassView> getClasses() {
-		System.out.println("Hi");
 		List<ClassView> retList = new ArrayList<ClassView>();
 
 		EntityManager em = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager();

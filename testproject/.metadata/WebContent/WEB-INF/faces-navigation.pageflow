@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14846854573430" configfile="/testproject/WebContent/WEB-INF/faces-navigation.xml">
-  <nodes xsi:type="pageflow:PFPage" name="Index_Moritz.xhtml" comment="Login" x="338" y="562" id="pf14846855576321" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14846855576333 pf148629533127823" inlinks="pf14846855576333" path="/Index_Moritz.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="Index_Moritz.xhtml" comment="Login" x="338" y="562" id="pf14846855576321" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" outlinks="pf14846855576333 pf148629533127823" inlinks="pf14846855576333" path="/Index_Moritz.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="Admin_Overview.xhtml" x="554" y="946" id="pf14846855576334" referenceLink="//@navigationRule.6/@navigationCase.0/@toViewId|" outlinks="pf14862948942680 pf14862948942681" inlinks="pf14846855576335 pf14862948942681 pf148629533127823 pf148629533127824" path="/Admin_Overview.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="z.xhtml" comment="Login" x="338" y="1330" id="pf14846855576336" referenceLink="//@navigationRule.2/@navigationCase.1/@toViewId|" outlinks="pf14846855576335 pf14846855576337" inlinks="pf14862340662070" path="/Login.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="554" y="1330" id="pf14846855576339" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" inlinks="pf14846855576337" path="/index.xhtml"/>
@@ -16,7 +16,7 @@
   <nodes xsi:type="pageflow:PFPage" name="knowledge_select.xhtml" id="pf148629533127839" referenceLink="//@navigationRule.10/@navigationCase.0/@toViewId|" inlinks="pf148629533127836 pf148629533127840" path="/knowledge_select.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="knowledgecenter_create.xhtml" id="pf148629533127841" referenceLink="//@navigationRule.9/@fromViewId|" outlinks="pf148629533127842 pf148629533127838" inlinks="pf148629533127842" path="/knowledgecenter_create.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="knowledgecenter_reply.xhtml" id="pf148629533127843" referenceLink="//@navigationRule.10/@navigationCase.1/@toViewId|" outlinks="pf148629533127840 pf148629533127844" inlinks="pf148629533127844" path="/knowledgecenter_reply.xhtml"/>
-  <links id="pf14846855576335" target="pf14846855576334" source="pf14846855576336" outcome="admin"/>
+  <links id="pf14846855576335" target="pf14846855576334" source="pf14846855576336" outcome="adminOverview"/>
   <links id="pf14846855576337" target="pf14846855576339" source="pf14846855576336" outcome="student"/>
   <links id="pf14859681419362" target="pf14859681419363" source="pf14859681419361" outcome="ToExchangeCenter"/>
   <links id="pf14862340662070" target="pf14846855576336" source="pf14859681419361" outcome="loginfailed"/>
@@ -34,11 +34,11 @@
   <links id="pf148629533127823" target="pf14846855576334" source="pf14846855576321" outcome="success"/>
   <links id="pf148629533127826" target="pf14862948942693" source="pf148629533127827" outcome="success"/>
   <links id="pf148629533127828" target="pf148629533127827" source="pf148629533127827" outcome="retry"/>
-  <links id="pf148629533127824" target="pf14846855576334" source="pf148629533127829" outcome="success"/>
+  <links id="pf148629533127824" target="pf14846855576334" source="pf148629533127829" outcome="adminOverview"/>
   <links id="pf148629533127830" target="pf148629533127829" source="pf148629533127829" outcome="retry"/>
-  <links id="pf148629533127832" target="pf148629533127834" source="pf148629533127831" outcome="success"/>
+  <links id="pf148629533127832" target="pf148629533127834" source="pf148629533127831" outcome="adminOverview"/>
   <links id="pf148629533127833" target="pf148629533127831" source="pf148629533127831" outcome="retry"/>
-  <links id="pf148629533127836" target="pf148629533127839" source="pf148629533127835" outcome="success"/>
+  <links id="pf148629533127836" target="pf148629533127839" source="pf148629533127835" outcome="showquestion"/>
   <links id="pf148629533127837" target="pf148629533127835" source="pf148629533127835" outcome="retry"/>
   <links id="pf148629533127842" target="pf148629533127841" source="pf148629533127841" outcome="retry"/>
   <links id="pf148629533127838" target="pf148629533127835" source="pf148629533127841" outcome="success"/>

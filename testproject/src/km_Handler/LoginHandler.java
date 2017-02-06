@@ -54,20 +54,8 @@ public class LoginHandler implements Serializable{
 	@ManagedProperty("#{studentServiceImpl}")
 	private StudentService studentService;
 	
-	public StudentService getStudentService() {
-		return studentService;
-	}
-	public void setStudentService(StudentService studentService) {
-		this.studentService = studentService;
-	}
-	public LoginService getLoginService() {
-		return loginService;
-	}
-	public void setLoginService(LoginService loginservice) {
-		this.loginService = loginservice;
-	}
-	public ServiceLocator getServiceLocator() { return serviceLocator; }
-	public void setServiceLocator(ServiceLocator serviceLocatorBean) { this.serviceLocator = serviceLocatorBean; }
+	@ManagedProperty(value="#{klassenHandler}")
+	private KlassenHandler classHandler;
 		
 	public String login() {
 		try{
@@ -98,16 +86,15 @@ public class LoginHandler implements Serializable{
 			Boolean isAdmin = serviceLocator.getLoginService().getAdmin(user);
 			
 			
-			if(!isAdmin)	//Bug hier, siehe User Konstruktor!
+			if(!isAdmin)
 			{
-				//Student s = studentService.findStudentByUserId(user.getUserId()); //placeholder needs to be fixed!!!!!!!!!!!!!!!
 				Student s = studentService.findStudentByUser(user); 
-				student = new StudentView(s); //fixed by ignoring null company pics in constructor
+				student = new StudentView(s);
 				
 				context.getExternalContext().getSessionMap().put("student", student);
 				return"student";
 			}else{
-				return "admin";	//TODO: will never happen, see bug in condition above. REQUIRES FIX!
+				return classHandler.showClasses();
 			}
 		}
 		context.addMessage(null, new FacesMessage("Unknown login, try again"));
@@ -142,6 +129,32 @@ public class LoginHandler implements Serializable{
 					new FacesMessage("Passwort zu kurz!"));
 		}
 	}
+	
+	
+	public StudentService getStudentService() {
+		return studentService;
+	}
+	public void setStudentService(StudentService studentService) {
+		this.studentService = studentService;
+	}
+	public LoginService getLoginService() {
+		return loginService;
+	}
+	public void setLoginService(LoginService loginservice) {
+		this.loginService = loginservice;
+	}
+	public ServiceLocator getServiceLocator() { return serviceLocator; }
+	
+	public void setServiceLocator(ServiceLocator serviceLocatorBean) { this.serviceLocator = serviceLocatorBean; }
+		
+	public KlassenHandler getClassHandler() {
+		return classHandler;
+	}
+
+	public void setClassHandler(KlassenHandler classHandler) {
+		this.classHandler = classHandler;
+	}
+
 	public String getEmail() {
 		return email;
 	}

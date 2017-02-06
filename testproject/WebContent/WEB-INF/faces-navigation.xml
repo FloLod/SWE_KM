@@ -20,7 +20,7 @@
   <description>Login</description>
   <from-view-id>/Login.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>admin</from-outcome>
+   <from-outcome>adminOverview</from-outcome>
    <to-view-id>/Admin_Overview.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
@@ -36,6 +36,10 @@
   <navigation-case>
    <from-outcome>ToExchangeCenter</from-outcome>
    <to-view-id>/exchangeCenter_Overview.xhtml</to-view-id>
+  </navigation-case>
+   <navigation-case>
+   	<from-outcome>ToKnowledgeCenter</from-outcome>
+   	<to-view-id>/knowledgecenter.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>loginfailed</from-outcome>
@@ -82,7 +86,7 @@
  <navigation-rule>
   <from-view-id>/Admin_CreateClass.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>success</from-outcome>
+   <from-outcome>adminOverview</from-outcome>
    <to-view-id>/Admin_Overview.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
@@ -95,7 +99,7 @@
  <navigation-rule>
   <from-view-id>/Classspeaker_CreateStudent.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>success</from-outcome>
+   <from-outcome>adminOverview</from-outcome>
    <to-view-id>/ClassSpeaker_Overview.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
@@ -108,7 +112,7 @@
  <navigation-rule>
   <from-view-id>/knowledgecenter.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>success</from-outcome>
+   <from-outcome>showquestion</from-outcome>
    <to-view-id>/knowledge_select.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>

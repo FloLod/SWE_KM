@@ -45,7 +45,7 @@ public class ExchangeCenterServiceImpl implements ExchangeCenterService {
 	    
 	    ec.responseReset(); 
 		ec.setResponseContentType("application/pdf");
-		ec.setResponseHeader("Content-Disposition", "attachment;filename=Reservierung.pdf");
+		ec.setResponseHeader("Content-Disposition", "attachment;filename=Ausbildungsnachweis.pdf");
 	    
 	    try {
 	    	ec.getResponseOutputStream().flush();
