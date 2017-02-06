@@ -50,7 +50,7 @@ public class ExchangeCenterServiceImpl implements ExchangeCenterService {
 	    	ec.getResponseOutputStream().flush();
 			OutputStream output = ec.getResponseOutputStream();
 
-			pdf.createPDF(edv, output, fachichtung, abteilung);
+			pdf.createPDF(edv, output, fachrichtung, abteilung);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

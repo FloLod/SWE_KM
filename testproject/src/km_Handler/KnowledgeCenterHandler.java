@@ -45,6 +45,7 @@ public class KnowledgeCenterHandler {
 	
 	public String selectQuestion(QuestionView question){
 		this.question = question;
+		System.out.println(question.getQuestionID());
 		try{
 			replys = serviceLocator.getKnowledgeCenterService().showQA(question.getQuestionID());
 		}catch (Exception e) {
@@ -71,6 +72,7 @@ public class KnowledgeCenterHandler {
 		}catch (Exception e) {
 			return "retry";
 		}
+		selectQuestion(question);
 		return "success";
 	}
 

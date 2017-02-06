@@ -68,6 +68,17 @@
  		<to-view-id>/exchangeCenter_show.xhtml</to-view-id>
  	</navigation-case>
  </navigation-rule>
+
+ <navigation-rule>
+ 	<description>Show Diary for week</description>
+ 	<from-view-id>/exchangeCenter_Overview.xhtml</from-view-id>
+ 	<navigation-case>
+ 		<from-outcome>ToShowDiary</from-outcome>
+ 		<to-view-id>/exchangeCenter_show.xhtml</to-view-id>
+ 	</navigation-case>
+ </navigation-rule>
+ 
+<!--  fillHeaderInfos -->
  
  <navigation-rule>
   <from-view-id>/Admin_AddClassspeaker.xhtml</from-view-id>

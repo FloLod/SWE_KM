@@ -9,14 +9,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>#{msg.title}</title>
-	#{knowledgeCenterHandler.selectQuestion(knowledgeCenterHandler.question)}
 </h:head>
 
 <ui:composition template="/index.xhtml">
 	<ui:define name="contentdiv">
-		
-	</ui:define>
-</ui:composition>
   	<h:panelGrid columns="4">
   	<f:facet name="header">#{msg.question}</f:facet>
   	<h:outputLabel value="#{knowledgeCenterHandler.question.text.heading}" />
@@ -47,4 +43,7 @@
   	#{reply.content.created}
   	</h:column>
   	</h:dataTable>
+		
+	</ui:define>
+</ui:composition>
 </html>
