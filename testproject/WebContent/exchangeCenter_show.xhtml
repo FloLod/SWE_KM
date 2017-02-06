@@ -14,6 +14,9 @@
 <ui:composition template="/index.xhtml">
 	<ui:define name="contentdiv">
 		<h:form>
+			<h:commandButton value="#{msg.drucke}" action="#{exchangeCenterHandler.prepareDownload()}"/>
+			
+			
 			<h2>#{msg.Montag}</h2>
 			<h:dataTable var="action" value="#{exchangeCenterHandler.selectedDiary.days[0].activityViews}">
 			<f:facet name="header"></f:facet>
@@ -78,7 +81,6 @@
 					#{action.duration}
 				</h:column>
 			</h:dataTable>
-			<h:commandButton value="#{msg.drucke}" action="#{exchangeCenterHandler.prepareDownload()}"/>
 		</h:form>
 	</ui:define>
 </ui:composition>

@@ -108,7 +108,7 @@ public class ExchangeCenterHandler implements Serializable{
 
 	public String selectEducationDiary(EducationDiaryView diary) {
 		this.selectedDiary = diary;
-		return overview();
+		return "ToShowDiary";
 	}
 
 	public String uploadEducationDiary() {
