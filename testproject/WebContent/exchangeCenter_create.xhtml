@@ -11,9 +11,29 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>#{msg.title1}</title>
 </h:head>
-<ui:composition template="/index.xhtml">
+<ui:composition template="/template.xhtml">
 	<ui:define name="contentdiv">
+		<h:form>
+			<h:inputText />
 		
+			<h2>#{msg.Montag}</h2>
+			#{msg.Tätigkeit}:<h:inputText value="#{exchangeCenterHandler.work[0]}" size="100"/> #{msg.Dauer}:<h:inputText value="#{exchangeCenterHandler.duration[0]}" size="10"/>
+			
+			<h2>#{msg.Dienstag}</h2>
+			#{msg.Tätigkeit}:<h:inputText value="#{exchangeCenterHandler.work[1]}" size="100"/> #{msg.Dauer}:<h:inputText value="#{exchangeCenterHandler.duration[1]}" size="10"/>
+
+			<h2>#{msg.Mittwoch}</h2>
+			#{msg.Tätigkeit}:<h:inputText value="#{exchangeCenterHandler.work[2]}" size="100"/> #{msg.Dauer}:<h:inputText value="#{exchangeCenterHandler.duration[2]}" size="10"/>
+
+			<h2>#{msg.Donnerstag}</h2>
+			#{msg.Tätigkeit}:<h:inputText value="#{exchangeCenterHandler.work[3]}" size="100"/> #{msg.Dauer}:<h:inputText value="#{exchangeCenterHandler.duration[3]}" size="10"/>
+			
+			<h2>#{msg.Freitag}</h2>
+			#{msg.Tätigkeit}:<h:inputText value="#{exchangeCenterHandler.work[4]}" size="100"/> #{msg.Dauer}:<h:inputText value="#{exchangeCenterHandler.duration[4]}" size="10"/>
+			
+			<br></br>
+			<h:commandButton value="#{msg.creatDiary}" action="#{exchangeCenterHandler.convertDownload()}"/>
+		</h:form>
 	</ui:define>
 </ui:composition>
 

@@ -11,7 +11,7 @@
 	<title>#{msg.title1}</title>
 </h:head>
 
-<ui:composition template="/index.xhtml">
+<ui:composition template="/template.xhtml">
 	<ui:define name="contentdiv">
 		<h:form>
 			<h:dataTable var="diary" value="#{exchangeCenterHandler.diaries.educationDiaryList}">
@@ -34,7 +34,7 @@
 					<h:commandLink action="#{exchangeCenterHandler.selectEducationDiary(diary)}">Show Diary</h:commandLink>
 				</h:column>
 			</h:dataTable>
-			<h:button value="#{msg.newDiaryBtn}"></h:button>
+			<h:commandButton value="#{msg.newDiaryBtn}" action="#{exchangeCenterHandler.newDiary()}"></h:commandButton>
 		</h:form>
 	</ui:define>
 </ui:composition>

@@ -11,82 +11,76 @@
 	<title>#{msg.title1}</title>
 </h:head>
 
-<ui:composition template="/index.xhtml">
+<ui:composition template="/template.xhtml">
 	<ui:define name="contentdiv">
 		<h:form>
-			<h:dataTable  var="day" value="#{exchangeCenterHandler.selectedDiary.days}" style="edutable">
-				<h:column>
-					<f:facet name="header">#{msg.Montag}</f:facet>
-					<h:dataTable var="action" value="#{day.activityViews}">
-					<f:facet name="header"></f:facet>
-						<h:column>
-							<f:facet name="header">#{msg.Tätigkeit}</f:facet>
-							#{action.description}
-						</h:column>
-						<h:column>
-							<f:facet name="header">#{msg.Dauer}</f:facet>
-							#{action.duration}
-						</h:column>
-					</h:dataTable>
-				</h:column>
-			
-<!-- 				<h:column headerText=""> -->
-<!-- 					<f:facet name="header">#{msg.Dienstag}</f:facet> -->
-<!-- 					<h:dataTable var="action" value="#{day.activityViews}"> -->
-<!-- 						<h:column> -->
-<!-- 							<f:facet name="header">#{msg.Tätigkeit}</f:facet> -->
-<!-- 							#{action.description} -->
-<!-- 						</h:column> -->
-<!-- 						<h:column> -->
-<!-- 							<f:facet name="header">#{msg.Dauer}</f:facet> -->
-<!-- 							#{action.duration} -->
-<!-- 						</h:column> -->
-<!-- 					</h:dataTable> -->
-<!-- 				</h:column> -->
-				
-<!-- 				<h:column headerText=""> -->
-<!-- 					<f:facet name="header">#{msg.Mittwoch}</f:facet> -->
-<!-- 					<h:dataTable var="action" value="#{day.activityViews}"> -->
-<!-- 						<h:column> -->
-<!-- 							<f:facet name="header">#{msg.Tätigkeit}</f:facet> -->
-<!-- 							#{action.description} -->
-<!-- 						</h:column> -->
-<!-- 						<h:column> -->
-<!-- 							<f:facet name="header">#{msg.Dauer}</f:facet> -->
-<!-- 							#{action.duration} -->
-<!-- 						</h:column> -->
-<!-- 					</h:dataTable> -->
-<!-- 				</h:column> -->
-				
-<!-- 				<h:column headerText=""> -->
-<!-- 					<f:facet name="header">#{msg.Donnerstag}</f:facet> -->
-<!-- 					<h:dataTable var="action" value="#{day.activityViews}"> -->
-<!-- 						<h:column> -->
-<!-- 							<f:facet name="header">#{msg.Tätigkeit}</f:facet> -->
-<!-- 							#{action.description} -->
-<!-- 						</h:column> -->
-<!-- 						<h:column> -->
-<!-- 							<f:facet name="header">#{msg.Dauer}</f:facet> -->
-<!-- 							#{action.duration} -->
-<!-- 						</h:column> -->
-<!-- 					</h:dataTable> -->
-<!-- 				</h:column> -->
-				
-<!-- 				<h:column headerText=""> -->
-<!-- 					<f:facet name="header">#{msg.Freitag}</f:facet> -->
-<!-- 					<h:dataTable var="action" value="#{day.activityViews}"> -->
-<!-- 						<h:column> -->
-<!-- 							<f:facet name="header">#{msg.Tätigkeit}</f:facet> -->
-<!-- 							#{action.description} -->
-<!-- 						</h:column> -->
-<!-- 						<h:column> -->
-<!-- 							<f:facet name="header">#{msg.Dauer}</f:facet> -->
-<!-- 							#{action.duration} -->
-<!-- 						</h:column> -->
-<!-- 					</h:dataTable> -->
-<!-- 				</h:column> -->
-			</h:dataTable>
 			<h:commandButton value="#{msg.drucke}" action="#{exchangeCenterHandler.prepareDownload()}"/>
+			
+			
+			<h2>#{msg.Montag}</h2>
+			<h:dataTable var="action" value="#{exchangeCenterHandler.selectedDiary.days[0].activityViews}">
+			<f:facet name="header"></f:facet>
+				<h:column>
+					<f:facet name="header">#{msg.Tätigkeit}</f:facet>
+					#{action.description}
+				</h:column>
+				<h:column>
+					<f:facet name="header">#{msg.Dauer}</f:facet>
+					#{action.duration}
+				</h:column>
+			</h:dataTable>
+
+			<h2>#{msg.Dienstag}</h2>
+			<h:dataTable var="action" value="#{exchangeCenterHandler.selectedDiary.days[1].activityViews}">
+			<f:facet name="header"></f:facet>
+				<h:column>
+					<f:facet name="header">#{msg.Tätigkeit}</f:facet>
+					#{action.description}
+				</h:column>
+				<h:column>
+					<f:facet name="header">#{msg.Dauer}</f:facet>
+					#{action.duration}
+				</h:column>
+			</h:dataTable>
+
+			<h2>#{msg.Mittwoch}</h2>
+			<h:dataTable var="action" value="#{exchangeCenterHandler.selectedDiary.days[2].activityViews}">
+			<f:facet name="header"></f:facet>
+				<h:column>
+					<f:facet name="header">#{msg.Tätigkeit}</f:facet>
+					#{action.description}
+				</h:column>
+				<h:column>
+					<f:facet name="header">#{msg.Dauer}</f:facet>
+					#{action.duration}
+				</h:column>
+			</h:dataTable>
+
+			<h2>#{msg.Donnerstag}</h2>
+			<h:dataTable var="action" value="#{exchangeCenterHandler.selectedDiary.days[3].activityViews}">
+			<f:facet name="header"></f:facet>
+				<h:column>
+					<f:facet name="header">#{msg.Tätigkeit}</f:facet>
+					#{action.description}
+				</h:column>
+				<h:column>
+					<f:facet name="header">#{msg.Dauer}</f:facet>
+					#{action.duration}
+				</h:column>
+			</h:dataTable>
+			
+			<h2>#{msg.Freitag}</h2>
+			<h:dataTable var="action" value="#{exchangeCenterHandler.selectedDiary.days[4].activityViews}">
+			<f:facet name="header"></f:facet>
+				<h:column>
+					<f:facet name="header">#{msg.Tätigkeit}</f:facet>
+					#{action.description}
+				</h:column>
+				<h:column>
+					<f:facet name="header">#{msg.Dauer}</f:facet>
+					#{action.duration}
+				</h:column>
+			</h:dataTable>
 		</h:form>
 	</ui:define>
 </ui:composition>
