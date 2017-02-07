@@ -63,6 +63,7 @@ public class LoginHandler implements Serializable{
 		return "student";
 	}
 	
+	
 	public String login() {
 		try{
 			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();

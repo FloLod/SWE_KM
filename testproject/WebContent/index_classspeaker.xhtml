@@ -22,6 +22,7 @@
       		<li> <h:commandLink value="#{msg.knowledgec}" action="#{knowledgeCenterHandler.overview}"/></li>
       		<li> <h:commandLink value="#{msg.exchangec}" action="#{exchangeCenterHandler.overview}"/> </li>
       		<li><h:commandLink action="#{studentHandler.overviewStudents()}" value="#{msg.manageClass}"></h:commandLink></li>
+      		<li><h:commandLink value="#{msg.logout}" action="#{loginHandler.logout}"></h:commandLink></li>
       		<li> <h:commandLink action="#{localeHandler.changeLocale()}"> <h:graphicImage value="/resources/img/language_small.png"> </h:graphicImage></h:commandLink> </li><!-- Language Change  -->
       	
       	</ul>

@@ -80,6 +80,7 @@ public class KlassenHandler implements Serializable{
 
 	public String selectClass(ClassView studentClass) {
 		try{
+			this.studentClass = studentClass;
 		this.setStudents(serviceLocator.getClassService().getClass(studentClass.getClassID()));
 		
 		}catch (Exception e) {
@@ -102,6 +103,8 @@ public class KlassenHandler implements Serializable{
 	
 	public String createClassspeaker(){
 		try {
+			
+			System.out.println(studentClass.getClassID());
 			classspeaker.setStudentClass(studentClass);
 			serviceLocator.getClassService().createClassspeaker(classspeaker);
 		} catch (Exception e) {
