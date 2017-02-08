@@ -1,5 +1,6 @@
 package km_Entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Student{
+public class Student implements Serializable{
 	@Id
 	@GeneratedValue
 	private int studentID;

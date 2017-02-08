@@ -1,11 +1,13 @@
 package km_Entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class NotificationType {
+public class NotificationType implements Serializable{
 	
 	@Id
 	@GeneratedValue

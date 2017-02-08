@@ -1,12 +1,14 @@
 package km_Entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class ContentType{
+public class ContentType implements Serializable{
 	@Id
 	@GeneratedValue
 	private int contentTypeID;  // contentTypeID: 1 = EducationDiary

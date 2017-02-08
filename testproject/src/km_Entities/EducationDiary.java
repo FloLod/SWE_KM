@@ -1,5 +1,6 @@
 package km_Entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -7,12 +8,13 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
-public class EducationDiary {
+public class EducationDiary implements Serializable{
 	@Id
 	@GeneratedValue
 	private int educationDiaryID;
@@ -26,7 +28,7 @@ public class EducationDiary {
 	
 	@OneToMany(mappedBy = "educationDiaryID", cascade = CascadeType.ALL)
 	private List<EducationDiaryDay> days;
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private EducationDiaryList list;
 
 	public EducationDiary() {

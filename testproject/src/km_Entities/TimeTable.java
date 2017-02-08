@@ -1,5 +1,6 @@
 package km_Entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class TimeTable{
+public class TimeTable implements Serializable{
 	@Id
 	@GeneratedValue
 	private int timeTableID;

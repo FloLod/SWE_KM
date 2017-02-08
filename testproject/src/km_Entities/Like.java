@@ -1,5 +1,7 @@
 package km_Entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -9,7 +11,7 @@ import javax.persistence.Transient;
 
 //@Entity(name="Likes")
 //@IdClass(LikeIdClass.class)
-public class Like{
+public class Like implements Serializable{
 	@Id
 	@GeneratedValue
 	private int likeID;

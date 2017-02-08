@@ -1,5 +1,6 @@
 package km_Entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Content {
+public class Content implements Serializable{
 	@Id
 	@GeneratedValue
 	private int contentID;

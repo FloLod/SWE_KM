@@ -1,5 +1,6 @@
 package km_Entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -8,8 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import km_Views.ClassView;
+
 @Entity
-public class StudentClass {
+public class StudentClass implements Serializable{
 	@Id
 	@GeneratedValue
 	private int classID;
@@ -30,6 +33,13 @@ public class StudentClass {
 		super();
 		this.educationPath = educationPath;
 		this.year = year;
+	}
+
+	public StudentClass(ClassView studentClass) {
+		classID = studentClass.getClassID();
+		educationPath = studentClass.getEducationPath();
+		year = studentClass.getYear();
+		
 	}
 
 	public void setClassID(int classID) {

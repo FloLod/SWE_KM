@@ -1,5 +1,6 @@
 package km_Entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -10,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Appointment{
+public class Appointment implements Serializable{
 	@Id
 	@GeneratedValue
 	private int AppointmentID;

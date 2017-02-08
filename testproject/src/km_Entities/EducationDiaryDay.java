@@ -1,5 +1,6 @@
 package km_Entities;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,7 +12,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 @IdClass(EducationDiaryDayIdClass.class)
-public class EducationDiaryDay{
+public class EducationDiaryDay implements Serializable{
 	@ManyToOne
 	@Id
 	private km_Entities.EducationDiary educationDiaryID;

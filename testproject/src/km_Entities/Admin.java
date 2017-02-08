@@ -1,5 +1,7 @@
 package km_Entities;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity(name ="admins")
-public class Admin{
+public class Admin implements Serializable{
 	@Id
 	@GeneratedValue
 	private int adminID;

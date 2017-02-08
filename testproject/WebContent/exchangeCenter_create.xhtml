@@ -14,22 +14,24 @@
 <ui:composition template="/template.xhtml">
 	<ui:define name="contentdiv">
 		<h:form>
-			<h:inputText />
+			
+			#{msg.StartDate}:<h:inputText id="username" value="#{exchangeCenterHandler.thedate}" 
+						required ="false" requiredMessage="#{msg.reqDate}" validator="#{exchangeCenterHandler.validateDate}"/>
 		
 			<h2>#{msg.Montag}</h2>
-			#{msg.Tätigkeit}:<h:inputText value="#{exchangeCenterHandler.work[0]}" size="100"/> #{msg.Dauer}:<h:inputText value="#{exchangeCenterHandler.duration[0]}" size="10"/>
+			#{msg.Tätigkeit}:<h:inputText value="#{exchangeCenterHandler.work[0]}" size="100" required ="false"/> #{msg.Dauer}:<h:inputText value="#{exchangeCenterHandler.duration[0]}" size="10" required ="false"/>
 			
 			<h2>#{msg.Dienstag}</h2>
-			#{msg.Tätigkeit}:<h:inputText value="#{exchangeCenterHandler.work[1]}" size="100"/> #{msg.Dauer}:<h:inputText value="#{exchangeCenterHandler.duration[1]}" size="10"/>
+			#{msg.Tätigkeit}:<h:inputText value="#{exchangeCenterHandler.work[1]}" size="100" required ="false"/> #{msg.Dauer}:<h:inputText value="#{exchangeCenterHandler.duration[1]}" size="10" required ="false"/>
 
 			<h2>#{msg.Mittwoch}</h2>
-			#{msg.Tätigkeit}:<h:inputText value="#{exchangeCenterHandler.work[2]}" size="100"/> #{msg.Dauer}:<h:inputText value="#{exchangeCenterHandler.duration[2]}" size="10"/>
+			#{msg.Tätigkeit}:<h:inputText value="#{exchangeCenterHandler.work[2]}" size="100" required ="false"/> #{msg.Dauer}:<h:inputText value="#{exchangeCenterHandler.duration[2]}" size="10" required ="false"/>
 
 			<h2>#{msg.Donnerstag}</h2>
-			#{msg.Tätigkeit}:<h:inputText value="#{exchangeCenterHandler.work[3]}" size="100"/> #{msg.Dauer}:<h:inputText value="#{exchangeCenterHandler.duration[3]}" size="10"/>
+			#{msg.Tätigkeit}:<h:inputText value="#{exchangeCenterHandler.work[3]}" size="100" required ="false"/> #{msg.Dauer}:<h:inputText value="#{exchangeCenterHandler.duration[3]}" size="10" required ="false"/>
 			
 			<h2>#{msg.Freitag}</h2>
-			#{msg.Tätigkeit}:<h:inputText value="#{exchangeCenterHandler.work[4]}" size="100"/> #{msg.Dauer}:<h:inputText value="#{exchangeCenterHandler.duration[4]}" size="10"/>
+			#{msg.Tätigkeit}:<h:inputText value="#{exchangeCenterHandler.work[4]}" size="100" required ="false"/> #{msg.Dauer}:<h:inputText value="#{exchangeCenterHandler.duration[4]}" size="10" required ="false"/>
 			
 			<br></br>
 			<h:commandButton value="#{msg.creatDiary}" action="#{exchangeCenterHandler.convertDownload()}"/>

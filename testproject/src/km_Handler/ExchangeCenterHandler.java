@@ -7,12 +7,16 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.ResourceBundle;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.faces.validator.ValidatorException;
 
 import km_Views.*;
 
@@ -28,6 +32,7 @@ public class ExchangeCenterHandler implements Serializable{
 	private EducationDiaryView selectedDiary;
 	private List<EducationDiaryDayView> days;
 
+	private String thedate;
 	private Date created;
 	private int week;
 	
@@ -47,6 +52,19 @@ public class ExchangeCenterHandler implements Serializable{
 	
 	public String convertDownload()
 	{
+		created = new Date(2016,02,03);
+		duration[0] = "1";
+		duration[1] = "2";
+		duration[2] = "3";
+		duration[3] = "4";
+		duration[4] = "5";
+		
+		work[0] = "Mowork";
+		work[1] = "Diwork";
+		work[2] = "Miwork";
+		work[3] = "Dowork";
+		work[4] = "Frwork";
+		
 		Calendar c = new GregorianCalendar();
 		c.setTime(created);
 		Calendar c2 = c;
@@ -86,11 +104,18 @@ public class ExchangeCenterHandler implements Serializable{
 			days.add(day);
 		}
 		
+		ContentView content = new ContentView();
+		content.setChanged(created);
+		content.setContentTypeName("Nachweis");
+		content.setCreated(created);
+		content.setCreator(student);
+		content.setOwner(student.getStudentClass());
+		
+		
+		
 		this.getServiceLocator().getExchangeCenterService().uploadEducationDiary(
 				new EducationDiaryView(this.getStudent().getStudentClass(),
-						new ContentView(getStudent(), created, created, 1,
-								this.getServiceLocator().getKarmaService().getKarmaReward(1),
-								this.getStudent().getStudentClass()),
+						content,
 						week, c.getTime(), c2.getTime(), days),
 				this.getDiaries(), days);		
 
@@ -263,4 +288,40 @@ public class ExchangeCenterHandler implements Serializable{
 	public void setAbteilung(String abteilung) {
 		this.abteilung = abteilung;
 	}
+	
+	public String getThedate() {
+		return thedate;
+	}
+
+	public void setThedate(String thedate) {
+		this.thedate = thedate;
+	}
+
+	public void validateDate(FacesContext context, UIComponent component, Object value)
+			throws ValidatorException {
+		String v = (String)value;
+		String[] s;
+		if(v.contains("-"))
+			s = v.split("-");
+		else if(v.contains("."))
+			s = v.split(".");
+		else 
+			throw new ValidatorException(new FacesMessage("use - or . as delimiter"));
+		
+		try
+		{
+			Calendar c = new GregorianCalendar();
+			if(s[0].length() == 4)
+				c.set(Integer.parseInt(s[0]), Integer.parseInt(s[1]), Integer.parseInt(s[2]));
+			else
+				c.set(Integer.parseInt(s[2]), Integer.parseInt(s[1]), Integer.parseInt(s[0]));
+			
+			created = c.getTime();
+		}
+		catch(Exception e)
+		{
+			throw new ValidatorException(new FacesMessage("a date needs year, month and day"));
+		}
+	}
+	
 }

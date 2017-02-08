@@ -1,5 +1,7 @@
 package km_Entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
@@ -7,7 +9,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 @IdClass(UnlockedContentIdClass.class)
-public class UnlockedContent {
+public class UnlockedContent implements Serializable{
 	@Id
 	@ManyToOne
 	private User userID;

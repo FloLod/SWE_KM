@@ -1,5 +1,6 @@
 package km_Entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class EducationDiaryList {
+public class EducationDiaryList implements Serializable{
 	@Id
 	@GeneratedValue
 	private int EducationDiaryList;
@@ -21,7 +22,7 @@ public class EducationDiaryList {
 	private StudentClass studentClass;
 	@ManyToOne
 	private Student studentResponsible;
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="educationDiaryID", cascade = CascadeType.ALL)
 	private List<EducationDiary> educationDiary;
 
 	public EducationDiaryList() {

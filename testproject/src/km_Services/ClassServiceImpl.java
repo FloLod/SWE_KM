@@ -19,8 +19,6 @@ public class ClassServiceImpl implements ClassService {
 
 	@Override
 	public List<StudentView> getClass(int classID) {
-		// TODO Auto-generated method stub
-		
 		EntityManager em = EntityManagerFactoryService.getEntityManagerFactory().createEntityManager();
 		
 		TypedQuery<Student> query = em.createQuery("from km_Entities.Student s where s.studentClass.classID=:class", Student.class);

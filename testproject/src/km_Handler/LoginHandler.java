@@ -45,14 +45,7 @@ public class LoginHandler implements Serializable{
 	private boolean loggedIn;
 
 	@ManagedProperty("#{serviceLocatorImpl}")
-	private ServiceLocator serviceLocator;
-	
-	@ManagedProperty("#{loginServiceImpl}")
-	private LoginService loginService;
-	
-
-	@ManagedProperty("#{studentServiceImpl}")
-	private StudentService studentService;
+	private ServiceLocator serviceLocator;	
 	
 	@ManagedProperty(value="#{klassenHandler}")
 	private KlassenHandler classHandler;
@@ -78,7 +71,7 @@ public class LoginHandler implements Serializable{
 		}
 				
 		try{
-			user = loginService.getLogin(email, password);
+			user = serviceLocator.getLoginService().getLogin(email, password);
 		}catch(Exception e){
 			e.printStackTrace();
 //		throw new ValidatorException(new FacesMessage("Bitte wiederholen Sie den Login Vorgang!"));
@@ -93,7 +86,7 @@ public class LoginHandler implements Serializable{
 			
 			if(!isAdmin)
 			{
-				Student s = studentService.findStudentByUser(user); 
+				Student s = serviceLocator.getStudentService().findStudentByUser(user); 
 				student = new StudentView(s);
 				
 				context.getExternalContext().getSessionMap().put("student", student);
@@ -135,19 +128,7 @@ public class LoginHandler implements Serializable{
 		}
 	}
 	
-	
-	public StudentService getStudentService() {
-		return studentService;
-	}
-	public void setStudentService(StudentService studentService) {
-		this.studentService = studentService;
-	}
-	public LoginService getLoginService() {
-		return loginService;
-	}
-	public void setLoginService(LoginService loginservice) {
-		this.loginService = loginservice;
-	}
+
 	public ServiceLocator getServiceLocator() { return serviceLocator; }
 	
 	public void setServiceLocator(ServiceLocator serviceLocatorBean) { this.serviceLocator = serviceLocatorBean; }
