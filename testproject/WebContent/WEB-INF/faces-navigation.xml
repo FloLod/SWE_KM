@@ -24,12 +24,12 @@
    <to-view-id>/Admin_Overview.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
-   <from-outcome>student</from-outcome>
-   <to-view-id>/index.xhtml</to-view-id>
-  </navigation-case>
-  <navigation-case>
    <from-outcome>classspeaker</from-outcome>
    <to-view-id>/index_classspeaker.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>student</from-outcome>
+   <to-view-id>/index.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  
@@ -50,8 +50,8 @@
    <to-view-id>/Login.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
-  <from-outcome>classSpeakerOverView</from-outcome>
-  <to-view-id>ClassSpeaker_Overview.xhtml</to-view-id>
+   <from-outcome>classSpeakerOverView</from-outcome>
+   <to-view-id>/ClassSpeaker_Overview.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  
@@ -175,6 +175,13 @@
   <navigation-case>
    <from-outcome>retry</from-outcome>
    <to-view-id>/knowledgecenter_reply.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/Admin_AddNewClassspeaker.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/Admin_Select.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
 </faces-config>
